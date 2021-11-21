@@ -151,11 +151,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AndGateway.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="LogicGateway.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NandGateway.cpp" />
+    <ClCompile Include="NorGateway.cpp" />
+    <ClCompile Include="NotGateway.cpp" />
+    <ClCompile Include="OrGateway.cpp" />
+    <ClCompile Include="XnorGateway.cpp" />
+    <ClCompile Include="XorGateway.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AndGateway.hpp" />
     <ClInclude Include="Button.hpp" />
+    <ClInclude Include="LogicGateway.hpp" />
+    <ClInclude Include="NandGateway.hpp" />
+    <ClInclude Include="NorGateway.hpp" />
+    <ClInclude Include="NotGateway.hpp" />
+    <ClInclude Include="OrGateway.hpp" />
+    <ClInclude Include="XnorGateway.h" />
+    <ClInclude Include="XorGateway.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
