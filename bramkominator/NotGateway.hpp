@@ -11,9 +11,11 @@ class NotGateway :
 public:
     NotGateway();
     NotGateway(bool inputA, bool inputB);
+    NotGateway(bool input);
     ~NotGateway();
 
     virtual bool getOutput() override;
+    void setInput(bool input);
 };
 
 #endif
