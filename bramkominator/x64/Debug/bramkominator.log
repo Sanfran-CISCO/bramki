@@ -1,13 +1,3 @@
-﻿  AndGateway.cpp
-C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\AndGateway.hpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  LogicGateway.cpp
-  NandGateway.cpp
-  NorGateway.cpp
-  NotGateway.cpp
-C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\NotGateway.hpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  OrGateway.cpp
-  XnorGateway.cpp
-  XorGateway.cpp
-  Generating Code...
+﻿  Main.cpp
   LINK : C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\x64\Debug\bramkominator.exe not found or not built by the last incremental link; performing full link
   bramkominator.vcxproj -> C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\x64\Debug\bramkominator.exe

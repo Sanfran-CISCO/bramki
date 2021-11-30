@@ -15,9 +15,9 @@ int main() {
 		}
 
 
-	window.clear(sf::Color::Black);
-	button.draw(window);
-	window.display();
+		window.clear(sf::Color::Black);
+		button.draw(window);
+		window.display();
 	}
 
 	return 0;
