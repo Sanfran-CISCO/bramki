@@ -13,7 +13,7 @@ public:
     NorGateway(bool inputA, bool inputB);
     ~NorGateway();
 
-    bool getOutput() override;
+    virtual bool getOutput() override;
 };
 
 #endif

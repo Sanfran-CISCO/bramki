@@ -1,4 +1,5 @@
 #include "NotGateway.hpp"
+#include "LogicGateway.hpp"
 
 NotGateway::NotGateway() { ; }
 

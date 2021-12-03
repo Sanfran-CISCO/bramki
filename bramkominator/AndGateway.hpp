@@ -3,7 +3,7 @@
 #ifndef AndGateway_hpp
 #define AndGateway_hpp
 
-#include "LogicGateway.hpp";
+#include "LogicGateway.hpp"
 
 class AndGateway :
     public LogicGateway
@@ -13,7 +13,7 @@ public:
     AndGateway(bool inputA, bool inputB);
     ~AndGateway();
 
-    bool getOutput() override;
+    virtual bool getOutput() override;
 };
 
 #endif

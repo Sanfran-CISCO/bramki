@@ -13,7 +13,7 @@ public:
     NandGateway(bool inputA, bool inputB);
     ~NandGateway();
 
-    bool getOutput() override;
+    virtual bool getOutput() override;
 };
 
 #endif

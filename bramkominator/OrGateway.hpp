@@ -13,7 +13,7 @@ public:
     OrGateway(bool inputA, bool inputB);
     ~OrGateway();
 
-    bool getOutput() override;
+    virtual bool getOutput() override;
 };
 
 #endif

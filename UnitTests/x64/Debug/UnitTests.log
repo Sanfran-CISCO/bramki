@@ -1,0 +1,4 @@
+﻿  pch.cpp
+  UnitTests.cpp
+C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\NotGateway.hpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  UnitTests.vcxproj -> C:\Users\macie\Desktop\Maciek\C++\Sanfran-CISCO\bramki\bramkominator\x64\Debug\UnitTests.lib

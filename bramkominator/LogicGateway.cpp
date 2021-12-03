@@ -1,14 +1,8 @@
 #include "LogicGateway.hpp"
 
-LogicGateway::LogicGateway() {
-	this->inputA = false;
-	this->inputB = false;
-}
+LogicGateway::LogicGateway() : inputA(false), inputB(false){}
 
-LogicGateway::LogicGateway(bool inputA, bool inputB) {
-	this->inputA = inputA;
-	this->inputB = inputB;
-}
+LogicGateway::LogicGateway(bool inputA, bool inputB) : inputA(inputA), inputB(inputB){}
 
 LogicGateway::~LogicGateway() {}
 

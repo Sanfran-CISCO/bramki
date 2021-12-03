@@ -170,7 +170,7 @@
     <ClInclude Include="NorGateway.hpp" />
     <ClInclude Include="NotGateway.hpp" />
     <ClInclude Include="OrGateway.hpp" />
-    <ClInclude Include="XnorGateway.h" />
+    <ClInclude Include="XnorGateway.hpp" />
     <ClInclude Include="XorGateway.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,4 @@
-#include "XnorGateway.h"
+#include "XnorGateway.hpp"
 
 XnorGateway::XnorGateway() { ; }
 

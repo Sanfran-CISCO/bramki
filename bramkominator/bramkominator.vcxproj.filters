@@ -77,7 +77,7 @@
     <ClInclude Include="XorGateway.hpp">
       <Filter>Header Files\LogicGateways</Filter>
     </ClInclude>
-    <ClInclude Include="XnorGateway.h">
+    <ClInclude Include="XnorGateway.hpp">
       <Filter>Header Files\LogicGateways</Filter>
     </ClInclude>
   </ItemGroup>

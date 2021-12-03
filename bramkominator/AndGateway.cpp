@@ -1,6 +1,7 @@
 #include "AndGateway.hpp"
+#include "LogicGateway.hpp"
 
-AndGateway::AndGateway() { ; }
+AndGateway::AndGateway() : LogicGateway() { ; }
 
 AndGateway::AndGateway(bool inputA, bool inputB) : LogicGateway(inputA, inputB) {};
 

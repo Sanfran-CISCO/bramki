@@ -2,11 +2,26 @@
 #include <iostream>
 #include "Button.hpp"
 
+#include "AndGateway.hpp"
+#include "OrGateway.hpp"
+#include "NandGateway.hpp"
+#include "XorGateway.hpp"
+#include "XnorGateway.hpp"
+#include "NorGateway.hpp"
+
+#include <string>
+
 int main() {
 	sf::RenderWindow window(sf::VideoMode(900, 900, 32), "Bramkominator");
 
 	sf::Event event;
-	Button button({ 200, 100 }, {400, 400}, "Text");
+
+	OrGateway* andGateway = new OrGateway(true, false);
+
+	sf::Color color = (andGateway->getOutput() == 1) ? sf::Color::Green : sf::Color::Red;
+
+	Button button({ 200, 100 }, { 400, 400 }, "test");
+	button.setButtonBackgroundColor(color);
 
 	while (window.isOpen()) {
 		while (window.pollEvent(event)) {

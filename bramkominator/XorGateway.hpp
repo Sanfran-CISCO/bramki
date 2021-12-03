@@ -13,7 +13,7 @@ public:
     XorGateway(bool inputA, bool inputB);
     ~XorGateway();
 
-    bool getOutput() override;
+    virtual bool getOutput() override;
 };
 
 #endif

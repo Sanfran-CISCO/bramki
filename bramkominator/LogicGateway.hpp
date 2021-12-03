@@ -5,16 +5,18 @@
 
 class LogicGateway
 {
-public:
+protected:
 	bool inputA;
 	bool inputB;
+
+public:
 
 	LogicGateway();
 	LogicGateway(bool inputA, bool inputB);
 	~LogicGateway();
 
-	virtual bool getOutput() = 0;
 	void setInputs(bool inputA, bool inputB);
+	virtual bool getOutput() = 0;
 };
 
 #endif
