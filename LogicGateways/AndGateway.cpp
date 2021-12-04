@@ -1,5 +1,6 @@
 #include "AndGateway.hpp"
 #include "LogicGateway.hpp"
+#include "pch.h"
 
 AndGateway::AndGateway() : LogicGateway() { ; }
 

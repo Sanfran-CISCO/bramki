@@ -1,4 +1,5 @@
 #include "XorGateway.hpp"
+#include "pch.h"
 
 XorGateway::XorGateway() { ; }
 

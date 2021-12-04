@@ -1,4 +1,5 @@
 #include "NandGateway.hpp"
+#include "pch.h"
 
 NandGateway::NandGateway() { ; }
 

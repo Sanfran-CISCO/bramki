@@ -1,4 +1,5 @@
 #include "XnorGateway.hpp"
+#include "pch.h"
 
 XnorGateway::XnorGateway() { ; }
 

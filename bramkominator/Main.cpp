@@ -2,12 +2,12 @@
 #include <iostream>
 #include "Button.hpp"
 
-#include "AndGateway.hpp"
-#include "OrGateway.hpp"
-#include "NandGateway.hpp"
-#include "XorGateway.hpp"
-#include "XnorGateway.hpp"
-#include "NorGateway.hpp"
+#include "../LogicGateways/AndGateway.hpp"
+#include "../LogicGateways/OrGateway.hpp"
+#include "../LogicGateways/NandGateway.hpp"
+#include "../LogicGateways/XorGateway.hpp"
+#include "../LogicGateways/XnorGateway.hpp"
+#include "../LogicGateways/NorGateway.hpp"
 
 #include <string>
 

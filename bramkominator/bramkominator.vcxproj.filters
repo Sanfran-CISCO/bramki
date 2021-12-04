@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\LogicGateways">
-      <UniqueIdentifier>{43c81722-5461-4421-8aab-1c49752a8a0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\LogicGateways">
-      <UniqueIdentifier>{19a5cbf2-9615-4c76-9f6e-9ff86d6983e0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -27,58 +21,10 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LogicGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="NotGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="AndGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="OrGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="NandGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="NorGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="XorGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
-    <ClCompile Include="XnorGateway.cpp">
-      <Filter>Source Files\LogicGateways</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LogicGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="NotGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="AndGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="OrGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="NandGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="NorGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="XorGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
-    </ClInclude>
-    <ClInclude Include="XnorGateway.hpp">
-      <Filter>Header Files\LogicGateways</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

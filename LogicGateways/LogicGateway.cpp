@@ -1,4 +1,5 @@
 #include "LogicGateway.hpp"
+#include "pch.h"
 
 LogicGateway::LogicGateway() : inputA(false), inputB(false){}
 

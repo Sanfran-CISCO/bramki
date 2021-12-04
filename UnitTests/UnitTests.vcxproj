@@ -78,11 +78,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)bramkominator;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)LogicGateways;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)bramkominator;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)LogicGateways;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -175,8 +175,8 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bramkominator\bramkominator.vcxproj">
-      <Project>{8e83b534-c223-4938-82db-763788e31ebb}</Project>
+    <ProjectReference Include="..\LogicGateways\LogicGateways.vcxproj">
+      <Project>{28955451-b435-498d-9e9b-9c6cdd3ddf8f}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

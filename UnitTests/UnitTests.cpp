@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-#include "../bramkominator/NotGateway.hpp"
-#include "../bramkominator/AndGateway.hpp"
-#include "../bramkominator/OrGateway.hpp"
-#include "../bramkominator/NandGateway.hpp"
-#include "../bramkominator/XorGateway.hpp"
-#include "../bramkominator/NorGateway.hpp"
-#include "../bramkominator/XnorGateway.hpp"
+#include "../LogicGateways/NotGateway.hpp"
+#include "../LogicGateways/AndGateway.hpp"
+#include "../LogicGateways/OrGateway.hpp"
+#include "../LogicGateways/NandGateway.hpp"
+#include "../LogicGateways/XorGateway.hpp"
+#include "../LogicGateways/NorGateway.hpp"
+#include "../LogicGateways/XnorGateway.hpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -40,7 +40,7 @@ namespace LogicGatewaysUnitTests
 			Assert::AreEqual(false, and1.getOutput());
 		}
 
-		TEST_METHOD(OrGatewayTest) {
+		TEST_METHOD(TAK) {
 			OrGateway or1(true, true);
 			OrGateway or2(true, false);
 			OrGateway or3(false, false);

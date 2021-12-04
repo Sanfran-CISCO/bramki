@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\LogicGateways">
+      <UniqueIdentifier>{36a27304-55ee-4708-b35c-6140c7e7c687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LogicGateways">
+      <UniqueIdentifier>{d5de65c1-3bbe-4f25-9d15-ec4763e9a044}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AndGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="NandGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="NorGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="NotGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="OrGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="XnorGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+    <ClInclude Include="XorGateway.hpp">
+      <Filter>Header Files\LogicGateways</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AndGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="NandGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="NorGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="NotGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="OrGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="XnorGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+    <ClCompile Include="XorGateway.cpp">
+      <Filter>Source Files\LogicGateways</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
