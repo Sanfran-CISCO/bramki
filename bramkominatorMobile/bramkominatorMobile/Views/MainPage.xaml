@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:bramkominatorMobile.ViewModels"
+             xmlns:model="clr-namespace:bramkominatorMobile.Models"
+             x:DataType="viewmodels:MainPageViewModel"
+             x:Class="bramkominatorMobile.Views.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Bramki testy"
+                   Style="{StaticResource PageHeader}"/>
+            
+            <CollectionView
+                    BackgroundColor="Transparent"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemsSource="{Binding Gateways}"
+                    ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LogicGateway">
+                        <StackLayout Margin="20"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Frame BorderColor="{StaticResource SystemBlue}"
+                                   BackgroundColor="{StaticResource SystemGray3}" 
+                                   CornerRadius="20"
+                                   HorizontalOptions="Center">
+                                <StackLayout HorizontalOptions="Center">
+                                    <Label Text="{Binding Type}" 
+                                           Style="{StaticResource GatewayName}"/>
+                                    
+                                    <Image Source="{Binding Image}" 
+                                           Margin="10" 
+                                           WidthRequest="200" 
+                                           HeightRequest="100"/>
+                                    
+                                    <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+                                        
+                                        <Label Text="Input 1.  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                        <Label Text="{Binding InputA}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                    </Grid>
+                                    <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+                                        
+                                        <Label Text="Input 2.  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                        <Label Text="{Binding InputB}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                    </Grid>
+                                    <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+                                        
+                                        <Label Text="Output  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                        <Label Text="{Binding Output}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

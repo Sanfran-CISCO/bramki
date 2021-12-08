@@ -1,0 +1,16 @@
+W:\bramki\bramkominatorMobile\bramkominatorMobile\bin\Debug\netstandard2.0\bramkominatorMobile.deps.json
+W:\bramki\bramkominatorMobile\bramkominatorMobile\bin\Debug\netstandard2.0\bramkominatorMobile.dll
+W:\bramki\bramkominatorMobile\bramkominatorMobile\bin\Debug\netstandard2.0\ref\bramkominatorMobile.dll
+W:\bramki\bramkominatorMobile\bramkominatorMobile\bin\Debug\netstandard2.0\bramkominatorMobile.pdb
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.GeneratedMSBuildEditorConfig.editorconfig
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\App.xaml.g.cs
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.AssemblyInfoInputs.cache
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.AssemblyInfo.cs
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.csproj.CoreCompileInputs.cache
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\XamlC.stamp
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.dll
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\ref\bramkominatorMobile.dll
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.pdb
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
