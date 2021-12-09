@@ -14,3 +14,4 @@ W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\ref\b
 W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.pdb
 W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
 W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+W:\bramki\bramkominatorMobile\bramkominatorMobile\obj\Debug\netstandard2.0\bramkominatorMobile.csproj.AssemblyReference.cache

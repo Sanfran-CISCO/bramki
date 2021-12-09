@@ -18,7 +18,7 @@ namespace bramkominatorMobile.ViewModels
             Gateways = new ObservableRangeCollection<LogicGateway>
             {
                 new LogicGateway(GatewayType.And, true, false),
-                new LogicGateway(GatewayType.Or, false, false),
+                new LogicGateway(GatewayType.Or, true, false),
                 new LogicGateway(GatewayType.Xnor, true, false)
             };
         }

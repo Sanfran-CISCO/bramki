@@ -8,29 +8,34 @@
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel/>
     </ContentPage.BindingContext>
-    
-    <ContentPage.Content>
-        <RefreshView>
-            <StackLayout>
-                <StackLayout>
-                    <Label Text="Bramkominator"
-                       Style="{StaticResource PageHeader}"/>
-                </StackLayout>
 
-                <StackLayout>
-                    <CollectionView>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Frame>
-                                        <Label Text="YES" Style="{StaticResource BaseLabel}"/>
-                                    </Frame>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Bramkominator"
+                       Style="{StaticResource PageHeader}"/>
             </StackLayout>
-        </RefreshView>
+
+            <ScrollView Orientation="Both">
+                <StackLayout WidthRequest="1000"
+                             HeightRequest="1000">
+                    <Grid 
+                        BackgroundColor="{StaticResource SystemBlue}"
+                        RowDefinitions="100, 100, 100, 100, 100, 100, 100, 100, 100, 100"
+                        ColumnDefinitions="100, 100, 100, 100, 100, 100, 100, 100, 100, 100">
+                        <Frame BorderColor="{StaticResource SystemRed}"
+                               BackgroundColor="Transparent"
+                               CornerRadius="10"
+                               Grid.Column="1" Grid.Row="1">
+                            <BoxView BackgroundColor="{StaticResource SystemYellow}"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
