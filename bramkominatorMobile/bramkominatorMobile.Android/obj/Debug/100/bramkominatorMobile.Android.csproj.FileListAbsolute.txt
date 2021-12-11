@@ -662,3 +662,4 @@ W:\bramki\bramkominatorMobile\bramkominatorMobile.Android\obj\Debug\100\stamp\_C
 W:\bramki\bramkominatorMobile\bramkominatorMobile.Android\obj\Debug\100\stamp\_GenerateJavaStubs.stamp
 W:\bramki\bramkominatorMobile\bramkominatorMobile.Android\obj\Debug\100\stamp\_GeneratePackageManagerJava.stamp
 W:\bramki\bramkominatorMobile\bramkominatorMobile.Android\obj\Debug\100\stamp\_ResolveLibraryProjectImports.stamp
+W:\bramki\bramkominatorMobile\bramkominatorMobile.Android\obj\Debug\100\res\drawable\custom.png

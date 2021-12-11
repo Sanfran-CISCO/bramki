@@ -12,6 +12,7 @@ namespace bramkominatorMobile.Models
         Xor,
         Xnor,
         Nor,
-        Nand
+        Nand,
+        Custom
     }
 }

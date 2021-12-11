@@ -2,15 +2,131 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:bramkominatorMobile.ViewModels"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
              xmlns:model="clr-namespace:bramkominatorMobile.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewmodels:MainPageViewModel"
              x:Class="bramkominatorMobile.Views.MainPage">
 
     <ContentPage.BindingContext>
         <viewmodels:MainPageViewModel/>
     </ContentPage.BindingContext>
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+            <xct:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding AddCustomGatewayCommand}"
+            Text="YES"/>
+    </ContentPage.ToolbarItems>
+
+
     <ContentPage.Content>
+        <StackLayout>
+            <ScrollView Orientation="Both">
+                <CollectionView
+                    BackgroundColor="Transparent"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemsSource="{Binding Gateways}"
+                    ItemsLayout="VerticalList"
+                    WidthRequest="1000"
+                    HeightRequest="2000">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:LogicGateway">
+                            <StackLayout Margin="20"
+                                     HorizontalOptions="CenterAndExpand">
+                                <Frame BorderColor="{StaticResource SystemBlue}"
+                                   BackgroundColor="{StaticResource SystemGray3}" 
+                                   CornerRadius="20"
+                                   HorizontalOptions="Center">
+                                    <StackLayout HorizontalOptions="Center">
+                                        <Label Text="{Binding Type}" 
+                                           Style="{StaticResource GatewayName}"/>
+
+                                        <Image Source="{Binding Image}" 
+                                           Margin="10" 
+                                           WidthRequest="200" 
+                                           HeightRequest="100"/>
+
+                                        <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+
+                                            <Label Text="Input 1.  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                            <Label Text="{Binding InputA}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                        </Grid>
+                                        <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+
+                                            <Label Text="Input 2.  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                            <Label Text="{Binding InputB}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                        </Grid>
+                                        <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto" 
+                                          Margin="10" 
+                                          HorizontalOptions="Center">
+
+                                            <Label Text="Output  " 
+                                               Style="{StaticResource GatewayInfoDesc}"/>
+                                            <Label Text="{Binding Output}" 
+                                               Style="{StaticResource GatewayInfo}"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Grid
+                    HeightRequest="150"
+                    RowDefinitions="40"
+                    ColumnDefinitions="40, *"
+                    BackgroundColor="{StaticResource SystemBlue}">
+                    <!--<Frame Style="{StaticResource ChangeGatewaysListFrame}">-->
+                    <Button FontFamily="FAS"
+                                Text="{x:Static fontAwesome:FontAwesomeIcons.Boxes}" 
+                                Style="{StaticResource ChangeGatewaysListButton}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Command="{Binding DisplayGatewaysListCommand}"/>
+                    <!--</Frame>-->
+
+                    <CollectionView
+                        Grid.Row="0"
+                        x:Name="GatewaysList"
+                        Grid.Column="1"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding Gateways}"
+                        HeightRequest="100"
+                        BackgroundColor="{StaticResource SystemBlue}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:LogicGateway">
+                                <Frame Style="{StaticResource GatewaysListElementFrame}">
+                                    <Label Text="{Binding Name}" Style="{StaticResource GatewayListElement}"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    
+    
+    
+    <!--<ContentPage.Content>
         <StackLayout>
             <Label Text="Bramki testy"
                    Style="{StaticResource PageHeader}"/>
@@ -75,5 +191,5 @@
                 </CollectionView>
             </ScrollView>
         </StackLayout>
-    </ContentPage.Content>
+    </ContentPage.Content>-->
 </ContentPage>

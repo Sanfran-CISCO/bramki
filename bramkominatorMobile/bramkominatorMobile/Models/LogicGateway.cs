@@ -6,6 +6,7 @@ namespace bramkominatorMobile.Models
 {
     public class LogicGateway
     {
+        public string Name { get; set; }
         public GatewayType Type { get; }
         public string Image { get; set; }
 
@@ -17,8 +18,17 @@ namespace bramkominatorMobile.Models
 
         private LogicGateway() { }
 
-        public LogicGateway(GatewayType type, bool inputA, bool inputB)
+        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="")
         {
+            if (name == "")
+            {
+                Name = type.ToString();
+            }
+            else
+            {
+                Name = name;
+            }
+
             Type = type;
             InputA = inputA;
             InputB = inputB;
@@ -50,6 +60,9 @@ namespace bramkominatorMobile.Models
                     break;
                 case GatewayType.Xor:
                     Image = "xor.png";
+                    break;
+                case GatewayType.Custom:
+                    Image = "custom.png";
                     break;
             }
         }
