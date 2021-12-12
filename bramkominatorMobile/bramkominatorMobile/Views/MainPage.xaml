@@ -30,9 +30,9 @@
         <StackLayout>
             <ScrollView Orientation="Both">
                 <CollectionView
-                    BackgroundColor="Transparent"
+                    BackgroundColor="{StaticResource SystemBlueDark}"
                     ItemSizingStrategy="MeasureAllItems"
-                    ItemsSource="{Binding Gateways}"
+                    ItemsSource="{Binding StandardGateways}"
                     ItemsLayout="VerticalList"
                     WidthRequest="1000"
                     HeightRequest="2000">
@@ -108,7 +108,7 @@
                         x:Name="GatewaysList"
                         Grid.Column="1"
                         ItemsLayout="HorizontalList"
-                        ItemsSource="{Binding Gateways}"
+                        ItemsSource="{Binding GatewaysList}"
                         HeightRequest="100"
                         BackgroundColor="{StaticResource SystemBlue}">
                         <CollectionView.ItemTemplate>

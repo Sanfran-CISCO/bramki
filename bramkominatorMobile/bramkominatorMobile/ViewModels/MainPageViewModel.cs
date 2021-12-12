@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using bramkominatorMobile.Models;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using Xamarin.Forms;
+using Command = MvvmHelpers.Commands.Command;
 
 namespace bramkominatorMobile.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public ObservableRangeCollection<LogicGateway> Gateways { get; }
-        public ObservableRangeCollection<LogicGateway> CustomGateways { get; }
+        public ObservableRangeCollection<LogicGateway> GatewaysList { get; set; }
+        public ObservableRangeCollection<LogicGateway> StandardGateways { get; }
+        public ObservableRangeCollection<LogicGateway> CustomGateways { get; set; }
 
         public AsyncCommand AddCustomGatewayCommand { get; }
-        public AsyncCommand DisplayGatewaysListCommand { get; }
+        public Command DisplayGatewaysListCommand { get; }
 
         private bool displayStandardGateways;
-
 
         public MainPageViewModel()
         {
@@ -26,7 +25,7 @@ namespace bramkominatorMobile.ViewModels
 
             displayStandardGateways = true;
 
-            Gateways = new ObservableRangeCollection<LogicGateway>
+            StandardGateways = new ObservableRangeCollection<LogicGateway>
             {
                 new LogicGateway(GatewayType.And, true, false),
                 new LogicGateway(GatewayType.Or, true, false),
@@ -44,7 +43,9 @@ namespace bramkominatorMobile.ViewModels
             };
 
             AddCustomGatewayCommand = new AsyncCommand(AddCustomGateway);
-            DisplayGatewaysListCommand = new AsyncCommand(DisplayGatewaysList);
+            DisplayGatewaysListCommand = new Command(DisplayGatewaysList);
+
+            GatewaysList = new ObservableRangeCollection<LogicGateway>(StandardGateways);
         }
 
         private async Task AddCustomGateway()
@@ -52,28 +53,54 @@ namespace bramkominatorMobile.ViewModels
             await Shell.Current.DisplayAlert("Custom Gateway", "Custom Gateway Added!", "OK");
         }
 
-        private async Task DisplayGatewaysList()
+        private void DisplayGatewaysList()
         {
-            if (displayStandardGateways)
+            try
             {
-                await ShowStandardGateways();
-                displayStandardGateways = false;
-            }
-            else
+                if (displayStandardGateways)
+                {
+                    ShowCustomGateways();
+                    displayStandardGateways = false;
+                }
+                else
+                {
+                    ShowStandardGateways();
+                    displayStandardGateways = true;
+                }
+            } catch (Exception)
             {
-                await ShowCustomGateways();
-                displayStandardGateways = true;
+
             }
         }
 
-        private async Task ShowStandardGateways()
+        private void ShowStandardGateways()
         {
-            await Shell.Current.DisplayAlert("Standard Gateways", "Here will be standard Gatewats", "OK");
+            IsBusy = true;
+
+            //await Shell.Current.DisplayAlert("Standard Gateways", "Here will be standard Gatewats", "OK");
+
+            GatewaysList.Clear();
+            foreach (LogicGateway gateway in StandardGateways)
+            {
+                GatewaysList.Add(gateway);
+            }
+
+            IsBusy = false;
         }
 
-        private async Task ShowCustomGateways()
+        private void ShowCustomGateways()
         {
-            await Shell.Current.DisplayAlert("Custom Gateways", "Here will be custom Gatewats", "OK");
+            IsBusy = true;
+
+            //await Shell.Current.DisplayAlert("Custom Gateways", "Here will be custom Gatewats", "OK");
+
+            GatewaysList.Clear();
+            foreach (LogicGateway gateway in CustomGateways)
+            {
+                GatewaysList.Add(gateway);
+            }
+
+            IsBusy = true;
         }
     }
 }
