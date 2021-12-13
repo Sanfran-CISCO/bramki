@@ -3322,42 +3322,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\macie\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/Users/gal0wsky/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "W:\\bramki\\bramkominatorMobile\\bramkominatorMobile.Android\\bramkominatorMobile.Android.csproj",
+      "projectUniqueName": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/bramkominatorMobile.Android.csproj",
       "projectName": "bramkominatorMobile.Android",
-      "projectPath": "W:\\bramki\\bramkominatorMobile\\bramkominatorMobile.Android\\bramkominatorMobile.Android.csproj",
-      "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-      "outputPath": "W:\\bramki\\bramkominatorMobile\\bramkominatorMobile.Android\\obj\\",
+      "projectPath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/bramkominatorMobile.Android.csproj",
+      "packagesPath": "/Users/gal0wsky/.nuget/packages/",
+      "outputPath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/gal0wsky/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "monoandroid10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "monoandroid10.0": {
           "projectReferences": {
-            "W:\\bramki\\bramkominatorMobile\\bramkominatorMobile\\bramkominatorMobile.csproj": {
-              "projectPath": "W:\\bramki\\bramkominatorMobile\\bramkominatorMobile\\bramkominatorMobile.csproj"
+            "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bramkominatorMobile.csproj": {
+              "projectPath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bramkominatorMobile.csproj"
             }
           }
         }

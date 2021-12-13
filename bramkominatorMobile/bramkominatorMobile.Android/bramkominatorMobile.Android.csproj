@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -106,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bramkominatorMobile\bramkominatorMobile.csproj">
-      <Project>{4A0F2C5A-5849-4A0C-9E32-6CDB0AF6058B}</Project>
+      <Project>{6AFBA7A1-90D4-4C3F-ADE4-030F87F6C730}</Project>
       <Name>bramkominatorMobile</Name>
     </ProjectReference>
   </ItemGroup>
