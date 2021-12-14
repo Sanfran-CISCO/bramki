@@ -16,8 +16,12 @@ namespace bramkominatorMobile.ViewModels
 
         public AsyncCommand AddCustomGatewayCommand { get; }
         public Command DisplayGatewaysListCommand { get; }
+        public Command DragItemCommand { get; }
+        public Command DropItemCommand { get; }
+        public Command DropEndCommand { get; }
 
         private bool displayStandardGateways;
+        private Frame parentFrame;
 
         public MainPageViewModel()
         {
@@ -44,6 +48,9 @@ namespace bramkominatorMobile.ViewModels
 
             AddCustomGatewayCommand = new AsyncCommand(AddCustomGateway);
             DisplayGatewaysListCommand = new Command(DisplayGatewaysList);
+            //DragItemCommand = new Command(DragItem);
+            //DropItemCommand = new Command(DropItem);
+            DropEndCommand = new Command(DropEnd);
 
             GatewaysList = new ObservableRangeCollection<LogicGateway>(StandardGateways);
         }
@@ -101,6 +108,30 @@ namespace bramkominatorMobile.ViewModels
             }
 
             IsBusy = true;
+        }
+
+        private void DragItem(object sender, DragStartingEventArgs e)
+        {
+            var boxview = (sender as Element).Parent as BoxView;
+            e.Data.Properties.Add("BoxView", boxview);
+            parentFrame = (sender as Element).Parent.Parent as Frame;
+        }
+
+        private static void DropItem(object sender, DropEventArgs e)
+        {
+            var box = e.Data.Properties["BoxView"] as BoxView;
+            var frame = (sender as Element).Parent as Frame;
+            frame.Content = box;
+        }
+
+        private void DropEnd()
+        {
+            parentFrame.Content = new BoxView
+             {
+                 WidthRequest = 50,
+                 HeightRequest = 50,
+                 BackgroundColor = Color.Transparent
+             };
         }
     }
 }

@@ -1,9 +1,16 @@
 ﻿<Properties StartupConfiguration="{BF981D87-60AE-4058-BEF4-CF08A05AB1C8}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/App.xaml">
+    <Files>
+      <File FileName="bramkominatorMobile/App.xaml" Line="12" Column="51" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="bramkominatorMobile" expanded="True" />
+          <Node name="bramkominatorMobile" expanded="True">
+            <Node name="bramkominatorMobile" expanded="True">
+              <Node name="App.xaml" selected="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -11,7 +18,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.MonoDroid LastDeploySdkVersion="12.0.0.3" />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="12.1.99.56" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.emulator-5554" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

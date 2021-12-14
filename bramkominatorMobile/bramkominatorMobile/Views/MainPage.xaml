@@ -28,7 +28,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView Orientation="Both">
+            <!--<ScrollView Orientation="Both">
                 <CollectionView
                     BackgroundColor="{StaticResource SystemBlueDark}"
                     ItemSizingStrategy="MeasureAllItems"
@@ -86,11 +86,127 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </ScrollView>
+            </ScrollView>-->
 
-            <StackLayout VerticalOptions="EndAndExpand">
+            <StackLayout>
+                <ScrollView Orientation="Both">
+                    <Grid x:Name="BoardGrid"
+                        ColumnDefinitions="100,100,100,100,100,100,100,100,100,100"
+                        RowDefinitions="100,100,100,100,100,100,100,100,100,100">
+                        <!--<Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="0"
+                            Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="0"
+                            Grid.Column="1">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+
+                            <BoxView
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="{StaticResource SystemBlueDark}"
+                            WidthRequest="50"
+                            HeightRequest="50">
+                                <BoxView.GestureRecognizers>
+                                    <DragGestureRecognizer
+                                        CanDrag="True"
+                                        DragStarting="DragGestureRecognizer_DragStarting"
+                                        DropCompleted="DragGestureRecognizer_DropCompleted"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="0"
+                            Grid.Column="2">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="1"
+                            Grid.Column="1">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="1"
+                            Grid.Column="2">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="2"
+                            Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="2"
+                            Grid.Column="1">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Style="{StaticResource BoardGridFrame}"
+                            Grid.Row="2"
+                            Grid.Column="2">
+                            <Frame.GestureRecognizers>
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    Drop="DropGestureRecognizer_Drop"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>-->
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="EndAndExpand"
+                         BackgroundColor="{StaticResource SystemBlue}">
                 <Grid
-                    HeightRequest="150"
+                    HeightRequest="50"
                     RowDefinitions="40"
                     ColumnDefinitions="40, *"
                     BackgroundColor="{StaticResource SystemBlue}">

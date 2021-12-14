@@ -95,7 +95,7 @@
             </Style>
 
             <Style x:Key="ChangeGatewaysListButton" TargetType="Button">
-                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -103,21 +103,27 @@
 
             <Style x:Key="GatewaysListElementFrame" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{StaticResource SystemOrange}"/>
-                <Setter Property="WidthRequest" Value="120"/>
+                <Setter Property="WidthRequest" Value="100"/>
                 <Setter Property="HeightRequest" Value="20"/>
                 <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="Padding" Value="10"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
 
             <Style x:Key="GatewayListElement" TargetType="Label">
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="17"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="30"/>
                 <Setter Property="WidthRequest" Value="54"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
-                <!-- Property="BackgroundColor" Value="{StaticResource SystemRed}"/>-->
+                <Setter Property="TextColor" Value="White"/>
+                <!--<Setter Property="BackgroundColor" Value="{StaticResource SystemRed}"/>-->
+            </Style>
+
+            <Style x:Key="BoardGridFrame" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource SystemOrange}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource SystemGray}"/>
             </Style>
 
 
