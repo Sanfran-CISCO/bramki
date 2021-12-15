@@ -25,26 +25,16 @@ namespace bramkominatorMobile.Views
                     var frame = new Frame
                     {
                         BackgroundColor = Color.Gray,
-                        BorderColor = Color.Orange,
-                        Content = new Label
-                        {
-                            TextColor = Color.White,
-                            Text = $"{row}, {column}",
-                            BackgroundColor = Color.Transparent
-                        }
-
-
-                        /*GestureRecognizers =
-                        {
-                            new DropGestureRecognizer
-                            {
-                                AllowDrop = true,
-                                DropCommand = MainPageViewModel.DropItem(),
-                                Dr
-                                DropCommandParameter = this
-                            }
-                        }*/
+                        BorderColor = Color.Orange
                     };
+
+                    var dropRecognizer = new DropGestureRecognizer();
+                    dropRecognizer.AllowDrop = true;
+                    dropRecognizer.Drop += (s, e) => {
+                        Drop(s, e);
+                    };
+
+                    frame.GestureRecognizers.Add(dropRecognizer);
 
                     BoardGrid.Children.Add(frame, column, row);
                 }
@@ -52,27 +42,70 @@ namespace bramkominatorMobile.Views
 
         }
 
-        void DragGestureRecognizer_DragStarting(System.Object sender, Xamarin.Forms.DragStartingEventArgs e)
+        void DragStarting(System.Object sender, Xamarin.Forms.DragStartingEventArgs e)
         {
             var boxview = (sender as Element).Parent as BoxView;
             e.Data.Properties.Add("BoxView", boxview);
             MyFrame = (sender as Element).Parent.Parent as Frame;
         }
 
-        void DropGestureRecognizer_Drop(System.Object sender, Xamarin.Forms.DropEventArgs e)
+        void Drop(System.Object sender, Xamarin.Forms.DropEventArgs e)
         {
             var box = e.Data.Properties["BoxView"] as BoxView;
             var frame = (sender as Element).Parent as Frame;
             frame.Content = box;
         }
 
-        void DragGestureRecognizer_DropCompleted(System.Object sender, Xamarin.Forms.DropCompletedEventArgs e)
+        void DropCompleted(System.Object sender, Xamarin.Forms.DropCompletedEventArgs e)
         {
             MyFrame.Content = new BoxView
             {
                 WidthRequest=50,
                 HeightRequest=50,
                 BackgroundColor=Color.Transparent
+            };
+
+            Random rnd = new Random();
+
+            var box = new BoxView
+            {
+                WidthRequest = 50,
+                HeightRequest = 50,
+                BackgroundColor = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
+            };
+
+            var dragRecognizer = new DragGestureRecognizer();
+            dragRecognizer.CanDrag = true;
+            dragRecognizer.DragStarting += (s, p) =>
+            {
+                DragStarting(s, p);
+            };
+            dragRecognizer.DropCompleted += (s, p) =>
+            {
+                DropCompleted(s, p);
+            };
+
+            box.GestureRecognizers.Add(dragRecognizer);
+
+            BasicFrame.Content = box;
+        }
+
+        void DropCompletedBasic(System.Object sender, Xamarin.Forms.DropCompletedEventArgs e)
+        {
+            MyFrame.Content = new BoxView
+            {
+                WidthRequest = 50,
+                HeightRequest = 50,
+                BackgroundColor = Color.Transparent
+            };
+
+            Random random = new Random();
+
+            BasicFrame.Content = new BoxView
+            {
+                WidthRequest = 50,
+                HeightRequest = 50,
+                BackgroundColor = Color.HotPink
             };
         }
     }

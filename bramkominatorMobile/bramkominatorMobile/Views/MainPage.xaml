@@ -88,7 +88,24 @@
                 </CollectionView>
             </ScrollView>-->
 
-            <StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <StackLayout>
+                    <Frame x:Name="BasicFrame"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           BackgroundColor="{StaticResource SystemGray2}">
+                        <BoxView BackgroundColor="{StaticResource SystemBlue}"
+                         WidthRequest="50"
+                         HeightRequest="50">
+                            <BoxView.GestureRecognizers>
+                                <DragGestureRecognizer
+                                    CanDrag="True"
+                                    DragStarting="DragStarting"
+                                    DropCompleted="DropCompleted"/>
+                            </BoxView.GestureRecognizers>
+                        </BoxView>
+                    </Frame>
+                </StackLayout>
                 <ScrollView Orientation="Both">
                     <Grid x:Name="BoardGrid"
                         ColumnDefinitions="100,100,100,100,100,100,100,100,100,100"
