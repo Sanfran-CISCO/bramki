@@ -126,6 +126,12 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource SystemGray}"/>
             </Style>
 
+            <Style x:Key="Box" TargetType="BoxView">
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource SystemBlue}"/>
+            </Style>
+
 
             <Style x:Key="Button" TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>

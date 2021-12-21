@@ -7,7 +7,7 @@ namespace bramkominatorMobile.Models
     public class LogicGateway
     {
         public string Name { get; set; }
-        public GatewayType Type { get; }
+        public GatewayType Type { get; set; }
         public string Image { get; set; }
 
         public bool InputA { get; set; }

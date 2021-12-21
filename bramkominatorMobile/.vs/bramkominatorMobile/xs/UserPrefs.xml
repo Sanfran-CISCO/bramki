@@ -1,14 +1,24 @@
 ﻿<Properties StartupConfiguration="{BF981D87-60AE-4058-BEF4-CF08A05AB1C8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/App.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Services/GatewaysList.cs">
     <Files>
-      <File FileName="bramkominatorMobile/App.xaml" Line="12" Column="51" />
+      <File FileName="bramkominatorMobile/App.xaml" Line="132" Column="89" />
+      <File FileName="bramkominatorMobile/Views/MainPage.xaml" Line="40" Column="63" />
+      <File FileName="bramkominatorMobile/Views/MainPage.xaml.cs" Line="77" Column="15" />
+      <File FileName="bramkominatorMobile/ViewModels/MainPageViewModel.cs" Line="127" Column="29" />
+      <File FileName="bramkominatorMobile/Models/Node.cs" Line="13" Column="73" />
+      <File FileName="bramkominatorMobile/Services/GatewayList.cs" Line="78" Column="89" />
+      <File FileName="bramkominatorMobile/Models/LogicGateway.cs" Line="10" Column="44" />
+      <File FileName="bramkominatorMobile/Services/GatewaysList.cs" Line="11" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="bramkominatorMobile" expanded="True">
             <Node name="bramkominatorMobile" expanded="True">
-              <Node name="App.xaml" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True" />
             </Node>
           </Node>
         </State>

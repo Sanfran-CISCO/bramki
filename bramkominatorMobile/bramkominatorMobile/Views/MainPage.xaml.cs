@@ -24,8 +24,9 @@ namespace bramkominatorMobile.Views
                 {
                     var frame = new Frame
                     {
-                        BackgroundColor = Color.Gray,
-                        BorderColor = Color.Orange
+                        BackgroundColor = Color.Transparent,
+                        BorderColor = Color.Orange,
+                        Margin = -2
                     };
 
                     var dropRecognizer = new DropGestureRecognizer();
@@ -42,21 +43,21 @@ namespace bramkominatorMobile.Views
 
         }
 
-        void DragStarting(System.Object sender, Xamarin.Forms.DragStartingEventArgs e)
+        void DragStarting(Object sender, DragStartingEventArgs e)
         {
             var boxview = (sender as Element).Parent as BoxView;
             e.Data.Properties.Add("BoxView", boxview);
             MyFrame = (sender as Element).Parent.Parent as Frame;
         }
 
-        void Drop(System.Object sender, Xamarin.Forms.DropEventArgs e)
+        void Drop(Object sender, DropEventArgs e)
         {
             var box = e.Data.Properties["BoxView"] as BoxView;
             var frame = (sender as Element).Parent as Frame;
             frame.Content = box;
         }
 
-        void DropCompleted(System.Object sender, Xamarin.Forms.DropCompletedEventArgs e)
+        void DropCompleted(Object sender, DropCompletedEventArgs e)
         {
             MyFrame.Content = new BoxView
             {
@@ -71,7 +72,8 @@ namespace bramkominatorMobile.Views
             {
                 WidthRequest = 50,
                 HeightRequest = 50,
-                BackgroundColor = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
+                //BackgroundColor = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
+                Style = (Style) Application.Current.Resources["Box"]
             };
 
             var dragRecognizer = new DragGestureRecognizer();

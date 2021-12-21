@@ -21,7 +21,9 @@ namespace bramkominatorMobile.ViewModels
         public Command DropEndCommand { get; }
 
         private bool displayStandardGateways;
-        private Frame parentFrame;
+
+        public Frame MyViewmodelFrame { get; set; }
+        public Frame BasicFrame { get; set; }
 
         public MainPageViewModel()
         {
@@ -50,7 +52,7 @@ namespace bramkominatorMobile.ViewModels
             DisplayGatewaysListCommand = new Command(DisplayGatewaysList);
             //DragItemCommand = new Command(DragItem);
             //DropItemCommand = new Command(DropItem);
-            DropEndCommand = new Command(DropEnd);
+            //DropEndCommand = new Command(DropEnd);
 
             GatewaysList = new ObservableRangeCollection<LogicGateway>(StandardGateways);
         }
@@ -84,8 +86,6 @@ namespace bramkominatorMobile.ViewModels
         {
             IsBusy = true;
 
-            //await Shell.Current.DisplayAlert("Standard Gateways", "Here will be standard Gatewats", "OK");
-
             GatewaysList.Clear();
             foreach (LogicGateway gateway in StandardGateways)
             {
@@ -99,39 +99,61 @@ namespace bramkominatorMobile.ViewModels
         {
             IsBusy = true;
 
-            //await Shell.Current.DisplayAlert("Custom Gateways", "Here will be custom Gatewats", "OK");
-
             GatewaysList.Clear();
             foreach (LogicGateway gateway in CustomGateways)
             {
                 GatewaysList.Add(gateway);
             }
 
-            IsBusy = true;
+            IsBusy = false;
         }
 
-        private void DragItem(object sender, DragStartingEventArgs e)
+        private void DragStarting(object sender, DragStartingEventArgs e)
         {
             var boxview = (sender as Element).Parent as BoxView;
             e.Data.Properties.Add("BoxView", boxview);
-            parentFrame = (sender as Element).Parent.Parent as Frame;
+            MyViewmodelFrame = (sender as Element).Parent.Parent as Frame;
         }
 
-        private static void DropItem(object sender, DropEventArgs e)
+        private void Drop(object sender, DropEventArgs e)
         {
             var box = e.Data.Properties["BoxView"] as BoxView;
             var frame = (sender as Element).Parent as Frame;
             frame.Content = box;
         }
 
-        private void DropEnd()
+        private void DropCompleted(Object sender, DropCompletedEventArgs e)
         {
-            parentFrame.Content = new BoxView
-             {
-                 WidthRequest = 50,
-                 HeightRequest = 50,
-                 BackgroundColor = Color.Transparent
-             };
+            MyViewmodelFrame.Content = new BoxView
+            {
+                WidthRequest = 50,
+                HeightRequest = 50,
+                BackgroundColor = Color.Transparent
+            };
+
+            Random rnd = new Random();
+
+            var box = new BoxView
+            {
+                WidthRequest = 50,
+                HeightRequest = 50,
+                BackgroundColor = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
+            };
+
+            var dragRecognizer = new DragGestureRecognizer();
+            dragRecognizer.CanDrag = true;
+            dragRecognizer.DragStarting += (s, p) =>
+            {
+                DragStarting(s, p);
+            };
+            dragRecognizer.DropCompleted += (s, p) =>
+            {
+                DropCompleted(s, p);
+            };
+
+            box.GestureRecognizers.Add(dragRecognizer);
+
+            BasicFrame.Content = box;
         }
     }
 }
