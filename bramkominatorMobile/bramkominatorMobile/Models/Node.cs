@@ -9,8 +9,11 @@ namespace bramkominatorMobile.Models
         private Node next;
         public Node Next { get => next; set => next = value; }
 
-        private Node previous;
-        public Node Previous { get => previous; set => previous = value; }
+        private Node left;
+        public Node Left { get => left; set => left = value; }
+
+        private Node right;
+        public Node Right { get => right; set => right = value; }
 
         public Node(LogicGateway gateway)
         {

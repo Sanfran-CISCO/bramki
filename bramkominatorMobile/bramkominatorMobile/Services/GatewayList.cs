@@ -29,7 +29,7 @@ namespace bramkominatorMobile.Services
             }
             else
             {
-                newNode.Previous = tail;
+                newNode.Left = tail;
                 tail.Next = newNode;
             }
             tail = newNode;
@@ -48,7 +48,7 @@ namespace bramkominatorMobile.Services
             }
             else
             {
-                head.Previous = newNode;
+                head.Left = newNode;
             }
             head = newNode;
             Size++;
@@ -81,20 +81,20 @@ namespace bramkominatorMobile.Services
                 {
                     if (currentNode.Next == null)
                     {
-                        tail = currentNode.Previous;
+                        tail = currentNode.Left;
                     }
                     else
                     {
-                        currentNode.Next.Previous = currentNode.Previous;
+                        currentNode.Next.Left = currentNode.Left;
                     }
 
-                    if (currentNode.Previous == null)
+                    if (currentNode.Left == null)
                     {
                         head = currentNode.Next;
                     }
                     else
                     {
-                        currentNode.Previous.Next = currentNode.Next;
+                        currentNode.Left.Next = currentNode.Next;
                     }
 
                     currentNode = null;
@@ -126,7 +126,7 @@ namespace bramkominatorMobile.Services
         {
             if (tail != null)
             {
-                tail = tail.Previous;
+                tail = tail.Left;
 
                 if (tail == null)
                 {

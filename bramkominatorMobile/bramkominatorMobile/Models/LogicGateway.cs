@@ -18,8 +18,10 @@ namespace bramkominatorMobile.Models
 
         private LogicGateway() { }
 
-        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="")
+        public LogicGateway(GatewayType type, string name="")
         {
+            Type = type;
+
             if (name == "")
             {
                 Name = type.ToString();
@@ -28,10 +30,22 @@ namespace bramkominatorMobile.Models
             {
                 Name = name;
             }
+        }
 
+        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="")
+        {
             Type = type;
             InputA = inputA;
             InputB = inputB;
+
+            if (name == "")
+            {
+                Name = type.ToString();
+            }
+            else
+            {
+                Name = name;
+            }
 
             SetImage();
         }

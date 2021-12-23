@@ -1,0 +1,12 @@
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/NUnitTests.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/NUnitTests.pdb
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/bramkominatorMobile.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/nunit.framework.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/bramkominatorMobile.pdb
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/nunit.framework.pdb
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/bin/Debug/nunit.framework.xml
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/obj/Debug/NUnitTests.csproj.AssemblyReference.cache
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/obj/Debug/NUnitTests.csproj.CoreCompileInputs.cache
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/obj/Debug/NUnitTests.csproj.CopyComplete
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/obj/Debug/NUnitTests.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/NUnitTests/obj/Debug/NUnitTests.pdb

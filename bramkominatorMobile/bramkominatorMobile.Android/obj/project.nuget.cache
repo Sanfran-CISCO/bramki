@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XExX5l3J3tz5J/Lz1B6CCRI6QkSsnfX/9cmbxgPPY3xXtesG2wjAlU/8dRTpBK8+Gah/kSlm5xVz55b6go8pMg==",
+  "dgSpecHash": "6tB3JNi5jOKSXAWa2wCeoAprYWBuSCOSXdB1Ksafv8tjo2/CmVG93qCxkQHxKm3pcADt8Akqx25nFjpMxgeQjQ==",
   "success": true,
   "projectFilePath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/bramkominatorMobile.Android.csproj",
   "expectedPackageFiles": [
@@ -62,7 +62,7 @@
     "/Users/gal0wsky/.nuget/packages/xamarin.androidx.viewpager2/1.0.0.10/xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.communitytoolkit/1.3.1/xamarin.communitytoolkit.1.3.1.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.essentials/1.7.0/xamarin.essentials.1.7.0.nupkg.sha512",
-    "/Users/gal0wsky/.nuget/packages/xamarin.forms/5.0.0.2244/xamarin.forms.5.0.0.2244.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.forms/5.0.0.2291/xamarin.forms.5.0.0.2291.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.google.android.material/1.4.0.2/xamarin.google.android.material.1.4.0.2.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.google.guava.listenablefuture/1.0.0.2/xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
   ],
