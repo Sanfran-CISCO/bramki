@@ -16,38 +16,26 @@ namespace NUnitTests
         //true
         private LogicGateway not = new LogicGateway(GatewayType.Not, "MyNot");
 
-        [Test()]
-        public void AddParentGatewayTest()
-        {
-            GatewaysList list = new GatewaysList();
-            list.SetParent(and);
-
-            Assert.AreEqual(GatewayType.And, list.Parent.Gateway.Type);
-        }
-
         [Test]
         public void CreateSimpleCircutTest()
         {
-            GatewaysList list = new GatewaysList();
-            list.SetParent(and);
+            LogicCircut circut = new LogicCircut();
 
             not.InputA = false;
 
-            list.Connect(or, and, 1);
-            list.Connect(not, and, 2);
+            circut.Connect(or, and, 1);
+            circut.Connect(not, and, 2);
 
-            Assert.AreEqual(true, list.Parent.Gateway.Output);
+            Assert.AreEqual(true, circut.Parent.Gateway.Output);
         }
 
         [Test]
         public void CreateCircutFromNotebookTest()
         {
-            GatewaysList list = new GatewaysList();
+            LogicCircut circut = new LogicCircut();
 
             LogicGateway xor = new LogicGateway(GatewayType.Xor, "MyXor");
             LogicGateway nand = new LogicGateway(GatewayType.Nand, "MyNand");
-
-            list.SetParent(or);
 
             //true
             and.InputA = true;
@@ -60,32 +48,47 @@ namespace NUnitTests
             //true
             not.InputA = false;
 
-            list.Connect(nand, xor, 1);
-            list.Connect(not, xor, 2);
+            circut.Connect(nand, xor, 1);
+            circut.Connect(not, xor, 2);
 
-            list.Connect(and, or, 1);
-            list.Connect(xor, or, 2);
+            circut.Connect(and, or, 1);
+            circut.Connect(xor, or, 2);
 
-            Assert.AreEqual(true, list.Parent.Gateway.Output);
+            Assert.AreEqual(true, circut.Parent.Gateway.Output);
         }
 
         [Test]
         public void DisconnectGatesTest()
         {
-            GatewaysList list = new GatewaysList();
+            LogicCircut circut = new LogicCircut();
 
             LogicGateway and = new LogicGateway(GatewayType.And, true, true, "and2");
             LogicGateway not = new LogicGateway(GatewayType.Not, "not2");
 
-            list.SetParent(not);
+            circut.Connect(and, not, 1);
 
-            list.Connect(and, not, 1);
+            Assert.AreEqual("not2", circut.Parent.Gateway.Name);
 
-            Assert.AreEqual("not2", list.Parent.Gateway.Name);
+            Assert.AreEqual(true, circut.Disconnect(and, "next"));
 
-            Assert.AreEqual(true, list.Disconnect(and, "next"));
+            Assert.AreEqual(null, circut.Parent.Left);
+        }
 
-            Assert.AreEqual(null, list.Parent.Left);
+        [Test]
+        public void RemoveGatewayTest()
+        {
+            LogicCircut circut = new LogicCircut();
+
+            LogicGateway and = new LogicGateway(GatewayType.And, true, true);
+            LogicGateway or = new LogicGateway(GatewayType.Or);
+            or.InputB = false;
+
+            circut.Connect(and, or, 1);
+
+            Assert.AreEqual(true, circut.Parent.Gateway.Output);
+            Assert.AreEqual(GatewayType.Or, circut.Parent.Gateway.Type);
+
+            Assert.AreEqual(true, circut.Remove(and));
         }
     }
 }

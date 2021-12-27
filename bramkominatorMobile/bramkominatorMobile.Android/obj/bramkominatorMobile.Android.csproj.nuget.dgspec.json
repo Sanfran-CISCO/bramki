@@ -65,9 +65,6 @@
         "packagesPath": "/Users/gal0wsky/.nuget/packages/",
         "outputPath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "/Users/gal0wsky/.config/NuGet/NuGet.Config"
         ],
@@ -126,7 +123,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/5.0.404/RuntimeIdentifierGraph.json"
         }
       }
     }

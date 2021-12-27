@@ -6,30 +6,25 @@ using bramkominatorMobile.Models;
 
 namespace bramkominatorMobile.Services
 {
-    public class GatewaysList : IEnumerable<Node>
+    public class LogicCircut : IEnumerable<Node>
     {
         private Node parent;
         public Node Parent { get => parent; }
 
         public int Size { get; private set; }
 
-        public GatewaysList()
+        public LogicCircut()
         {}
-
-        public void SetParent(LogicGateway gateway)
-        {
-            Node newNode = new Node(gateway);
-
-            if (parent == null)
-                Size++;
-
-            parent = newNode;
-        }
 
         public void Connect(LogicGateway from, LogicGateway to, int inputNumber)
         {
             Node fromNode = new Node(from);
             Node toNode = new Node(to);
+
+            if (parent == null)
+            {
+                SetParent(to);
+            }
 
             if (parent.Gateway.Type == to.Type && parent.Gateway.Name == to.Name)
             {
@@ -57,6 +52,19 @@ namespace bramkominatorMobile.Services
             }
 
             Size++;
+
+            if (toNode.Left == parent.Next || toNode.Right == parent.Next)
+                parent = toNode;
+        }
+
+        private void SetParent(LogicGateway gateway)
+        {
+            Node newNode = new Node(gateway);
+
+            if (parent == null)
+                Size++;
+
+            parent = newNode;
         }
 
         private void DisconnectFromCurrentNextGate(Node fromNode)
@@ -88,13 +96,19 @@ namespace bramkominatorMobile.Services
                     break;
 
                 case "left":
-                    node.Left.Next = null;
-                    node.Left = null;
+                    if (node.Left != null)
+                    {
+                        node.Left.Next = null;
+                        node.Left = null;
+                    }
                     break;
 
                 case "right":
-                    node.Right.Next = null;
-                    node.Right = null;
+                    if (node.Right != null)
+                    {
+                        node.Right.Next = null;
+                        node.Right = null;
+                    }
                     break;
             }
 
@@ -103,35 +117,48 @@ namespace bramkominatorMobile.Services
 
         private Node FindNode(Node node, LogicGateway gate)
         {
-            Node root = node;
-
-            if (root.Gateway.Type == gate.Type &&
-                    root.Gateway.Name == gate.Name)
+            if (node.Left is null && node.Right is null)
             {
-                return root;
+                return node;
             }
+
             else
             {
-                root = FindNode(root.Left, gate);
-                if (root is null)
-                {
-                    root = FindNode(root.Right, gate);
-                }
-                else
+                Node root = node;
+
+                if (root.Gateway.Type == gate.Type &&
+                        root.Gateway.Name == gate.Name)
                 {
                     return root;
                 }
-            }
+                else
+                {
+                    root = FindNode(root.Left, gate);
+                    if (root is null)
+                    {
+                        root = FindNode(root.Right, gate);
+                    }
+                    else
+                    {
+                        return root;
+                    }
+                }
 
-            return null;
+                return null;
+            }
         }
 
         //prototype -- NOT TESTED yet
         public bool Remove(LogicGateway gate)
         {
-            Node node = FindNode(new Node(gate), gate);
+            Node node = FindNode(parent, gate);
 
-            if (Disconnect(gate, "next") && Disconnect(gate, "left") && Disconnect(gate, "right"))
+            if (node is null)
+            {
+                return false;
+            }
+
+            else if (Disconnect(gate, "next") && Disconnect(gate, "left") && Disconnect(gate, "right"))
             {
                 node = null;
                 Size--;
