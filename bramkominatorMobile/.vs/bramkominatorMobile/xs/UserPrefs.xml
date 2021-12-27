@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{BF981D87-60AE-4058-BEF4-CF08A05AB1C8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NUnitTests/Test.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Services/LogicCircut.cs">
     <Files>
-      <File FileName="bramkominatorMobile/Services/GatewaysList.cs" Line="16" Column="27" />
-      <File FileName="NUnitTests/Test.cs" Line="32" Column="15" />
+      <File FileName="bramkominatorMobile/Services/LogicCircut.cs" Line="174" Column="1" />
+      <File FileName="NUnitTests/Test.cs" Line="76" Column="77" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,11 +11,13 @@
             <Node name="bramkominatorMobile" expanded="True">
               <Node name="Exceptions" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="LogicCircut.cs" selected="True" />
+              </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True" />
             </Node>
-            <Node name="NUnitTests" expanded="True" selected="True" />
+            <Node name="NUnitTests" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -27,16 +29,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.bramkominatorMobile.Android PreferredExecutionTarget="Android.emulator-5554" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="136" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="139" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="143" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="89" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="87" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="132" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="120" column="1" />
-      <Breakpoint file="/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/Services/LogicCircut.cs" relfile="bramkominatorMobile/Services/LogicCircut.cs" line="165" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

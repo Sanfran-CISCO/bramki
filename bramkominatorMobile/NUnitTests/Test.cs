@@ -72,6 +72,8 @@ namespace NUnitTests
             Assert.AreEqual(true, circut.Disconnect(and, "next"));
 
             Assert.AreEqual(null, circut.Parent.Left);
+
+            Assert.AreEqual(GatewayType.And, circut.InputNode.Gateway.Type);
         }
 
         [Test]
@@ -89,6 +91,8 @@ namespace NUnitTests
             Assert.AreEqual(GatewayType.Or, circut.Parent.Gateway.Type);
 
             Assert.AreEqual(true, circut.Remove(and));
+
+            Assert.AreEqual(GatewayType.Or, circut.InputNode.Gateway.Type);
         }
     }
 }

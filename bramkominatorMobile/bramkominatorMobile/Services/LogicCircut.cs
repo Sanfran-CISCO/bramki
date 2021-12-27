@@ -11,6 +11,9 @@ namespace bramkominatorMobile.Services
         private Node parent;
         public Node Parent { get => parent; }
 
+        private Node inputNode;
+        public Node InputNode { get => inputNode; }
+
         public int Size { get; private set; }
 
         public LogicCircut()
@@ -24,6 +27,11 @@ namespace bramkominatorMobile.Services
             if (parent == null)
             {
                 SetParent(to);
+            }
+
+            if (inputNode == null)
+            {
+                inputNode = fromNode;
             }
 
             if (parent.Gateway.Type == to.Type && parent.Gateway.Name == to.Name)
@@ -98,6 +106,14 @@ namespace bramkominatorMobile.Services
                 case "left":
                     if (node.Left != null)
                     {
+                        if (node.Left == inputNode)
+                        {
+                            if (node.Right != null)
+                                inputNode = node.Right;
+                            else
+                                inputNode = node;
+                        }
+
                         node.Left.Next = null;
                         node.Left = null;
                     }
@@ -106,6 +122,14 @@ namespace bramkominatorMobile.Services
                 case "right":
                     if (node.Right != null)
                     {
+                        if (node.Right == inputNode)
+                        {
+                            if (node.Left != null)
+                                inputNode = node.Left;
+                            else
+                                inputNode = node;
+                        }
+
                         node.Right.Next = null;
                         node.Right = null;
                     }
@@ -148,16 +172,19 @@ namespace bramkominatorMobile.Services
             }
         }
 
-        //prototype -- NOT TESTED yet
         public bool Remove(LogicGateway gate)
         {
             Node node = FindNode(parent, gate);
+
+            if (node == inputNode)
+            {
+                inputNode = node.Next;
+            }
 
             if (node is null)
             {
                 return false;
             }
-
             else if (Disconnect(gate, "next") && Disconnect(gate, "left") && Disconnect(gate, "right"))
             {
                 node = null;
