@@ -2,9 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Models/LogicGateway.cs">
     <Files>
       <File FileName="bramkominatorMobile/Models/LogicGateway.cs" Line="123" Column="27" />
-      <File FileName="bramkominatorMobile/Services/LogicCircut.cs" Line="174" Column="1" />
-      <File FileName="NUnitTests/Test.cs" Line="17" Column="79" />
-      <File FileName="NUnitTests/LogicGatewaysTests.cs" Line="148" Column="54" />
+      <File FileName="bramkominatorMobile/Services/LogicCircut.cs" />
+      <File FileName="NUnitTests/LogicGatewaysTests.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,15 +16,8 @@
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True" />
             </Node>
-            <Node name="NUnitTests" expanded="True">
-              <Node name="LogicGatewaysTests.cs" selected="True" />
-            </Node>
+            <Node name="NUnitTests" expanded="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="bramkominatorMobile" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
