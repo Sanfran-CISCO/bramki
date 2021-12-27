@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using bramkominatorMobile.Services;
 
 namespace bramkominatorMobile.Models
 {
@@ -10,6 +11,8 @@ namespace bramkominatorMobile.Models
         public GatewayType Type { get; set; }
         public string Image { get; set; }
 
+        private LogicCircut circut;
+
         public bool InputA { get; set; }
         public bool InputB { get; set; }
 
@@ -18,7 +21,7 @@ namespace bramkominatorMobile.Models
 
         private LogicGateway() { }
 
-        public LogicGateway(GatewayType type, string name="")
+        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null)
         {
             Type = type;
 
@@ -29,6 +32,13 @@ namespace bramkominatorMobile.Models
             else
             {
                 Name = name;
+            }
+
+            if (type == GatewayType.Custom && circut != null)
+            {
+                InputA = circut.InputNode.Gateway.InputA;
+                InputB = circut.InputNode.Gateway.InputB;
+                this.circut = circut;
             }
         }
 
@@ -107,6 +117,9 @@ namespace bramkominatorMobile.Models
                     break;
                 case GatewayType.Xor:
                     output = InputA != InputB;
+                    break;
+                case GatewayType.Custom:
+                    output = circut.Parent.Gateway.Output;
                     break;
             }
             return output;

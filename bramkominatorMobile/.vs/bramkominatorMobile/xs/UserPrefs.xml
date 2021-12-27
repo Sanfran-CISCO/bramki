@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{BF981D87-60AE-4058-BEF4-CF08A05AB1C8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Services/LogicCircut.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Models/LogicGateway.cs">
     <Files>
+      <File FileName="bramkominatorMobile/Models/LogicGateway.cs" Line="123" Column="27" />
       <File FileName="bramkominatorMobile/Services/LogicCircut.cs" Line="174" Column="1" />
-      <File FileName="NUnitTests/Test.cs" Line="76" Column="77" />
+      <File FileName="NUnitTests/Test.cs" Line="17" Column="79" />
+      <File FileName="NUnitTests/LogicGatewaysTests.cs" Line="148" Column="54" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,14 +13,19 @@
             <Node name="bramkominatorMobile" expanded="True">
               <Node name="Exceptions" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="LogicCircut.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True" />
             </Node>
-            <Node name="NUnitTests" expanded="True" />
+            <Node name="NUnitTests" expanded="True">
+              <Node name="LogicGatewaysTests.cs" selected="True" />
+            </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="bramkominatorMobile" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -27,7 +34,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.emulator-5554" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.bramkominatorMobile.Android PreferredExecutionTarget="Android.emulator-5554" />
+  <MonoDevelop.Ide.ItemProperties.bramkominatorMobile.Android PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
