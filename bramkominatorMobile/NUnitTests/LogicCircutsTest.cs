@@ -8,13 +8,13 @@ namespace NUnitTests
     [TestFixture()]
     public class Test
     {
-        private LogicGateway and = new LogicGateway(GatewayType.And, "MyAnd");
+        private LogicGateway and = new LogicGateway(GatewayType.And, "TestAnd1");
 
         //true
-        private LogicGateway or = new LogicGateway(GatewayType.Or, true, false, "MyOr");
+        private LogicGateway or = new LogicGateway(GatewayType.Or, true, false, "TestOr1");
 
         //true
-        private LogicGateway not = new LogicGateway(GatewayType.Not, "MyNot");
+        private LogicGateway not = new LogicGateway(GatewayType.Not, "TestNot1");
 
         [Test]
         public void CreateSimpleCircutTest()

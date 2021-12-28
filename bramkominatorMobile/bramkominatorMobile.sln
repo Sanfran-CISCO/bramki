@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bramkominatorMobile.Android
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bramkominatorMobile", "bramkominatorMobile\bramkominatorMobile.csproj", "{6AFBA7A1-90D4-4C3F-ADE4-030F87F6C730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8F36187F-AC4D-4510-BD32-6A40DA3DD1FE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{7153252F-F655-422A-8B24-F571F181008E}"
 EndProject
 Global
@@ -29,10 +27,6 @@ Global
 		{6AFBA7A1-90D4-4C3F-ADE4-030F87F6C730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFBA7A1-90D4-4C3F-ADE4-030F87F6C730}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6AFBA7A1-90D4-4C3F-ADE4-030F87F6C730}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{8F36187F-AC4D-4510-BD32-6A40DA3DD1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F36187F-AC4D-4510-BD32-6A40DA3DD1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F36187F-AC4D-4510-BD32-6A40DA3DD1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F36187F-AC4D-4510-BD32-6A40DA3DD1FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7153252F-F655-422A-8B24-F571F181008E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7153252F-F655-422A-8B24-F571F181008E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7153252F-F655-422A-8B24-F571F181008E}.Release|Any CPU.ActiveCfg = Release|Any CPU

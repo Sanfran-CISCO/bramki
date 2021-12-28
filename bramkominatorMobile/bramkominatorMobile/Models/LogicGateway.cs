@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using bramkominatorMobile.Services;
+using SQLite;
 
 namespace bramkominatorMobile.Models
 {
     public class LogicGateway
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         public string Name { get; set; }
         public GatewayType Type { get; set; }
         public string Image { get; set; }
@@ -19,7 +23,7 @@ namespace bramkominatorMobile.Models
         public bool Output { get => GetOutput(); }
 
 
-        private LogicGateway() { }
+        public LogicGateway() { }
 
         public LogicGateway(GatewayType type, string name="", LogicCircut circut=null)
         {

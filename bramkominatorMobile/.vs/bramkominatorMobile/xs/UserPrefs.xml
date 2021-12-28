@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{BF981D87-60AE-4058-BEF4-CF08A05AB1C8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="bramkominatorMobile/Models/LogicGateway.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NUnitTests/LogicCircutsTest.cs">
     <Files>
-      <File FileName="bramkominatorMobile/Models/LogicGateway.cs" Line="123" Column="27" />
-      <File FileName="bramkominatorMobile/Services/LogicCircut.cs" />
-      <File FileName="NUnitTests/LogicGatewaysTests.cs" />
+      <File FileName="bramkominatorMobile/Models/LogicGateway.cs" Line="25" Column="1" />
+      <File FileName="bramkominatorMobile/Services/LogicCircut.cs" Line="37" Column="36" />
+      <File FileName="NUnitTests/LogicCircutsTest.cs" Line="21" Column="10" />
+      <File FileName="bramkominatorMobile/Services/DbService.cs" Line="70" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +17,7 @@
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True" />
             </Node>
-            <Node name="NUnitTests" expanded="True" />
+            <Node name="NUnitTests" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
