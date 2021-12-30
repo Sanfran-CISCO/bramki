@@ -11,15 +11,15 @@ namespace bramkominatorMobile.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        private LogicCircut circut;
+        public Position Position;
+
         public string Name { get; set; }
         public GatewayType Type { get; set; }
         public string Image { get; set; }
 
-        private LogicCircut circut;
-
         public bool InputA { get; set; }
         public bool InputB { get; set; }
-
         public bool Output { get => GetOutput(); }
 
 
@@ -44,6 +44,10 @@ namespace bramkominatorMobile.Models
                 InputB = circut.InputNode.Gateway.InputB;
                 this.circut = circut;
             }
+
+            SetImage();
+
+            Position = new Position();
         }
 
         public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="")
@@ -62,6 +66,8 @@ namespace bramkominatorMobile.Models
             }
 
             SetImage();
+
+            Position = new Position();
         }
 
         private void SetImage()

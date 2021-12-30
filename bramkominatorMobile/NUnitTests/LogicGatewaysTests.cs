@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using bramkominatorMobile.Models;
 using bramkominatorMobile.Services;
 
@@ -8,35 +7,44 @@ namespace NUnitTests
     [TestFixture]
     public class LogicGatewaysTests
     {
+        Position pos = new Position(1, 0);
+
         [Test]
         public void NotGatewayTest()
         {
             LogicGateway not = new LogicGateway(GatewayType.Not);
             not.InputA = true;
+            not.Position.Set(1, 0);
 
             Assert.AreEqual(false, not.Output);
 
             not.InputA = false;
 
             Assert.AreEqual(true, not.Output);
+;
+            Assert.AreEqual(pos, not.Position);
         }
 
         [Test]
         public void AndGatewayTest()
         {
             LogicGateway and = new LogicGateway(GatewayType.And, true, true);
+            and.Position.Set(1, 0);
 
             Assert.AreEqual(true, and.Output);
 
             and.InputA = false;
 
             Assert.AreEqual(false, and.Output);
+
+            Assert.AreEqual(pos, and.Position);
         }
 
         [Test]
         public void OrGatewayTest()
         {
             LogicGateway or = new LogicGateway(GatewayType.Or, true, true);
+            or.Position.Set(1, 0);
 
             Assert.AreEqual(true, or.Output);
 
@@ -47,12 +55,15 @@ namespace NUnitTests
             or.InputB = false;
 
             Assert.AreEqual(false, or.Output);
+
+            Assert.AreEqual(pos, or.Position);
         }
 
         [Test]
         public void NandGatewayTest()
         {
             LogicGateway nand = new LogicGateway(GatewayType.Nand, false, false);
+            nand.Position.Set(1, 0);
 
             Assert.AreEqual(true, nand.Output);
 
@@ -63,12 +74,15 @@ namespace NUnitTests
             nand.InputB = true;
 
             Assert.AreEqual(false, nand.Output);
+
+            Assert.AreEqual(pos, nand.Position);
         }
 
         [Test]
         public void NorGatewayTest()
         {
             LogicGateway nor = new LogicGateway(GatewayType.Nor, false, false);
+            nor.Position.Set(1, 0);
 
             Assert.AreEqual(true, nor.Output);
 
@@ -79,12 +93,15 @@ namespace NUnitTests
             nor.InputB = true;
 
             Assert.AreEqual(false, nor.Output);
+
+            Assert.AreEqual(pos, nor.Position);
         }
 
         [Test]
         public void XorGatewayTest()
         {
             LogicGateway xor = new LogicGateway(GatewayType.Xor, false, false);
+            xor.Position.Set(1, 0);
 
             Assert.AreEqual(false, xor.Output);
 
@@ -95,12 +112,15 @@ namespace NUnitTests
             xor.InputB = true;
 
             Assert.AreEqual(false, xor.Output);
+
+            Assert.AreEqual(pos, xor.Position);
         }
 
         [Test]
         public void XnorGatewayTest()
         {
             LogicGateway xnor = new LogicGateway(GatewayType.Xnor, false, false);
+            xnor.Position.Set(1, 0);
 
             Assert.AreEqual(true, xnor.Output);
 
@@ -111,6 +131,8 @@ namespace NUnitTests
             xnor.InputB = true;
 
             Assert.AreEqual(true, xnor.Output);
+
+            Assert.AreEqual(pos, xnor.Position);
         }
 
         [Test]
@@ -144,8 +166,11 @@ namespace NUnitTests
             Assert.AreEqual(true, circut.Parent.Gateway.Output);
 
             LogicGateway customGate = new LogicGateway(GatewayType.Custom, "MyCustomGate", circut);
+            customGate.Position.Set(1, 0);
 
             Assert.AreEqual(true, customGate.Output);
+
+            Assert.AreEqual(pos, customGate.Position);
         }
     }
 }
