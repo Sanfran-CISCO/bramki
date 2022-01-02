@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using SQLite;
 using bramkominatorMobile.Exceptions;
 using bramkominatorMobile.Models;
 
 namespace bramkominatorMobile.Services
 {
-    public class LogicCircut : IEnumerable<Node>
+    public class LogicCircut : ILogicCircut
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         private Node parent;
         public Node Parent { get => parent; }
 
@@ -193,6 +197,19 @@ namespace bramkominatorMobile.Services
                 Size--;
                 return true;
             }
+
+            return false;
+        }
+
+        public bool IsConnected(LogicGateway gate)
+        {
+            Node node = FindNode(parent, gate);
+
+            if (node is null)
+                throw new GatewayNotFoundException();
+
+            if (node.Next != null || node.Left != null || node.Right != null)
+                return true;
 
             return false;
         }

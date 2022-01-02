@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using SQLite;
+﻿using System.Threading.Tasks;
 using bramkominatorMobile.Models;
 using System.Collections.Generic;
 
