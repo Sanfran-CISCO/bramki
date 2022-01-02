@@ -1,0 +1,31 @@
+#User files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+bramkominatorMobile/*.suo
+bramkominatorMobile/*.user
+bramkominatorMobile/*.userosscache
+bramkominatorMobile/*sln.docstates
+
+#Visual Studio files
+bramkominatorMobile/.vs/
+
+#NUnit
+bramkominatorMobile/*.VisualState.xml
+bramkominatorMobile/TestResults.xml
+
+#Build results
+bramkominatorMobile/[Dd]ebug/
+bramkominatorMobile/[Dd]ebugPublic/
+bramkominatorMobile/[Rr]elease/
+bramkominatorMobile/[Rr]eleases/
+bramkominatorMobile/x64/
+bramkominatorMobile/x84/
+bramkominatorMobile/[Bb]in/
+bramkominatorMobile/[Oo]bj/
+bramkominatorMobile/[Ll]og/
+
+#macOS files
+.DS_Store
