@@ -38,7 +38,6 @@ namespace bramkominatorMobile.Services
                 inputNode = fromNode;
             }
 
-            //if (parent.Gateway.Type == to.Type && parent.Gateway.Name == to.Name)
             if (parent.Gateway.Type == to.Type && parent.Gateway.Position == to.Position)
             {
                 toNode = parent;
@@ -155,8 +154,6 @@ namespace bramkominatorMobile.Services
             {
                 Node root = node;
 
-                //if (root.Gateway.Type == gate.Type &&
-                //        root.Gateway.Name == gate.Name)
                 if (root.Gateway.Type == gate.Type && root.Gateway.Position == gate.Position)
                 {
                     return root;
