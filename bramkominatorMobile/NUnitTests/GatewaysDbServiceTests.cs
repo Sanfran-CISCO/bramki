@@ -107,13 +107,15 @@ namespace NUnitTests
 
                 var cls = mock.Create<IGatewaysDbService>();
 
-                var expeted = GetCustomGatesSample().Result;
+                var expected = GetCustomGatesSample().Result;
                 var actual = cls.GetCustomGates().Result;
 
-                for (int i = 0; i < expeted.LongCount(); i++)
+                Assert.AreEqual(expected.LongCount(), actual.LongCount());
+
+                for (int i = 0; i < expected.LongCount(); i++)
                 {
-                    Assert.AreEqual(expeted.ElementAt(i).Id, actual.ElementAt(i).Id);
-                    Assert.AreEqual(expeted.ElementAt(i).Type, actual.ElementAt(i).Type);
+                    Assert.AreEqual(expected.ElementAt(i).Id, actual.ElementAt(i).Id);
+                    Assert.AreEqual(expected.ElementAt(i).Type, actual.ElementAt(i).Type);
                 }
             }
         }

@@ -95,6 +95,7 @@
     <Compile Include="LogicGatewaysTests.cs" />
     <Compile Include="GatewaysDbServiceTests.cs" />
     <Compile Include="LogicCircutsTests.cs" />
+    <Compile Include="CircutsDbServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bramkominatorMobile\bramkominatorMobile.csproj">
