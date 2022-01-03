@@ -11,6 +11,8 @@ bramkominatorMobile/*sln.docstates
 
 #Visual Studio files
 bramkominatorMobile/.vs/
+bramkominatorMobile/obj/*.AssemblyReference.cache
+bramkominatorMobile/bin/*AssemblyReference.cache
 
 #NUnit
 bramkominatorMobile/*.VisualState.xml
