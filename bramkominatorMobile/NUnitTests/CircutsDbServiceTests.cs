@@ -87,7 +87,7 @@ namespace NUnitTests
 
                 var circut = new LogicCircut();
 
-                circut.Connect(and, not, 1);
+                circut.Connect(not, and, 1);
 
                 mock.Mock<ICircutsDbService>()
                     .Setup(x => x.AddCircut(circut));
@@ -173,7 +173,7 @@ namespace NUnitTests
 
             var circut = new LogicCircut();
 
-            circut.Connect(and, not, 1);
+            circut.Connect(not, and, 1);
 
             return circut;
         }

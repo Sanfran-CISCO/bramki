@@ -6,14 +6,14 @@
 
         public string Name { get; set; }
         public string Image { get; private set; }
-        Position Position { get; set; }
+        public Position Position;
 
         public InputElement()
         {
             Name = "DefaultInput";
             Output = false;
             Image = "inputOff.png";
-            Position.Set(0, 0);
+            Position = new Position();
         }
 
         public InputElement(string name, bool input = false, LogicGateway gate=null, int inputNumber=0, Position position=null)
@@ -23,20 +23,20 @@
             else
                 Name = "DefaultInput";
 
-            if (gate != null && (inputNumber == 1 || inputNumber == 2))
-                Connect(gate, inputNumber);
-
             Output = input;
+
+            if (gate != null && (inputNumber == 1 || inputNumber == 2))
+                _ = Connect(gate, inputNumber);
 
             if (Output)
                 Image = "inputOn.png";
             else
                 Image = "inputOff.png";
 
-            if (Position != null)
-                Position = position;
+            if (position is null)
+                Position = new Position();
             else
-                Position.Set(0, 0);
+                Position = position;
         }
 
         public void Clicked()

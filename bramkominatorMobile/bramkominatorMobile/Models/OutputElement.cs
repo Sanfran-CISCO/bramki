@@ -58,5 +58,10 @@
         {
             connectedGate = null;
         }
+
+        public bool IsConnected()
+        {
+            return connectedGate != null;
+        }
     }
 }

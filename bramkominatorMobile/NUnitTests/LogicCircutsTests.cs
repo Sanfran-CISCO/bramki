@@ -89,5 +89,29 @@ namespace NUnitTests
 
             Assert.AreEqual(GatewayType.Or, circut.InputNode.Gateway.Type);
         }
+
+        [Test]
+        public void IsConnectedTest()
+        {
+            LogicCircut circut = new LogicCircut();
+
+            var and = new LogicGateway(GatewayType.And, true, true);
+            var or = new LogicGateway(GatewayType.Or);
+
+            or.InputB = false;
+
+            circut.Connect(and, or, 1);
+
+            var isConnected = circut.IsConnected(and);
+
+            Assert.AreEqual(true, isConnected);
+
+            var isDisconnected = circut.Disconnect(and, "next");
+
+            isConnected = circut.IsConnected(and);
+
+            Assert.AreEqual(true, isDisconnected);
+            Assert.AreEqual(false, isConnected);
+        }
     }
 }
