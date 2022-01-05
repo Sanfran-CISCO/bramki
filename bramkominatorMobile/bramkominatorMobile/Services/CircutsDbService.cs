@@ -74,12 +74,12 @@ namespace bramkominatorMobile.Services
 
         public IEnumerator<LogicCircut> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }

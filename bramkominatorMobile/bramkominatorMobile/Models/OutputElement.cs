@@ -2,9 +2,8 @@
 {
     public class OutputElement
     {
-        private LogicGateway connectedGate;
-
-        public bool Input { get => connectedGate.Output; }
+        public LogicGateway ConnectedGate { get; private set; }
+        public bool Input { get => ConnectedGate.Output; }
         public string Name { get; set; }
         public Position Position { get; set; }
         public string Image { get; private set; }
@@ -12,9 +11,9 @@
         public OutputElement()
         {
             Name = "DefaultOutput";
-            Position.Set(0, 0);
+            Position = new Position();
             Image = "outputOff.png";
-            connectedGate = null;
+            ConnectedGate = null;
         }
 
         public OutputElement(string name, LogicGateway gate=null, Position position=null)
@@ -28,19 +27,19 @@
 
             if (gate != null)
             {
-                connectedGate = gate;
+                ConnectedGate = gate;
 
                 if (Input)
                     Image = "outputOn.png";
             }
             else
-                connectedGate = null;
+                ConnectedGate = null;
             
 
-            if (position != null)
-                Position = position;
+            if (position is null)
+                Position = new Position();
             else
-                Position.Set(0, 0);
+                Position = position;
         }
 
         public bool ConnectGate(LogicGateway gate)
@@ -49,19 +48,19 @@
                 return false;
             else
             {
-                connectedGate = gate;
+                ConnectedGate = gate;
                 return true;
             }
         }
 
         public void Disconnect()
         {
-            connectedGate = null;
+            ConnectedGate = null;
         }
 
         public bool IsConnected()
         {
-            return connectedGate != null;
+            return ConnectedGate != null;
         }
     }
 }

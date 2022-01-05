@@ -213,12 +213,12 @@ namespace bramkominatorMobile.Services
 
         public IEnumerator<Node> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
