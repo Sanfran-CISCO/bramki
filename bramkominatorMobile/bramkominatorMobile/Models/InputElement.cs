@@ -1,6 +1,6 @@
 ﻿namespace bramkominatorMobile.Models
 {
-    public class InputElement
+    public class InputElement : CircutElement
     {
         public bool Output { get; private set; }
 
@@ -76,6 +76,11 @@
             }
 
             return isConnected;
+        }
+
+        public override Position GetPosition()
+        {
+            return Position;
         }
     }
 }

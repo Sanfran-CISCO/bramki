@@ -21,9 +21,6 @@ com.google.android.material.bottomnavigation.BottomNavigationView;/Users/gal0wsk
 com.google.android.material.tabs.TabLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/layout/fallbacktabbardonotuse.xml
 com.google.android.material.tabs.TabLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/layout/rootlayout.xml
 com.google.android.material.tabs.TabLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/layout/tabbar.xml
-crc642e1c7a98bdb5c44a.AutoFitTextureView;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/54/jl/res/layout/camerafragment.xml
-crc643f46942d9dd1fff9.ShellFlyoutLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/layout/flyoutcontent.xml
-crc64720bb2db43a66fe9.FormsViewPager;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/layout/rootlayout.xml
 declare-styleable;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/56/jl/res/values/attrs.xml
 external-cache-path;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/55/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 external-path;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/55/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml

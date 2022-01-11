@@ -1,6 +1,6 @@
 ﻿namespace bramkominatorMobile.Models
 {
-    public class OutputElement
+    public class OutputElement : CircutElement
     {
         public LogicGateway ConnectedGate { get; private set; }
         public bool Input { get => ConnectedGate.Output; }
@@ -61,6 +61,11 @@
         public bool IsConnected()
         {
             return ConnectedGate != null;
+        }
+
+        public override Position GetPosition()
+        {
+            return Position;
         }
     }
 }

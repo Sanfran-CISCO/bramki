@@ -98,6 +98,7 @@
     <Compile Include="CircutsDbServiceTests.cs" />
     <Compile Include="InputElementTests.cs" />
     <Compile Include="OutputElementTests.cs" />
+    <Compile Include="CableServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bramkominatorMobile\bramkominatorMobile.csproj">

@@ -6,7 +6,7 @@ using SQLite;
 
 namespace bramkominatorMobile.Models
 {
-    public class LogicGateway
+    public class LogicGateway : CircutElement
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -133,6 +133,11 @@ namespace bramkominatorMobile.Models
                     break;
             }
             return output;
+        }
+
+        public override Position GetPosition()
+        {
+            return Position;
         }
     }
 }
