@@ -50,21 +50,17 @@ namespace NUnitTests
             List<Position> path = service.FindPath(matrix[0,0], matrix[0,1]);
 
             Assert.AreEqual(typeof(List<Position>), path.GetType());
-            Assert.AreEqual(2, path.Count);
+            Assert.AreEqual(1, path.Count);
 
             var first = path[0];
-            var second = path[1];
 
             Assert.AreEqual(0, first.Column);
-            Assert.AreEqual(0, first.Row);
-
-            Assert.AreEqual(0, second.Column);
-            Assert.AreEqual(1, second.Row);
+            Assert.AreEqual(1, first.Row);
 
             path = service.FindPath(matrix[0, 0], matrix[2, 0]);
 
             Assert.AreEqual(typeof(List<Position>), path.GetType());
-            Assert.AreEqual(3, path.Count);
+            Assert.AreEqual(2, path.Count);
         }
 
         [Test]
@@ -80,11 +76,9 @@ namespace NUnitTests
 
             var path = service.FindPath(matrix[2, 2], matrix[0, 0]);
 
-            Assert.NotNull(path);
+            var expected = new Position(0, 0);
 
-            var expected = new Position(1, 0);
-
-            var actual = path.Last();
+            var actual = path.ElementAt(path.Count()-1);
 
             Assert.AreEqual(expected, actual);
         }

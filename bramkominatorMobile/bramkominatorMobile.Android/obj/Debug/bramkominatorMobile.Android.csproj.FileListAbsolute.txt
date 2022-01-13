@@ -671,3 +671,5 @@
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/android/assets/System.Buffers.dll
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/android/assets/System.Memory.dll
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/android/assets/System.Runtime.CompilerServices.Unsafe.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/emptyelement.png
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/kabel.png

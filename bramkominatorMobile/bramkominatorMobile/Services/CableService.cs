@@ -49,18 +49,22 @@ namespace bramkominatorMobile.Services
             bool[,] visited = new bool[R, C];
             _target = target;
 
-            return Solve(sr, sc, visited);
+            return Solve(sr, sc, target.GetPosition(), visited);
         }
 
-        private List<Position> Solve(int sr, int sc, bool[,] visited)
+        private List<Position> Solve(int sr, int sc, Position target, bool[,] visited)
         {
             rq = new Queue<int>();
             cq = new Queue<int>();
 
             isFound = false;
             moveCount = 0;
+
             Position position = new Position();
             Position[] prev = new Position[R * C];
+
+            int[,] prevX = new int[R,C];
+            int[,] prevY = new int[R, C];
 
             int visitedElements = 0;
 
@@ -85,7 +89,7 @@ namespace bramkominatorMobile.Services
                     break;
                 }
 
-                ExploreNeighbours(r, c, visited, prev, visitedElements);
+                ExploreNeighbours(r, c, visited, visitedElements, prevX, prevY);
 
                 nodesLeftInLayer--;
                 visitedElements++;
@@ -99,12 +103,12 @@ namespace bramkominatorMobile.Services
             }
 
             if (isFound)
-                return ReconstructPath(new Position(sc, sr), prev, visitedElements);
+                return ReconstructPath(new Position(sc, sr), target, prevX, prevY);
 
             return new List<Position>();
         }
 
-        private void ExploreNeighbours(int r, int c, bool[,] visited, Position[] prev, int visitedElements)
+        private void ExploreNeighbours(int r, int c, bool[,] visited, int visitedElements, int[,] prevX, int[,] prevY)
         {
             for (int i=0; i<4; i++)
             {
@@ -129,29 +133,37 @@ namespace bramkominatorMobile.Services
                 rq.Enqueue(rr);
                 cq.Enqueue(cc);
                 visited[rr,cc] = true;
-                prev[visitedElements] = new Position(c, r);
+                //prev[visitedElements] = new Position(c, r);
+                prevX[rr, cc] = c;
+                prevY[rr, cc] = r;
                 nodesInNextLayer++;
             }
         }
 
-        private List<Position> ReconstructPath(Position start, Position[] prev, int visitedElements)
+        private List<Position> ReconstructPath(Position start, Position end, int[,] prevX, int[,] prevY)
         {
             List<Position> path = new List<Position>();
 
-            for (var el = visitedElements-1; el > 0; el--)
-            {
-                if (prev[el] is null)
-                    continue;
+            int curX = end.Column;
+            int curY = end.Row;
 
-                path.Add(prev[el]);
+            int tempX;
+            int tempY;
+
+            while (curX != start.Column || curY != start.Row)
+            {
+                path.Add(new Position(curX, curY));
+
+                tempX = prevX[curX, curY];
+                tempY = prevY[curX, curY];
+
+                curX = tempX;
+                curY = tempY;
             }
 
             path.Reverse();
 
-            if (path.First() == start)
-                return path;
-            else
-                return new List<Position>();
+            return path;
         }
     }
 }

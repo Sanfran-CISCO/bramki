@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using bramkominatorMobile.ViewModels;
+using bramkominatorMobile.Models;
+using bramkominatorMobile.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,22 +9,60 @@ namespace bramkominatorMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        private int R;
+        private int C;
+
+        private CircutElement[,] _matrix;
+
+        private CableService _service;
+
         public Frame MyFrame { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
 
-            for (int row=0; row<10; row++)
+            R = C = 10;
+
+            _matrix = new CircutElement[R, C];
+
+            _service = new CableService(_matrix, R, C);
+
+            for (int row=0; row<R; row++)
             {
-                for (int column=0; column<10; column++)
+                for (int column=0; column<C; column++)
                 {
+                    EmptyElement element = new EmptyElement();
+
+                    _matrix[row, column] = new EmptyElement(column, row);
+
                     var frame = new Frame
                     {
                         BackgroundColor = Color.Transparent,
                         BorderColor = Color.Orange,
                         Margin = -2
                     };
+
+                    var image = new Image
+                    {
+                        Source = element.Image,
+                        HeightRequest = 100,
+                        WidthRequest = 100,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand
+                    };
+
+                    var stackLayout = new StackLayout
+                    {
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        Children =
+                        {
+                            image
+                        }
+                    };
+
+                    frame.Content = image;
 
                     var dropRecognizer = new DropGestureRecognizer();
                     dropRecognizer.AllowDrop = true;
@@ -41,6 +76,15 @@ namespace bramkominatorMobile.Views
                 }
             }
 
+            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, 1, 0);
+            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, 3, 3);
+
+            var path = _service.FindPath(_matrix[0, 1], _matrix[3, 3]);
+
+            for (int i=0; i<path.Count-1; i++)
+            {
+                BoardGrid.Children.Add(new Image { Source = "kabel.png" }, path[i].Column, path[i].Row);
+            }
         }
 
         void DragStarting(Object sender, DragStartingEventArgs e)

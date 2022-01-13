@@ -5,9 +5,11 @@
         public string Name { get; set; }
         public Position Position;
         public bool Output { get; }
+        public string Image { get; private set; }
 
         public EmptyElement()
         {
+            Image = "emptyElement.png";
         }
 
         public EmptyElement(Position position, string name = null)
@@ -21,11 +23,14 @@
             }
             else
                 Position = new Position();
+
+            Image = "emptyElement.png";
         }
 
         public EmptyElement(int row, int column)
         {
             Position = new Position(column, row);
+            Image = "emptyElement.png";
         }
 
         public override Position GetPosition()
