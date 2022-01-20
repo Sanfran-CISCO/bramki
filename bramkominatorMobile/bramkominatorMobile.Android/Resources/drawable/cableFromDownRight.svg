@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:vectornator="http://vectornator.io" viewBox="0 0 100 100" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+<metadata>
+<vectornator:setting key="WDSnapToGrid" value="false"/>
+<vectornator:setting key="WDUnits" value="Pixels"/>
+<vectornator:setting value="true" key="UndoHistoryDisabled"/>
+<vectornator:setting value="false" key="WDIsolateActiveLayer"/>
+<vectornator:setting value="false" key="WDDisplayWhiteBackground"/>
+<vectornator:setting key="IsTimeLapseWatermarkDisabled" value="false"/>
+<vectornator:setting value="false" key="WDOutlineMode"/>
+<vectornator:setting key="WDCMYKEnabledKey" value="false"/>
+<vectornator:setting key="WDSnapToEdges" value="false"/>
+<vectornator:setting value="true" key="WDGuidesVisible"/>
+<vectornator:setting value="false" key="WDDynamicGuides"/>
+<vectornator:setting key="WDRulersVisible" value="true"/>
+<vectornator:setting key="WDSnapToPoints" value="false"/>
+<vectornator:setting value="true" key="VNSnapToGuides"/>
+<vectornator:setting value="true" key="VNDimensionsVisible"/>
+</metadata>
+<defs/>
+<g vectornator:layerName="Layer 1" id="Layer 1">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-width="10" fill="none" stroke="#000000" d="M50.184+112.644L71.0243+112.685" opacity="1"/>
+<path opacity="1" d="M21.209-8.63282L39.5684-8.34296" stroke-linecap="round" fill="none" stroke-width="10" stroke-linejoin="round" stroke="#000000"/>
+<path d="M68.5471+138.818C47.0906+121.465+43.7642+90.0036+61.1173+68.5471C78.4705+47.0907+109.932+43.7642+131.388+61.1173C152.845+78.4705+156.171+109.932+138.818+131.388C121.465+152.845+90.0036+156.171+68.5471+138.818Z" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="5" stroke="#000000" opacity="1"/>
+<path d="M26.9538-16.2477C26.9538-16.4331+27.8073-16.5835+28.86-16.5835C29.9127-16.5835+30.7661-16.4331+30.7661-16.2477C30.7661-16.0622+29.9127-15.9119+28.86-15.9119C27.8073-15.9119+26.9538-16.0622+26.9538-16.2477Z" stroke-linecap="round" stroke-linejoin="round" stroke="#000000" stroke-width="5" opacity="1" fill="none"/>
+</g>
+</svg>

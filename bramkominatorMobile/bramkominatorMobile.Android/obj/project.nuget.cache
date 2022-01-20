@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "K7zYoskbPP+mN5KMve4Jc1DMH0wbAP4zXrvWAGt2K0CC8ppOl94jNUfEQffTZqA5rkDezNCHIoxSJMoFKj1mJA==",
+  "dgSpecHash": "UgkxB7/duEVppoL0cr8ZzgMVmCEGlhdrlLdlwYIA9sZ6MRL4aZzS/Rw+C7Awg008AQsuHIK0yGNM3gmy8qCpvQ==",
   "success": true,
   "projectFilePath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/bramkominatorMobile.Android.csproj",
   "expectedPackageFiles": [
     "/Users/gal0wsky/.nuget/packages/refractored.mvvmhelpers/1.6.2/refractored.mvvmhelpers.1.6.2.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/skiasharp/1.68.0/skiasharp.1.68.0.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/skiasharp.svg/1.60.0/skiasharp.svg.1.60.0.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/sqlite-net-pcl/1.8.116/sqlite-net-pcl.1.8.116.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/sqlitepclraw.bundle_green/2.0.4/sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
@@ -70,7 +72,12 @@
     "/Users/gal0wsky/.nuget/packages/xamarin.androidx.viewpager2/1.0.0.10/xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.communitytoolkit/1.3.1/xamarin.communitytoolkit.1.3.1.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.essentials/1.7.0/xamarin.essentials.1.7.0.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading/2.4.11.982/xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.forms/2.4.11.982/xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.svg/2.4.11.982/xamarin.ffimageloading.svg.2.4.11.982.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.svg.forms/2.4.11.982/xamarin.ffimageloading.svg.forms.2.4.11.982.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.forms/5.0.0.2291/xamarin.forms.5.0.0.2291.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.forms.svg/1.0.3/xamarin.forms.svg.1.0.3.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.google.android.material/1.4.0.2/xamarin.google.android.material.1.4.0.2.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.google.guava.listenablefuture/1.0.0.2/xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
   ],

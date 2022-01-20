@@ -5,6 +5,7 @@
              xmlns:fontAwesome="clr-namespace:FontAwesome"
              xmlns:model="clr-namespace:bramkominatorMobile.Models"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:svg="clr-namespace:Xamarin.Forms.Svg;assembly=SvgImageSource"
              x:DataType="viewmodels:MainPageViewModel"
              x:Class="bramkominatorMobile.Views.MainPage">
 

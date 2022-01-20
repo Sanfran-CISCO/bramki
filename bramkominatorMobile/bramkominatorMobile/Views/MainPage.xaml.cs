@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
 using bramkominatorMobile.Models;
 using bramkominatorMobile.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FFImageLoading.Svg;
+using FFImageLoading.Svg.Forms;
 
 namespace bramkominatorMobile.Views
 {
@@ -32,8 +35,6 @@ namespace bramkominatorMobile.Views
             {
                 for (int column=0; column<C; column++)
                 {
-                    EmptyElement element = new EmptyElement();
-
                     _matrix[row, column] = new EmptyElement(column, row);
 
                     var frame = new Frame
@@ -42,27 +43,6 @@ namespace bramkominatorMobile.Views
                         BorderColor = Color.Orange,
                         Margin = -2
                     };
-
-                    var image = new Image
-                    {
-                        Source = element.Image,
-                        HeightRequest = 100,
-                        WidthRequest = 100,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand
-                    };
-
-                    var stackLayout = new StackLayout
-                    {
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center,
-                        Children =
-                        {
-                            image
-                        }
-                    };
-
-                    frame.Content = image;
 
                     var dropRecognizer = new DropGestureRecognizer();
                     dropRecognizer.AllowDrop = true;
@@ -76,14 +56,33 @@ namespace bramkominatorMobile.Views
                 }
             }
 
-            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, 1, 0);
-            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, 3, 3);
+            var start = new Position(0, 1);
+            var target = new Position(4, 3);
 
-            var path = _service.FindPath(_matrix[0, 1], _matrix[3, 3]);
+            _matrix[start.Row, start.Column] = new LogicGateway(GatewayType.Xnor, position: start);
+            _matrix[target.Column, target.Row] = new LogicGateway(GatewayType.Xnor, position: target);
 
-            for (int i=0; i<path.Count-1; i++)
+            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, start.Column, start.Row);
+            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, target.Column, target.Row);
+
+            _matrix[0, 2] = new LogicGateway(GatewayType.Not, position: new Position(2, 0));
+            _matrix[0, 3] = new LogicGateway(GatewayType.Not, position: new Position(3, 0));
+            BoardGrid.Children.Add(new Image { Source = "not.png" }, 2, 0);
+            BoardGrid.Children.Add(new Image { Source = "not.png" }, 3, 0);
+
+            var path = _service.FindPath(_matrix[start.Row, start.Column], _matrix[target.Row, target.Column]);
+
+            if (path.Count == 0)
+                Shell.Current.DisplayAlert("Path not found", "Path not found", "OK");
+            else
             {
-                BoardGrid.Children.Add(new Image { Source = "kabel.png" }, path[i].Column, path[i].Row);
+                var cable = new Cable(path, start, target);
+
+                for (int i = 0; i < path.Count-1; i++)
+                {
+                    BoardGrid.Children.Add(new Frame { BackgroundColor = Color.Orange }, path[i].Column, path[i].Row);
+                    BoardGrid.Children.Add(new SvgCachedImage { Source = cable.GetImage(i) }, path[i].Column, path[i].Row);
+                }
             }
         }
 

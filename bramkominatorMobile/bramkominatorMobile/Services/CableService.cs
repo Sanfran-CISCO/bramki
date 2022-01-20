@@ -64,7 +64,7 @@ namespace bramkominatorMobile.Services
             Position[] prev = new Position[R * C];
 
             int[,] prevX = new int[R,C];
-            int[,] prevY = new int[R, C];
+            int[,] prevY = new int[R,C];
 
             int visitedElements = 0;
 
@@ -133,7 +133,6 @@ namespace bramkominatorMobile.Services
                 rq.Enqueue(rr);
                 cq.Enqueue(cc);
                 visited[rr,cc] = true;
-                //prev[visitedElements] = new Position(c, r);
                 prevX[rr, cc] = c;
                 prevY[rr, cc] = r;
                 nodesInNextLayer++;

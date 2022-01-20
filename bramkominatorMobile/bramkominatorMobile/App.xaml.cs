@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.Svg;
 
 namespace bramkominatorMobile
 {
@@ -8,6 +9,8 @@ namespace bramkominatorMobile
         public App()
         {
             InitializeComponent();
+
+            SvgImageSource.RegisterAssembly();
 
             MainPage = new AppShell();
         }

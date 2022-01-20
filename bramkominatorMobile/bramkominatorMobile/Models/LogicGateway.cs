@@ -25,7 +25,7 @@ namespace bramkominatorMobile.Models
 
         public LogicGateway() { }
 
-        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null)
+        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null, Position position=null)
         {
             Type = type;
 
@@ -45,12 +45,16 @@ namespace bramkominatorMobile.Models
                 this.circut = circut;
             }
 
+
             SetImage();
 
-            Position = new Position();
+            if (position is null)
+                Position = new Position();
+            else
+                Position = new Position(position.Column, position.Row);
         }
 
-        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="")
+        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="", Position position=null)
         {
             Type = type;
             InputA = inputA;
@@ -67,7 +71,10 @@ namespace bramkominatorMobile.Models
 
             SetImage();
 
-            Position = new Position();
+            if (position is null)
+                Position = new Position();
+            else
+                Position = new Position(position.Column, position.Row);
         }
 
         private void SetImage()

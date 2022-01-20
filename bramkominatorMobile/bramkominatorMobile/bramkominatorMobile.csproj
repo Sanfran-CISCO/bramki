@@ -12,6 +12,10 @@
     <None Remove="Resources\Fonts\fa-solid-900.ttf" />
     <None Remove="Exceptions\" />
     <None Remove="sqlite-net-pcl" />
+    <None Remove="Xamarin.Forms.Svg" />
+    <None Remove="Xamarin.FFImageLoading" />
+    <None Remove="Xamarin.FFImageLoading.Svg" />
+    <None Remove="Xamarin.FFImageLoading.Svg.Forms" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,10 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.Forms.Svg" Version="1.0.3" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
   </ItemGroup>
 
   <ItemGroup>
