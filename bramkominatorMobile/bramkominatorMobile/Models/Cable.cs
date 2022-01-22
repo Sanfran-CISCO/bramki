@@ -37,10 +37,7 @@ namespace bramkominatorMobile.Models
         {
             if (_route[1].Row == _route[0].Row)
             {
-                if (_route[1].Column == _route[0].Column)
-                    images[0] = "cableVertical.svg";
-                else
-                    images[0] = "cableHorizontal.svg";
+                images[0] = "cableHorizontal.svg";
             }
             else
             {
@@ -50,7 +47,10 @@ namespace bramkominatorMobile.Models
                 }
                 else if (_route[1].Row > _route[0].Row)
                 {
-                    images[0] = "cableFromDownLeft.svg";
+                    if (_route[1].Column == _route[0].Column)
+                        images[0] = "cableVertical.svg";
+                    else
+                        images[0] = "cableFromDownLeft.svg";
                 }
             }
 

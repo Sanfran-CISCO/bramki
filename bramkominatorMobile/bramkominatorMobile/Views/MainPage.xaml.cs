@@ -40,8 +40,8 @@ namespace bramkominatorMobile.Views
                     var frame = new Frame
                     {
                         BackgroundColor = Color.Transparent,
-                        BorderColor = Color.Orange,
-                        Margin = -2
+                        BorderColor = Color.DarkGray,
+                        Margin = -3
                     };
 
                     var dropRecognizer = new DropGestureRecognizer();
@@ -56,8 +56,8 @@ namespace bramkominatorMobile.Views
                 }
             }
 
-            var start = new Position(0, 2);
-            var target = new Position(3, 2);
+            var start = new Position(0, 0);
+            var target = new Position(4, 3);
 
             _matrix[start.Row, start.Column] = new LogicGateway(GatewayType.Xnor, position: start);
             _matrix[target.Row, target.Column] = new LogicGateway(GatewayType.Xnor, position: target);
@@ -81,7 +81,13 @@ namespace bramkominatorMobile.Views
                 for (int i = 0; i < path.Count-1; i++)
                 {
                     //BoardGrid.Children.Add(new Frame { BackgroundColor = Color.Orange }, path[i].Column, path[i].Row);
-                    BoardGrid.Children.Add(new SvgCachedImage { Source = cable.GetImage(i) }, path[i].Column, path[i].Row);
+                    BoardGrid.Children.Add(
+                        new SvgCachedImage {
+                            Source = cable.GetImage(i),
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalOptions = LayoutOptions.FillAndExpand
+                        },
+                        path[i].Column, path[i].Row);
                 }
             }
         }

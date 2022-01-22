@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using bramkominatorMobile.Models;
+using System;
 
 namespace bramkominatorMobile.Services
 {
@@ -11,7 +10,6 @@ namespace bramkominatorMobile.Services
         private CircutElement _target;
 
         private bool isFound;
-        int moveCount;
 
         private readonly int R;
         private readonly int C;
@@ -33,12 +31,16 @@ namespace bramkominatorMobile.Services
         {
             if (matrix != null)
                 _matrix = matrix;
+            else
+                throw new ArgumentNullException();
 
             if (r > 0 && c > 0)
             {
                 R = r;
                 C = c;
             }
+            else
+                throw new ArgumentOutOfRangeException();
         }
 
         public List<Position> FindPath(CircutElement start, CircutElement target)
@@ -49,7 +51,7 @@ namespace bramkominatorMobile.Services
             bool[,] visited = new bool[R, C];
             _target = target;
 
-            return Solve(sr, sc, target.GetPosition(), visited);
+            return Solve(sr, sc, _target.GetPosition(), visited);
         }
 
         private List<Position> Solve(int sr, int sc, Position target, bool[,] visited)
@@ -58,15 +60,11 @@ namespace bramkominatorMobile.Services
             cq = new Queue<int>();
 
             isFound = false;
-            moveCount = 0;
 
-            Position position = new Position();
-            Position[] prev = new Position[R * C];
+            var position = new Position();
 
             int[,] prevX = new int[R,C];
             int[,] prevY = new int[R,C];
-
-            int visitedElements = 0;
 
             nodesInNextLayer = 0;
             nodesLeftInLayer = 1;
@@ -75,7 +73,6 @@ namespace bramkominatorMobile.Services
             cq.Enqueue(sc);
 
             visited[sr,sc] = true;
-            visitedElements++;
 
             while (rq.Count > 0)
             {
@@ -89,16 +86,14 @@ namespace bramkominatorMobile.Services
                     break;
                 }
 
-                ExploreNeighbours(r, c, visited, visitedElements, prevX, prevY);
+                ExploreNeighbours(r, c, visited, prevX, prevY);
 
                 nodesLeftInLayer--;
-                visitedElements++;
 
                 if (nodesLeftInLayer == 0)
                 {
                     nodesLeftInLayer = nodesInNextLayer;
                     nodesInNextLayer = 0;
-                    moveCount++;
                 }
             }
 
@@ -108,7 +103,7 @@ namespace bramkominatorMobile.Services
             return new List<Position>();
         }
 
-        private void ExploreNeighbours(int r, int c, bool[,] visited, int visitedElements, int[,] prevX, int[,] prevY)
+        private void ExploreNeighbours(int r, int c, bool[,] visited, int[,] prevX, int[,] prevY)
         {
             for (int i=0; i<4; i++)
             {
