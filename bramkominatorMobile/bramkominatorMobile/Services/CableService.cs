@@ -82,7 +82,7 @@ namespace bramkominatorMobile.Services
                 int r = rq.Dequeue();
                 int c = cq.Dequeue();
 
-                position.Set(r, c);
+                position.Set(c, r);
                 if (position == _target.GetPosition())
                 {
                     isFound = true;
@@ -153,8 +153,8 @@ namespace bramkominatorMobile.Services
             {
                 path.Add(new Position(curX, curY));
 
-                tempX = prevX[curX, curY];
-                tempY = prevY[curX, curY];
+                tempX = prevX[curY, curX];
+                tempY = prevY[curY, curX];
 
                 curX = tempX;
                 curY = tempY;

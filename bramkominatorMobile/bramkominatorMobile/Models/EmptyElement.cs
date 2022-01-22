@@ -27,7 +27,7 @@
             Image = "emptyElement.png";
         }
 
-        public EmptyElement(int row, int column)
+        public EmptyElement(int column, int row)
         {
             Position = new Position(column, row);
             Image = "emptyElement.png";

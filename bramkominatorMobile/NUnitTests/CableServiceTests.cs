@@ -54,8 +54,8 @@ namespace NUnitTests
 
             var first = path[0];
 
-            Assert.AreEqual(0, first.Column);
-            Assert.AreEqual(1, first.Row);
+            Assert.AreEqual(1, first.Column);
+            Assert.AreEqual(0, first.Row);
 
             path = service.FindPath(matrix[0, 0], matrix[2, 0]);
 

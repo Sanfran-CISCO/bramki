@@ -56,11 +56,11 @@ namespace bramkominatorMobile.Views
                 }
             }
 
-            var start = new Position(0, 1);
-            var target = new Position(4, 3);
+            var start = new Position(0, 2);
+            var target = new Position(3, 2);
 
             _matrix[start.Row, start.Column] = new LogicGateway(GatewayType.Xnor, position: start);
-            _matrix[target.Column, target.Row] = new LogicGateway(GatewayType.Xnor, position: target);
+            _matrix[target.Row, target.Column] = new LogicGateway(GatewayType.Xnor, position: target);
 
             BoardGrid.Children.Add(new Image { Source = "xnor.png" }, start.Column, start.Row);
             BoardGrid.Children.Add(new Image { Source = "xnor.png" }, target.Column, target.Row);
@@ -80,7 +80,7 @@ namespace bramkominatorMobile.Views
 
                 for (int i = 0; i < path.Count-1; i++)
                 {
-                    BoardGrid.Children.Add(new Frame { BackgroundColor = Color.Orange }, path[i].Column, path[i].Row);
+                    //BoardGrid.Children.Add(new Frame { BackgroundColor = Color.Orange }, path[i].Column, path[i].Row);
                     BoardGrid.Children.Add(new SvgCachedImage { Source = cable.GetImage(i) }, path[i].Column, path[i].Row);
                 }
             }
