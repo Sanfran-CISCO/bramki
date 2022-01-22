@@ -12,8 +12,6 @@ namespace NUnitTests
         [Test]
         public void CreateCableServiceInstanceTest()
         {
-            var gate = new LogicGateway(GatewayType.And, true, true);
-
             CircutElement[,] matrix = {
                 {new LogicGateway(GatewayType.And), new EmptyElement(1,0), new EmptyElement(2,0) },
                 {new EmptyElement(0,1), new InputElement("in1", position:new Position(1,1)), new EmptyElement(2,1) },
@@ -21,6 +19,8 @@ namespace NUnitTests
             };
 
             CableService service = new CableService(matrix, 3, 3);
+
+            Assert.AreEqual(typeof(CableService), service.GetType());
 
             var actual = matrix[1, 1].GetType();
             var expected = typeof(InputElement);
@@ -31,9 +31,6 @@ namespace NUnitTests
         [Test]
         public void FindPathTest()
         {
-            var gate = new LogicGateway(GatewayType.And, true, true);
-            var emptyElement = new EmptyElement(1, 0);
-
             CircutElement[,] matrix = {
                 {new LogicGateway(GatewayType.And), new EmptyElement(1,0), new EmptyElement(2,0) },
                 {new EmptyElement(0,1), new InputElement("in1", position:new Position(1,1)), new EmptyElement(2,1) },
@@ -42,12 +39,7 @@ namespace NUnitTests
 
             CableService service = new CableService(matrix, 3, 3);
 
-            var actual = matrix[1, 1].GetType();
-            var expected = typeof(InputElement);
-
-            Assert.AreEqual(expected, actual);
-
-            List<Position> path = service.FindPath(matrix[0,0], matrix[0,1]);
+            var path = service.FindPath(matrix[0,0], matrix[0,1]);
 
             Assert.AreEqual(typeof(List<Position>), path.GetType());
             Assert.AreEqual(1, path.Count);
@@ -77,7 +69,6 @@ namespace NUnitTests
             var path = service.FindPath(matrix[2, 2], matrix[0, 0]);
 
             var expected = new Position(0, 0);
-
             var actual = path.ElementAt(path.Count()-1);
 
             Assert.AreEqual(expected, actual);
