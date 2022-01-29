@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Xamarin.Forms;
 using bramkominatorMobile.Services;
 using SQLite;
 
@@ -12,20 +10,20 @@ namespace bramkominatorMobile.Models
         public int Id { get; set; }
 
         private LogicCircut circut;
-        public Position Position;
 
         public string Name { get; set; }
         public GatewayType Type { get; set; }
         public string Image { get; set; }
+        public Color Color { get; set; }
 
         public bool InputA { get; set; }
         public bool InputB { get; set; }
         public bool Output { get => GetOutput(); }
 
 
-        public LogicGateway() { }
+        public LogicGateway() : base() { }
 
-        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null, Position position=null)
+        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null, Position position=null) : base()
         {
             Type = type;
 
@@ -54,7 +52,7 @@ namespace bramkominatorMobile.Models
                 Position = new Position(position.Column, position.Row);
         }
 
-        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="", Position position=null)
+        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="", Position position=null) : base()
         {
             Type = type;
             InputA = inputA;
@@ -140,11 +138,6 @@ namespace bramkominatorMobile.Models
                     break;
             }
             return output;
-        }
-
-        public override Position GetPosition()
-        {
-            return Position;
         }
     }
 }

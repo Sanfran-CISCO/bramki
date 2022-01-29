@@ -5,10 +5,9 @@
         public LogicGateway ConnectedGate { get; private set; }
         public bool Input { get => ConnectedGate.Output; }
         public string Name { get; set; }
-        public Position Position { get; set; }
         public string Image { get; private set; }
 
-        public OutputElement()
+        public OutputElement() : base()
         {
             Name = "DefaultOutput";
             Position = new Position();
@@ -16,7 +15,7 @@
             ConnectedGate = null;
         }
 
-        public OutputElement(string name, LogicGateway gate=null, Position position=null)
+        public OutputElement(string name, LogicGateway gate=null, Position position=null) : base()
         {
             if (name != null)
                 Name = name;
@@ -61,11 +60,6 @@
         public bool IsConnected()
         {
             return ConnectedGate != null;
-        }
-
-        public override Position GetPosition()
-        {
-            return Position;
         }
     }
 }

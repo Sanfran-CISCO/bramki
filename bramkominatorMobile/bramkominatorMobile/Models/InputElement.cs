@@ -6,9 +6,8 @@
 
         public string Name { get; set; }
         public string Image { get; private set; }
-        public Position Position;
 
-        public InputElement()
+        public InputElement() : base()
         {
             Name = "DefaultInput";
             Output = false;
@@ -16,7 +15,7 @@
             Position = new Position();
         }
 
-        public InputElement(string name, bool input = false, LogicGateway gate=null, int inputNumber=0, Position position=null)
+        public InputElement(string name, bool input = false, LogicGateway gate=null, int inputNumber=0, Position position=null) : base()
         {
             if (name != null)
                 Name = name;
@@ -76,11 +75,6 @@
             }
 
             return isConnected;
-        }
-
-        public override Position GetPosition()
-        {
-            return Position;
         }
     }
 }

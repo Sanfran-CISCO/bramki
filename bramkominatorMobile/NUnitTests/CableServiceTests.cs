@@ -18,7 +18,7 @@ namespace NUnitTests
                 {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
             };
 
-            CableService service = new CableService(matrix, 3, 3);
+            CableService service = new CableService(ref matrix, 3, 3);
 
             Assert.AreEqual(typeof(CableService), service.GetType());
 
@@ -37,7 +37,7 @@ namespace NUnitTests
                 {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
             };
 
-            CableService service = new CableService(matrix, 3, 3);
+            CableService service = new CableService(ref matrix, 3, 3);
 
             var path = service.FindPath(matrix[0,0], matrix[0,1]);
 
@@ -64,7 +64,7 @@ namespace NUnitTests
                 {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
             };
 
-            CableService service = new CableService(matrix, 3, 3);
+            CableService service = new CableService(ref matrix, 3, 3);
 
             var path = service.FindPath(matrix[2, 2], matrix[0, 0]);
 

@@ -27,7 +27,7 @@ namespace bramkominatorMobile.Services
         {
         }
 
-        public CableService(CircutElement[,] matrix, int r, int c)
+        public CableService(ref CircutElement[,] matrix, int r, int c)
         {
             if (matrix != null)
                 _matrix = matrix;

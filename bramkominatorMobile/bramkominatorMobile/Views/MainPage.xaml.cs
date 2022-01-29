@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using bramkominatorMobile.Models;
 using bramkominatorMobile.Services;
@@ -6,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FFImageLoading.Svg;
 using FFImageLoading.Svg.Forms;
+using System.Linq;
 
 namespace bramkominatorMobile.Views
 {
@@ -19,17 +21,20 @@ namespace bramkominatorMobile.Views
 
         private CableService _service;
 
-        public Frame MyFrame { get; set; }
+        private LogicCircut _circut;
 
         public MainPage()
         {
             InitializeComponent();
+            CircutElement.InitFrameManager(ref _matrix);
 
             R = C = 10;
 
             _matrix = new CircutElement[R, C];
+            _service = new CableService(ref _matrix, R, C);
+            _circut = new LogicCircut();
 
-            _service = new CableService(_matrix, R, C);
+            
 
             for (int row=0; row<R; row++)
             {
@@ -41,7 +46,9 @@ namespace bramkominatorMobile.Views
                     {
                         BackgroundColor = Color.Transparent,
                         BorderColor = Color.DarkGray,
-                        Margin = -3
+                        Margin = -3,
+                        WidthRequest = 100,
+                        HeightRequest = 100
                     };
 
                     var dropRecognizer = new DropGestureRecognizer();
@@ -52,6 +59,8 @@ namespace bramkominatorMobile.Views
 
                     frame.GestureRecognizers.Add(dropRecognizer);
 
+                    Grid.SetColumn(frame, column);
+                    Grid.SetRow(frame, row);
                     BoardGrid.Children.Add(frame, column, row);
                 }
             }
@@ -62,14 +71,27 @@ namespace bramkominatorMobile.Views
             _matrix[start.Row, start.Column] = new LogicGateway(GatewayType.Xnor, position: start);
             _matrix[target.Row, target.Column] = new LogicGateway(GatewayType.Xnor, position: target);
 
-            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, start.Column, start.Row);
-            BoardGrid.Children.Add(new Image { Source = "xnor.png" }, target.Column, target.Row);
+            BoardGrid.Children.Add(_matrix[start.Row, start.Column].GetFrame(), start.Column, start.Row);
+            BoardGrid.Children.Add(_matrix[target.Row, target.Column].GetFrame(), target.Column, target.Row);
 
-            _matrix[0, 2] = new LogicGateway(GatewayType.Not, position: new Position(2, 0));
-            _matrix[0, 3] = new LogicGateway(GatewayType.Not, position: new Position(3, 0));
-            BoardGrid.Children.Add(new Image { Source = "not.png" }, 2, 0);
-            BoardGrid.Children.Add(new Image { Source = "not.png" }, 3, 0);
+            InputElement input = new InputElement("input1", input: true,
+                gate: _matrix[start.Row, start.Column] as LogicGateway, inputNumber: 1,
+                new Position(0, 1));
 
+            (_matrix[start.Row, start.Column] as LogicGateway).InputB = true;
+
+            _circut.Connect(_matrix[start.Row, start.Column] as LogicGateway, _matrix[target.Row, target.Column] as LogicGateway, 1);
+
+            ConnectElements(start, target);
+
+            //var gridFrame = BoardGrid.Children.FirstOrDefault(x => Grid.GetColumn(x) == start.Column && Grid.GetRow(x) == start.Row);
+            //gridFrame.BackgroundColor = Color.Yellow;
+        }
+
+        
+
+        private void ConnectElements(Position start, Position target)
+        {
             var path = _service.FindPath(_matrix[start.Row, start.Column], _matrix[target.Row, target.Column]);
 
             if (path.Count == 0)
@@ -78,11 +100,11 @@ namespace bramkominatorMobile.Views
             {
                 var cable = new Cable(path, start, target);
 
-                for (int i = 0; i < path.Count-1; i++)
+                for (int i = 0; i < path.Count - 1; i++)
                 {
-                    //BoardGrid.Children.Add(new Frame { BackgroundColor = Color.Orange }, path[i].Column, path[i].Row);
                     BoardGrid.Children.Add(
-                        new SvgCachedImage {
+                        new SvgCachedImage
+                        {
                             Source = cable.GetImage(i),
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             HorizontalOptions = LayoutOptions.FillAndExpand
@@ -92,72 +114,29 @@ namespace bramkominatorMobile.Views
             }
         }
 
-        void DragStarting(Object sender, DragStartingEventArgs e)
+        private void Drop(Object sender, DropEventArgs e)
         {
-            var boxview = (sender as Element).Parent as BoxView;
-            e.Data.Properties.Add("BoxView", boxview);
-            MyFrame = (sender as Element).Parent.Parent as Frame;
-        }
-
-        void Drop(Object sender, DropEventArgs e)
-        {
-            var box = e.Data.Properties["BoxView"] as BoxView;
+            var image = e.Data.Properties["Gate"] as Image;
             var frame = (sender as Element).Parent as Frame;
-            frame.Content = box;
-        }
+            frame.Padding = 0;
+            frame.Content = image;
 
-        void DropCompleted(Object sender, DropCompletedEventArgs e)
-        {
-            MyFrame.Content = new BoxView
-            {
-                WidthRequest=50,
-                HeightRequest=50,
-                BackgroundColor=Color.Transparent
-            };
+            var newRow = Grid.GetRow(frame);
+            var newCol = Grid.GetColumn(frame);
 
-            Random rnd = new Random();
+            _matrix[newRow, newCol] = _matrix[0, 0];
+            _matrix[0, 0] = new EmptyElement(0, 0);
+            _matrix[newRow, newCol].Position.Set(newCol, newRow);
 
-            var box = new BoxView
-            {
-                WidthRequest = 50,
-                HeightRequest = 50,
-                //BackgroundColor = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
-                Style = (Style) Application.Current.Resources["Box"]
-            };
-
-            var dragRecognizer = new DragGestureRecognizer();
-            dragRecognizer.CanDrag = true;
-            dragRecognizer.DragStarting += (s, p) =>
-            {
-                DragStarting(s, p);
-            };
-            dragRecognizer.DropCompleted += (s, p) =>
-            {
-                DropCompleted(s, p);
-            };
-
-            box.GestureRecognizers.Add(dragRecognizer);
-
-            BasicFrame.Content = box;
-        }
-
-        void DropCompletedBasic(System.Object sender, Xamarin.Forms.DropCompletedEventArgs e)
-        {
-            MyFrame.Content = new BoxView
-            {
-                WidthRequest = 50,
-                HeightRequest = 50,
-                BackgroundColor = Color.Transparent
-            };
-
-            Random random = new Random();
-
-            BasicFrame.Content = new BoxView
-            {
-                WidthRequest = 50,
-                HeightRequest = 50,
-                BackgroundColor = Color.HotPink
-            };
+            //Debug.WriteLine("<--------------->");
+            //Debug.WriteLine($"\tDROP --> Image: {e.Data.Properties["Gate"]}");
+            //Debug.WriteLine($"\tDROP --> Sender Parent: {(sender as Element).Parent}");
+            //Debug.WriteLine($"\t{image.Width}, {image.Height}");
+            //Debug.WriteLine($"\tmatrix[0,0] --> {_matrix[0, 0]}");
+            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}] --> {_matrix[newRow, newCol]}");
+            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}].X --> {_matrix[newRow, newCol].Position.Column}");
+            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}].Y --> {_matrix[newRow, newCol].Position.Row}");
+            //Debug.WriteLine("<--------------->");
         }
     }
 }
