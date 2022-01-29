@@ -6,12 +6,12 @@ namespace bramkominatorMobile.Models
 {
     public class CircutElement
     {
-        class FrameManager
+        class DragHandler
         {
             private CircutElement[,] _matrix;
             public Frame Frame { get; set; }
 
-            public FrameManager(ref CircutElement[,] matrix)
+            public DragHandler(ref CircutElement[,] matrix)
             {
                 _matrix = matrix;
                 Frame = GenerateFrame(GetRecognizer());
@@ -58,12 +58,6 @@ namespace bramkominatorMobile.Models
                 var image = (sender as Element).Parent as Image;
                 e.Data.Properties.Add("Gate", image);
                 Frame = image.Parent as Frame;
-
-                //Debug.WriteLine("<--------------->");
-                //Debug.WriteLine($"\tDRAG-START --> Frame Content: {Frame.Content}");
-                //Debug.WriteLine($"\tDRAG-START --> Sender Parent: {(sender as Element).Parent}");
-                //Debug.WriteLine($"\tDRAG-START --> Sender Grandparent: {image.Parent}");
-                //Debug.WriteLine("<--------------->");
             }
 
             void DropCompleted(Object sender, DropCompletedEventArgs e)
@@ -76,27 +70,22 @@ namespace bramkominatorMobile.Models
                 };
 
                 //ConnectElements();
-
-                //Debug.WriteLine("<--------------->");
-                //Debug.WriteLine($"\tDROP-COMP --> Frame Content: {Frame.Content}");
-                //Debug.WriteLine($"\tDROP-COMP --> Frame Content: {Frame.Content.Width}, {Frame.Content.Height}");
-                //Debug.WriteLine("<--------------->");
             }
         }
 
         private static CircutElement[,] _matrix;
-        private FrameManager _frameManager;
+        private DragHandler _dragHandler;
 
         public Position Position { get; set; }
 
         protected CircutElement()
         {
-            _frameManager = new FrameManager(ref _matrix);
+            _dragHandler = new DragHandler(ref _matrix);
         }
 
         public Frame GetFrame()
         {
-            return _frameManager.Frame;
+            return _dragHandler.Frame;
         }
 
         public virtual Position GetPosition()

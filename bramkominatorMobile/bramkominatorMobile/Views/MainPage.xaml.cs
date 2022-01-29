@@ -74,11 +74,11 @@ namespace bramkominatorMobile.Views
             BoardGrid.Children.Add(_matrix[start.Row, start.Column].GetFrame(), start.Column, start.Row);
             BoardGrid.Children.Add(_matrix[target.Row, target.Column].GetFrame(), target.Column, target.Row);
 
-            InputElement input = new InputElement("input1", input: true,
-                gate: _matrix[start.Row, start.Column] as LogicGateway, inputNumber: 1,
-                new Position(0, 1));
+            //InputElement input = new InputElement("input1", input: true,
+            //    gate: _matrix[start.Row, start.Column] as LogicGateway, inputNumber: 1,
+            //    new Position(0, 1));
 
-            (_matrix[start.Row, start.Column] as LogicGateway).InputB = true;
+            //(_matrix[start.Row, start.Column] as LogicGateway).InputB = true;
 
             _circut.Connect(_matrix[start.Row, start.Column] as LogicGateway, _matrix[target.Row, target.Column] as LogicGateway, 1);
 
