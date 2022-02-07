@@ -12,7 +12,7 @@ namespace bramkominatorMobile.ViewModels
         public HomePageViewModel()
         {
             Title = "Bramkominator";
-            Gateway = new LogicGateway(GatewayType.Or, true, false);
+            Gateway = new LogicGateway(GatewayType.Or, new Position());
         }
     }
 }

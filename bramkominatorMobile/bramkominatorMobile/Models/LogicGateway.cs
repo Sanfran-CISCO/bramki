@@ -11,19 +11,54 @@ namespace bramkominatorMobile.Models
 
         private LogicCircut circut;
 
-        public string Name { get; set; }
         public GatewayType Type { get; set; }
         public string Image { get; set; }
         public Color Color { get; set; }
 
-        public bool InputA { get; set; }
-        public bool InputB { get; set; }
-        public bool Output { get => GetOutput(); }
+        public override bool InputA {
+            get {
+                if (Type == GatewayType.Custom)
+                {
+                    if (circut.InputNode.Content is null)
+                        return false;
+                    else
+                        return circut.InputNode.Content.InputA;
+                }
+                else
+                {
+                    if (Node.Left.Content is null)
+                        return false;
+                    else
+                        return Node.Left.Content.Output;
+                }
+            }
+        }
+
+        public override bool InputB {
+            get {
+                if (Type == GatewayType.Custom)
+                {
+                    if (circut.InputNode.Content is null)
+                        return false;
+                    else
+                        return circut.InputNode.Content.InputB;
+                }
+                else
+                {
+                    if (Node.Right.Content is null)
+                        return false;
+                    else
+                        return Node.Right.Content.Output;
+                }
+            }
+        }
+
+        public override bool Output { get => GetOutput(); }
 
 
         public LogicGateway() : base() { }
 
-        public LogicGateway(GatewayType type, string name="", LogicCircut circut=null, Position position=null) : base()
+        public LogicGateway(GatewayType type, Position position, string name="", LogicCircut circut=null) : base()
         {
             Type = type;
 
@@ -36,43 +71,24 @@ namespace bramkominatorMobile.Models
                 Name = name;
             }
 
-            if (type == GatewayType.Custom && circut != null)
-            {
-                InputA = circut.InputNode.Gateway.InputA;
-                InputB = circut.InputNode.Gateway.InputB;
+            if (circut != null)
                 this.circut = circut;
-            }
 
 
             SetImage();
 
-            if (position is null)
-                Position = new Position();
-            else
-                Position = new Position(position.Column, position.Row);
+            Position = new Position(position.Column, position.Row);
         }
 
-        public LogicGateway(GatewayType type, bool inputA, bool inputB, string name="", Position position=null) : base()
+        public LogicGateway(GatewayType type, Position position) : base()
         {
             Type = type;
-            InputA = inputA;
-            InputB = inputB;
 
-            if (name == "")
-            {
-                Name = type.ToString();
-            }
-            else
-            {
-                Name = name;
-            }
+            Name = type.ToString();
 
             SetImage();
 
-            if (position is null)
-                Position = new Position();
-            else
-                Position = new Position(position.Column, position.Row);
+            Position = new Position(position.Column, position.Row);
         }
 
         private void SetImage()
@@ -134,7 +150,7 @@ namespace bramkominatorMobile.Models
                     output = InputA != InputB;
                     break;
                 case GatewayType.Custom:
-                    output = circut.Parent.Gateway.Output;
+                    output = circut.Parent.Content.Output;
                     break;
             }
             return output;

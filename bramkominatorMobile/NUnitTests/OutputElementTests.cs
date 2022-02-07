@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using bramkominatorMobile.Models;
+using bramkominatorMobile.Services;
+using bramkominatorMobile.Exceptions;
 
 namespace NUnitTests
 {
@@ -9,9 +11,8 @@ namespace NUnitTests
         [Test]
         public void CreateOutputElementDefaultConstructorTest()
         {
-            var output = new OutputElement();
+            var output = new OutputElement(new Position());
 
-            Assert.AreEqual("DefaultOutput", output.Name);
             Assert.AreEqual(new Position(), output.Position);
             Assert.AreEqual("outputOff.png", output.Image);
         }
@@ -19,94 +20,107 @@ namespace NUnitTests
         [Test]
         public void CreateOutputElementTest()
         {
-            var name = "MyCustomOutput";
-            var gate = new LogicGateway(GatewayType.And, true, true);
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
+
+            var gate = new LogicGateway(GatewayType.And, new Position(1,1));
+
+            var circut = new LogicCircut();
+            circut.Connect(input1, gate, 1);
+            circut.Connect(input2, gate, 2);
+
             var position = new Position(4, 20);
 
-            var output = new OutputElement(name, gate: gate, position: position);
+            var output = new OutputElement(position);
+            circut.Connect(gate, output, 1);
 
-            Assert.AreEqual(name, output.Name);
-            Assert.AreEqual(gate.Type, output.ConnectedGate.Type);
-            Assert.AreEqual(gate.Output, output.ConnectedGate.Output);
-            Assert.AreEqual(gate.Output, output.Input);
+            Assert.AreEqual(gate.Output, output.Output);
             Assert.AreEqual(position, output.Position);
-        }
-
-        [Test]
-        public void CreateOutputElementWithInvalidGatewayTest()
-        {
-            var name = "test";
-
-            var output = new OutputElement(name, gate: null);
-
-            Assert.AreEqual(name, output.Name);
-            Assert.AreEqual(null, output.ConnectedGate);
         }
 
         [Test]
         public void CreateOutputElementWithInvalidPositionTest()
         {
-            var name = "test";
-
-            var output = new OutputElement(name, position: null);
-
-            Assert.AreEqual(name, output.Name);
-            Assert.AreEqual(new Position(), output.Position);
+            try
+            {
+                var output = new OutputElement(null);
+            }
+            catch (BadElementInputException e)
+            {
+                string msg = "Position cannot be null!";
+                Assert.AreEqual(msg, e.Message);
+            }
         }
 
         [Test]
         public void ConnectGateToOutputTest()
         {
-            var gate = new LogicGateway(GatewayType.And, true, false);
+            var circut = new LogicCircut();
 
-            var output = new OutputElement("test");
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
 
-            var result = output.ConnectGate(gate);
+            var gate = new LogicGateway(GatewayType.And, new Position(1, 1));
+            var output = new OutputElement(new Position(2, 1));
 
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(gate.Type, output.ConnectedGate.Type);
-            Assert.AreEqual(gate.Output, output.ConnectedGate.Output);
-            Assert.AreEqual(gate.Output, output.Input);
+            circut.Connect(input1, gate, 1);
+            circut.Connect(input2, gate, 2);
+            circut.Connect(gate, output, 1);
+
+            Assert.AreEqual(gate.Type, (output.Node.Left.Content as LogicGateway).Type);
+            Assert.AreEqual(gate.Output, output.Output);
         }
 
         [Test]
         public void IsConnectedTest()
         {
-            var gate = new LogicGateway(GatewayType.And, true, false);
 
-            var output = new OutputElement("test");
+            var circut = new LogicCircut();
 
-            var result = output.ConnectGate(gate);
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
 
-            Assert.AreEqual(true, result);
+            var gate = new LogicGateway(GatewayType.And, new Position(1, 1));
+            var output = new OutputElement(new Position(2, 1));
 
-            var isConnected = output.IsConnected();
+            circut.Connect(input1, gate, 1);
+            circut.Connect(input2, gate, 2);
+            circut.Connect(gate, output, 1);
 
-            Assert.AreEqual(true, isConnected);
-            Assert.AreEqual(gate, output.ConnectedGate);
+            var actual = circut.IsConnected(output);
+
+            Assert.AreEqual(true, actual);
         }
 
         [Test]
         public void DisconnectOutputTest()
         {
-            var gate = new LogicGateway(GatewayType.And, true, false);
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0,1));
 
-            var output = new OutputElement("test");
+            var gate = new LogicGateway(GatewayType.And, new Position(1,1));
 
-            var result = output.ConnectGate(gate);
+            var output = new OutputElement(new Position(3, 3));
+
+            var circut = new LogicCircut();
+
+            circut.Connect(input1, gate, 1);
+            circut.Connect(input2, gate, 2);
+            circut.Connect(gate, output, 1);
+
+            var result = output.Output;
 
             Assert.AreEqual(true, result);
 
-            var isConnected = output.IsConnected();
+            var isConnected = circut.IsConnected(output);
 
             Assert.AreEqual(true, isConnected);
 
-            output.Disconnect();
-
-            isConnected = output.IsConnected();
+            var isDisconnected = circut.Disconnect(output, "left");
+            isConnected = circut.IsConnected(output);
 
             Assert.AreEqual(false, isConnected);
-            Assert.AreEqual(null, output.ConnectedGate);
+            Assert.AreEqual(true, isDisconnected);
         }
     }
 }

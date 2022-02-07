@@ -26,7 +26,7 @@ namespace bramkominatorMobile.Views
         public MainPage()
         {
             InitializeComponent();
-            CircutElement.InitFrameManager(ref _matrix);
+            CircutElement.InitDragHandler(ref _matrix);
 
             R = C = 10;
 
@@ -80,7 +80,7 @@ namespace bramkominatorMobile.Views
 
             //(_matrix[start.Row, start.Column] as LogicGateway).InputB = true;
 
-            _circut.Connect(_matrix[start.Row, start.Column] as LogicGateway, _matrix[target.Row, target.Column] as LogicGateway, 1);
+            _circut.Connect(_matrix[start.Row, start.Column], _matrix[target.Row, target.Column], 1);
 
             ConnectElements(start, target);
 

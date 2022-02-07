@@ -31,13 +31,13 @@ namespace bramkominatorMobile.Services
 
             List<LogicGateway> basicGates = new List<LogicGateway>
             {
-                new LogicGateway(GatewayType.Not, "Not"),
-                new LogicGateway(GatewayType.And, "And"),
-                new LogicGateway(GatewayType.Or, "Or"),
-                new LogicGateway(GatewayType.Nor, "Nor"),
-                new LogicGateway(GatewayType.Xor, "Xor"),
-                new LogicGateway(GatewayType.Xnor, "Xnor"),
-                new LogicGateway(GatewayType.Nand, "Nand"),
+                new LogicGateway(GatewayType.Not, new Position()),
+                new LogicGateway(GatewayType.And, new Position()),
+                new LogicGateway(GatewayType.Or, new Position()),
+                new LogicGateway(GatewayType.Nor, new Position()),
+                new LogicGateway(GatewayType.Xor, new Position()),
+                new LogicGateway(GatewayType.Xnor, new Position()),
+                new LogicGateway(GatewayType.Nand, new Position()),
             };
 
             foreach (LogicGateway gate in basicGates)

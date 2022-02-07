@@ -5,9 +5,9 @@ namespace bramkominatorMobile.Services
 {
     public interface ILogicCircut : IEnumerable<Node>
     {
-        void Connect(LogicGateway from, LogicGateway to, int inputNumber);
-        bool Disconnect(LogicGateway gate, string direction);
-        bool Remove(LogicGateway gate);
-        bool IsConnected(LogicGateway gate);
+        void Connect(CircutElement from, CircutElement to, int inputNumber);
+        bool Disconnect(CircutElement gate, string direction);
+        bool Remove(CircutElement gate);
+        bool IsConnected(CircutElement gate);
     }
 }

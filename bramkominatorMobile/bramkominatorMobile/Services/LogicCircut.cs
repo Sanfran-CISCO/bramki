@@ -21,13 +21,10 @@ namespace bramkominatorMobile.Services
         public int Size { get; private set; }
 
         public LogicCircut()
-        {}
+        { }
 
-        public void Connect(LogicGateway from, LogicGateway to, int inputNumber)
+        public void Connect(CircutElement from, CircutElement to, int inputNumber)
         {
-            Node fromNode = new Node(from);
-            Node toNode = new Node(to);
-
             if (parent == null)
             {
                 SetParent(to);
@@ -35,48 +32,44 @@ namespace bramkominatorMobile.Services
 
             if (inputNode == null)
             {
-                inputNode = fromNode;
+                inputNode = from.Node;
             }
 
-            if (parent.Gateway.Type == to.Type && parent.Gateway.Position == to.Position)
+            if (parent.Content.GetType() == to.GetType() && parent.Content.Position == to.Position)
             {
-                toNode = parent;
+               to.Node = parent;
             }
 
-            DisconnectFromCurrentNextGate(fromNode);
+            DisconnectFromCurrentNextGate(from.Node);
 
             switch(inputNumber)
             {
                 case 1:
-                    fromNode.Next = toNode;
-                    toNode.Left = fromNode;
-                    toNode.Gateway.InputA = fromNode.Gateway.Output;
+                    to.Node.Left = from.Node;
+                    from.Node.Next = to.Node;
                     break;
 
                 case 2:
-                    fromNode.Next = toNode;
-                    toNode.Right = fromNode;
-                    toNode.Gateway.InputB = fromNode.Gateway.Output;
+                    to.Node.Right = from.Node;
+                    from.Node.Next = to.Node;
                     break;
 
                 default:
-                throw new BadGatewayInputException("Bad gateway input selected!");
+                throw new BadElementInputException("Bad element input selected!");
             }
 
             Size++;
 
-            if (toNode.Left == parent.Next || toNode.Right == parent.Next)
-                parent = toNode;
+            if (from.Node == parent)
+                SetParent(to);
         }
 
-        private void SetParent(LogicGateway gateway)
+        private void SetParent(CircutElement element)
         {
-            Node newNode = new Node(gateway);
-
             if (parent == null)
                 Size++;
 
-            parent = newNode;
+            parent = element.Node;
         }
 
         private void DisconnectFromCurrentNextGate(Node fromNode)
@@ -92,105 +85,71 @@ namespace bramkominatorMobile.Services
                     fromNode.Next.Right = null;
                 }
             }
+            fromNode.Next = null;
         }
 
-        public bool Disconnect(LogicGateway gate, string direction)
+        public bool Disconnect(CircutElement element, string direction)
         {
-            Node node = FindNode(parent, gate);
-
-            if (node is null)
+            if (element.Node is null)
                 return false;
-
-            switch(direction.ToLower())
-            {
-                case "next":
-                    DisconnectFromCurrentNextGate(node);
-                    break;
-
-                case "left":
-                    if (node.Left != null)
-                    {
-                        if (node.Left == inputNode)
-                        {
-                            if (node.Right != null)
-                                inputNode = node.Right;
-                            else
-                                inputNode = node;
-                        }
-
-                        node.Left.Next = null;
-                        node.Left = null;
-                    }
-                    break;
-
-                case "right":
-                    if (node.Right != null)
-                    {
-                        if (node.Right == inputNode)
-                        {
-                            if (node.Left != null)
-                                inputNode = node.Left;
-                            else
-                                inputNode = node;
-                        }
-
-                        node.Right.Next = null;
-                        node.Right = null;
-                    }
-                    break;
-            }
-
-            return true;
-        }
-
-        private Node FindNode(Node node, LogicGateway gate)
-        {
-            if (node.Left is null && node.Right is null)
-            {
-                return node;
-            }
 
             else
             {
-                Node root = node;
-
-                if (root.Gateway.Type == gate.Type && root.Gateway.Position == gate.Position)
+                switch (direction.ToLower())
                 {
-                    return root;
-                }
-                else
-                {
-                    root = FindNode(root.Left, gate);
-                    if (root is null)
-                    {
-                        root = FindNode(root.Right, gate);
-                    }
-                    else
-                    {
-                        return root;
-                    }
+                    case "next":
+                        DisconnectFromCurrentNextGate(element.Node);
+                        break;
+
+                    case "left":
+                        if (element.Node.Left != null)
+                        {
+                            if (element.Node.Left == inputNode)
+                            {
+                                if (element.Node.Right != null)
+                                    inputNode = element.Node.Right;
+                                else
+                                    inputNode = element.Node;
+                            }
+                            element.Node.Left.Next = null;
+                            element.Node.Left = null;
+                        }
+                        break;
+
+                    case "right":
+                        if (element.Node.Right != null)
+                        {
+                            if (element.Node.Right == inputNode)
+                            {
+                                if (element.Node.Left != null)
+                                    inputNode = element.Node.Left;
+                                else
+                                    inputNode = element.Node;
+                            }
+                            element.Node.Right.Next = null;
+                            element.Node.Right = null;
+                        }
+                        break;
                 }
 
-                return null;
+                return true;
             }
         }
 
-        public bool Remove(LogicGateway gate)
+        public bool Remove(CircutElement element)
         {
-            Node node = FindNode(parent, gate);
-
-            if (node == inputNode)
+            if (element.Position == inputNode.Content.Position)
             {
-                inputNode = node.Next;
+                inputNode = element.Node.Next;
             }
 
-            if (node is null)
+            if (element.Node is null)
             {
                 return false;
             }
-            else if (Disconnect(gate, "next") && Disconnect(gate, "left") && Disconnect(gate, "right"))
+            else if (Disconnect(element, "next") && Disconnect(element, "left") && Disconnect(element, "right"))
             {
-                node = null;
+                element.Node = null;
                 Size--;
                 return true;
             }
@@ -198,14 +157,12 @@ namespace bramkominatorMobile.Services
             return false;
         }
 
-        public bool IsConnected(LogicGateway gate)
+        public bool IsConnected(CircutElement element)
         {
-            Node node = FindNode(parent, gate);
+            if (element.Node is null)
+                throw new ElementNotFoundException();
 
-            if (node is null)
-                throw new GatewayNotFoundException();
-
-            if (node.Next != null || node.Left != null || node.Right != null)
+            if (element.Node.Next != null || element.Node.Left != null || element.Node.Right != null)
                 return true;
 
             return false;

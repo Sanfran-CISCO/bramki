@@ -76,11 +76,19 @@ namespace bramkominatorMobile.Models
         private static CircutElement[,] _matrix;
         private DragHandler _dragHandler;
 
+        public string Name { get; set; }
         public Position Position { get; set; }
+
+        public virtual bool Output { get; set; }
+        public virtual bool InputA { get; set; }
+        public virtual bool InputB { get; set; }
+        public virtual Node Node { get; set; }
 
         protected CircutElement()
         {
             _dragHandler = new DragHandler(ref _matrix);
+
+            Node = new Node(this);
         }
 
         public Frame GetFrame()
@@ -98,7 +106,7 @@ namespace bramkominatorMobile.Models
             Position.Set(col, row);
         }
 
-        public static void InitFrameManager(ref CircutElement[,] matrix)
+        public static void InitDragHandler(ref CircutElement[,] matrix)
         {
             _matrix = matrix;
         }

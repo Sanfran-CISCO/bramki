@@ -17,7 +17,15 @@ namespace NUnitTests
         {
             using (var mock = AutoMock.GetLoose())
             {
-                var gate = new LogicGateway(GatewayType.And, true, false, "MyTestAnd");
+                var circut = new LogicCircut();
+
+                var input1 = new InputElement(true, new Position());
+                var input2 = new InputElement(false, new Position(0, 1));
+
+                var gate = new LogicGateway(GatewayType.And, new Position(1,1), "MyTestAnd");
+
+                circut.Connect(input1, gate, 1);
+                circut.Connect(input2, gate, 2);
 
                 mock.Mock<IGatewaysDbService>()
                     .Setup(x => x.AddGateway(gate))
@@ -37,7 +45,15 @@ namespace NUnitTests
         {
             using (var mock = AutoMock.GetLoose())
             {
-                var gate = new LogicGateway(GatewayType.And, true, false, "MyTestAnd");
+                var circut = new LogicCircut();
+
+                var input1 = new InputElement(true, new Position());
+                var input2 = new InputElement(false, new Position(0, 1));
+
+                var gate = new LogicGateway(GatewayType.And, new Position(1, 1), "MyTestAnd");
+
+                circut.Connect(input1, gate, 1);
+                circut.Connect(input2, gate, 2);
 
                 mock.Mock<IGatewaysDbService>()
                     .Setup(x => x.RemoveGateway(gate))
@@ -125,22 +141,30 @@ namespace NUnitTests
         {
             LogicCircut circut = new LogicCircut();
 
-            LogicGateway and = new LogicGateway(GatewayType.And, "MyAnd");
-            LogicGateway or = new LogicGateway(GatewayType.Or, true, false, "MyOr");
-            LogicGateway not = new LogicGateway(GatewayType.Not, "MyNot");
-            LogicGateway xor = new LogicGateway(GatewayType.Xor, "MyXor");
-            LogicGateway nand = new LogicGateway(GatewayType.Nand, "MyNand");
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
+            var input3 = new InputElement(true, new Position(0, 2));
+            var input4 = new InputElement(false, new Position(0, 3));
+            var input5 = new InputElement(false, new Position(0, 4));
+            var input6 = new InputElement(true, new Position(0, 5));
+            var input7 = new InputElement(false, new Position(0, 6));
 
-            //true
-            and.InputA = true;
-            and.InputB = true;
+            LogicGateway and = new LogicGateway(GatewayType.And, new Position(0, 1), "MyAnd");
+            LogicGateway or = new LogicGateway(GatewayType.Or, new Position(0, 2), "MyOr");
+            LogicGateway not = new LogicGateway(GatewayType.Not, new Position(0, 3), "MyNot");
+            LogicGateway xor = new LogicGateway(GatewayType.Xor, new Position(0, 4), "MyXor");
+            LogicGateway nand = new LogicGateway(GatewayType.Nand, new Position(0, 5), "MyNand");
 
-            //true
-            nand.InputA = false;
-            nand.InputB = true;
+            circut.Connect(input1, and, 1);
+            circut.Connect(input2, and, 2);
 
-            //true
-            not.InputA = false;
+            circut.Connect(input3, or, 1);
+            circut.Connect(input4, or, 2);
+
+            circut.Connect(input5, nand, 1);
+            circut.Connect(input6, nand, 2);
+
+            circut.Connect(input7, not, 1);
 
             circut.Connect(nand, xor, 1);
             circut.Connect(not, xor, 2);
@@ -155,16 +179,16 @@ namespace NUnitTests
         {
             List<LogicGateway> basicGates = new List<LogicGateway>
             {
-                new LogicGateway(GatewayType.Not, "Not"),
-                new LogicGateway(GatewayType.And, "And"),
-                new LogicGateway(GatewayType.Or, "Or"),
-                new LogicGateway(GatewayType.Nor, "Nor"),
-                new LogicGateway(GatewayType.Xor, "Xor"),
-                new LogicGateway(GatewayType.Xnor, "Xnor"),
-                new LogicGateway(GatewayType.Nand, "Nand"),
-                new LogicGateway(GatewayType.Custom, "Custom1", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom2", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom3", CreateCircut())
+                new LogicGateway(GatewayType.Not, new Position(), "Not"),
+                new LogicGateway(GatewayType.And, new Position(0,1), "And"),
+                new LogicGateway(GatewayType.Or, new Position(0,2), "Or"),
+                new LogicGateway(GatewayType.Nor, new Position(0,3), "Nor"),
+                new LogicGateway(GatewayType.Xor, new Position(0,4), "Xor"),
+                new LogicGateway(GatewayType.Xnor, new Position(0,5), "Xnor"),
+                new LogicGateway(GatewayType.Nand, new Position(0,6), "Nand"),
+                new LogicGateway(GatewayType.Custom, new Position(0,7), "Custom1", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0,8), "Custom2", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0,9), "Custom3", CreateCircut())
             };
 
             await Task.Delay(1);
@@ -176,13 +200,13 @@ namespace NUnitTests
         {
             List<LogicGateway> basicGates = new List<LogicGateway>
             {
-                new LogicGateway(GatewayType.Not, "Not"),
-                new LogicGateway(GatewayType.And, "And"),
-                new LogicGateway(GatewayType.Or, "Or"),
-                new LogicGateway(GatewayType.Nor, "Nor"),
-                new LogicGateway(GatewayType.Xor, "Xor"),
-                new LogicGateway(GatewayType.Xnor, "Xnor"),
-                new LogicGateway(GatewayType.Nand, "Nand"),
+                new LogicGateway(GatewayType.Not, new Position(0, 1), "Not"),
+                new LogicGateway(GatewayType.And, new Position(0, 2), "And"),
+                new LogicGateway(GatewayType.Or, new Position(0, 3), "Or"),
+                new LogicGateway(GatewayType.Nor, new Position(0, 4), "Nor"),
+                new LogicGateway(GatewayType.Xor, new Position(0, 5), "Xor"),
+                new LogicGateway(GatewayType.Xnor, new Position(0, 6), "Xnor"),
+                new LogicGateway(GatewayType.Nand, new Position(0, 7), "Nand"),
             };
 
             await Task.Delay(1);
@@ -194,11 +218,11 @@ namespace NUnitTests
         {
             List<LogicGateway> customGates = new List<LogicGateway>
             {
-                new LogicGateway(GatewayType.Custom, "Custom1", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom2", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom3", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom4", CreateCircut()),
-                new LogicGateway(GatewayType.Custom, "Custom5", CreateCircut())
+                new LogicGateway(GatewayType.Custom, new Position(0, 1), "Custom1", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0, 2), "Custom2", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0, 3), "Custom3", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0, 4), "Custom4", CreateCircut()),
+                new LogicGateway(GatewayType.Custom, new Position(0, 5), "Custom5", CreateCircut())
             };
 
             await Task.Delay(1);

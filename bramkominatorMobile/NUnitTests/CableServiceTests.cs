@@ -13,9 +13,9 @@ namespace NUnitTests
         public void CreateCableServiceInstanceTest()
         {
             CircutElement[,] matrix = {
-                {new LogicGateway(GatewayType.And), new EmptyElement(1,0), new EmptyElement(2,0) },
-                {new EmptyElement(0,1), new InputElement("in1", position:new Position(1,1)), new EmptyElement(2,1) },
-                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
+                {new LogicGateway(GatewayType.And, new Position()), new EmptyElement(1,0), new EmptyElement(2,0) },
+                {new EmptyElement(0,1), new InputElement(true, new Position(1,1)), new EmptyElement(2,1) },
+                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement(true, new Position(2,2)) }
             };
 
             CableService service = new CableService(ref matrix, 3, 3);
@@ -32,9 +32,9 @@ namespace NUnitTests
         public void FindPathTest()
         {
             CircutElement[,] matrix = {
-                {new LogicGateway(GatewayType.And), new EmptyElement(1,0), new EmptyElement(2,0) },
-                {new EmptyElement(0,1), new InputElement("in1", position:new Position(1,1)), new EmptyElement(2,1) },
-                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
+                {new LogicGateway(GatewayType.And, new Position()), new EmptyElement(1,0), new EmptyElement(2,0) },
+                {new EmptyElement(0,1), new InputElement(true, new Position(1,1)), new EmptyElement(2,1) },
+                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement(true, new Position(2,2)) }
             };
 
             CableService service = new CableService(ref matrix, 3, 3);
@@ -59,9 +59,9 @@ namespace NUnitTests
         public void FindPathTest2()
         {
             CircutElement[,] matrix = {
-                {new LogicGateway(GatewayType.And), new EmptyElement(1,0), new EmptyElement(2,0) },
-                {new EmptyElement(0,1), new InputElement("in1", position:new Position(1,1)), new EmptyElement(2,1) },
-                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement("in2", position:new Position(2,2)) }
+                {new LogicGateway(GatewayType.And, new Position()), new EmptyElement(1,0), new EmptyElement(2,0) },
+                {new EmptyElement(0,1), new InputElement(true, new Position(1,1)), new EmptyElement(2,1) },
+                {new EmptyElement(0,2), new EmptyElement(1,2), new InputElement(true, new Position(2,2)) }
             };
 
             CableService service = new CableService(ref matrix, 3, 3);

@@ -3,8 +3,8 @@ namespace bramkominatorMobile.Models
 {
     public class Node
     {
-        private LogicGateway gateway;
-        public LogicGateway Gateway { get => gateway; set => gateway = value; }
+        private CircutElement content;
+        public CircutElement Content { get => content; set => content = value; }
 
         private Node next;
         public Node Next { get => next; set => next = value; }
@@ -15,9 +15,9 @@ namespace bramkominatorMobile.Models
         private Node right;
         public Node Right { get => right; set => right = value; }
 
-        public Node(LogicGateway gateway)
+        public Node(CircutElement element)
         {
-            Gateway = gateway;
+            Content = element;
         }
     }
 }

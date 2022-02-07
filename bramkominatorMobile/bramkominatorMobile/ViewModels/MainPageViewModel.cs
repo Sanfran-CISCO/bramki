@@ -33,19 +33,23 @@ namespace bramkominatorMobile.ViewModels
 
             StandardGateways = new ObservableRangeCollection<LogicGateway>
             {
-                new LogicGateway(GatewayType.And, true, false),
-                new LogicGateway(GatewayType.Or, true, false),
-                new LogicGateway(GatewayType.Xnor, true, false)
+                new LogicGateway(GatewayType.And, new Position()),
+                new LogicGateway(GatewayType.Or, new Position()),
+                new LogicGateway(GatewayType.Xnor, new Position()),
+                new LogicGateway(GatewayType.Not, new Position()),
+                new LogicGateway(GatewayType.Nor, new Position()),
+                new LogicGateway(GatewayType.Nand, new Position()),
+                new LogicGateway(GatewayType.Xor, new Position()),
             };
 
             CustomGateways = new ObservableRangeCollection<LogicGateway>
             {
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 0"),
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 1"),
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 2"),
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 3"),
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 4"),
-                new LogicGateway(GatewayType.Custom, true, false, "Moj 5")
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 0"),
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 1"),
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 2"),
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 3"),
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 4"),
+                new LogicGateway(GatewayType.Custom, new Position(), "Moj 5")
             };
 
             AddCustomGatewayCommand = new AsyncCommand(AddCustomGateway);

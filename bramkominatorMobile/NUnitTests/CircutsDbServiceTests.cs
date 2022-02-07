@@ -17,13 +17,16 @@ namespace NUnitTests
         {
             using (var mock = AutoMock.GetLoose())
             {
-                var not = new LogicGateway(GatewayType.Not);
-                not.InputA = false;
-
-                var and = new LogicGateway(GatewayType.And);
-                and.InputB = true;
-
                 var circut = new LogicCircut();
+
+                var not = new LogicGateway(GatewayType.Not, new Position(1,1));
+                var and = new LogicGateway(GatewayType.And, new Position(1,2));
+
+                var input1 = new InputElement(false, new Position());
+                var input2 = new InputElement(true, new Position(0, 1));
+
+                circut.Connect(input1, and, 1);
+                circut.Connect(input2, and, 2);
 
                 circut.Connect(and, not, 1);
 
@@ -44,14 +47,17 @@ namespace NUnitTests
         {
             using (var mock = AutoMock.GetLoose())
             {
-                var not = new LogicGateway(GatewayType.Not);
-                not.InputA = false;
-
-                var and = new LogicGateway(GatewayType.And);
-                and.InputB = true;
-
                 var circut = new LogicCircut();
 
+                var input1 = new InputElement(false, new Position());
+                var input2 = new InputElement(true, new Position(0, 1));
+
+                var not = new LogicGateway(GatewayType.Not, new Position(1,0));
+
+                var and = new LogicGateway(GatewayType.And, new Position(2,0));
+
+                circut.Connect(input1, not, 1);
+                circut.Connect(input2, and, 2);
                 circut.Connect(and, not, 1);
 
                 mock.Mock<ICircutsDbService>()
@@ -79,14 +85,16 @@ namespace NUnitTests
         {
             using (var mock = AutoMock.GetLoose())
             {
-                var not = new LogicGateway(GatewayType.Not);
-                not.InputA = false;
-
-                var and = new LogicGateway(GatewayType.And);
-                and.InputB = true;
-
                 var circut = new LogicCircut();
 
+                var input1 = new InputElement(false, new Position());
+                var input2 = new InputElement(true, new Position(0,1));
+
+                var not = new LogicGateway(GatewayType.Not, new Position(1,0));
+                var and = new LogicGateway(GatewayType.And, new Position(2,0));
+
+                circut.Connect(input1, not, 1);
+                circut.Connect(input2, and, 2);
                 circut.Connect(not, and, 1);
 
                 mock.Mock<ICircutsDbService>()
@@ -111,8 +119,7 @@ namespace NUnitTests
 
                 var expected = GetUpdatedCircutSample();
 
-                Assert.AreEqual(expected.Parent.Gateway.Type, circut.Parent.Gateway.Type);
-                Assert.AreEqual(expected.Parent.Gateway.Output, circut.Parent.Gateway.Output);
+                Assert.AreEqual(expected.Parent.Content.Output, circut.Parent.Content.Output);
             }
         }
 
@@ -135,8 +142,7 @@ namespace NUnitTests
 
                 for (int i=0; i<expected.LongCount(); i++)
                 {
-                    Assert.AreEqual(expected.ElementAt(i).Parent.Gateway.Output, actual.ElementAt(i).Parent.Gateway.Output);
-                    Assert.AreEqual(expected.ElementAt(i).Parent.Gateway.Type, actual.ElementAt(i).Parent.Gateway.Type);
+                    Assert.AreEqual(expected.ElementAt(i).Parent.Content.Output, actual.ElementAt(i).Parent.Content.Output);
                     Assert.AreEqual(expected.ElementAt(i).Size, actual.ElementAt(i).Size);
                 }
             }
@@ -158,21 +164,23 @@ namespace NUnitTests
                 var expected = GetSingleCircutSample().Result;
 
                 Assert.AreEqual(1, actual.Id);
-                Assert.AreEqual(expected.Parent.Gateway.Output, actual.Parent.Gateway.Output);
-                Assert.AreEqual(expected.Parent.Gateway.Type, actual.Parent.Gateway.Type);
+                Assert.AreEqual(expected.Parent.Content.Output, actual.Parent.Content.Output);
+                //Assert.AreEqual(expected.Parent.Content.Type, actual.Parent.Content.Type);
             }
         }
 
         private LogicCircut GetUpdatedCircutSample()
         {
-            var not = new LogicGateway(GatewayType.Not);
-            not.InputA = false;
-
-            var and = new LogicGateway(GatewayType.And);
-            and.InputB = false;
-
             var circut = new LogicCircut();
 
+            var input1 = new InputElement(false, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
+
+            var not = new LogicGateway(GatewayType.Not, new Position(1, 0));
+            var and = new LogicGateway(GatewayType.And, new Position(2, 0));
+
+            circut.Connect(input1, not, 1);
+            circut.Connect(input2, and, 2);
             circut.Connect(not, and, 1);
 
             return circut;
@@ -198,22 +206,31 @@ namespace NUnitTests
         {
             LogicCircut circut = new LogicCircut();
 
-            LogicGateway and = new LogicGateway(GatewayType.And, "MyAnd");
-            LogicGateway or = new LogicGateway(GatewayType.Or, true, false, "MyOr");
-            LogicGateway not = new LogicGateway(GatewayType.Not, "MyNot");
-            LogicGateway xor = new LogicGateway(GatewayType.Xor, "MyXor");
-            LogicGateway nand = new LogicGateway(GatewayType.Nand, "MyNand");
+            var input1 = new InputElement(true, new Position());
+            var input2 = new InputElement(true, new Position(0, 1));
+            var input3 = new InputElement(true, new Position(0, 2));
+            var input4 = new InputElement(false, new Position(0, 3));
+            var input5 = new InputElement(false, new Position(0, 4));
+            var input6 = new InputElement(true, new Position(0, 5));
+            var input7 = new InputElement(false, new Position(0, 6));
 
-            //true
-            and.InputA = true;
-            and.InputB = true;
+            LogicGateway and = new LogicGateway(GatewayType.And, new Position(1, 1), "MyAnd");
+            LogicGateway or = new LogicGateway(GatewayType.Or, new Position(1, 2), "MyOr");
+            LogicGateway not = new LogicGateway(GatewayType.Not, new Position(1, 3), "MyNot");
+            LogicGateway xor = new LogicGateway(GatewayType.Xor, new Position(1, 4), "MyXor");
+            LogicGateway nand = new LogicGateway(GatewayType.Nand, new Position(1, 5), "MyNand");
 
-            //true
-            nand.InputA = false;
-            nand.InputB = true;
+            circut.Connect(input1, and, 1);
+            circut.Connect(input2, and, 2);
 
-            //true
-            not.InputA = false;
+            circut.Connect(input3, or, 1);
+            circut.Connect(input4, or, 2);
+
+            circut.Connect(input5, nand, 1);
+            circut.Connect(input6, nand, 2);
+
+            circut.Connect(input7, not, 1);
+
 
             circut.Connect(nand, xor, 1);
             circut.Connect(not, xor, 2);

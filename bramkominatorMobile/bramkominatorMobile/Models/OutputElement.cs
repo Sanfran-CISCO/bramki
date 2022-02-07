@@ -1,65 +1,38 @@
-﻿namespace bramkominatorMobile.Models
+﻿using bramkominatorMobile.Exceptions;
+
+namespace bramkominatorMobile.Models
 {
     public class OutputElement : CircutElement
     {
-        public LogicGateway ConnectedGate { get; private set; }
-        public bool Input { get => ConnectedGate.Output; }
-        public string Name { get; set; }
+        public override bool InputA { get => Node.Left.Content.Output; }
+        public override bool Output { get => Node.Left.Content.Output; }
         public string Image { get; private set; }
 
-        public OutputElement() : base()
+        public OutputElement(Position position) : base()
         {
-            Name = "DefaultOutput";
-            Position = new Position();
-            Image = "outputOff.png";
-            ConnectedGate = null;
-        }
-
-        public OutputElement(string name, LogicGateway gate=null, Position position=null) : base()
-        {
-            if (name != null)
-                Name = name;
+            if (Node.Left is null || !Output)
+                Image = "outputOff.png";
             else
-                Name = "DefaultOutput";
-
-            Image = "outputOff.png";
-
-            if (gate != null)
-            {
-                ConnectedGate = gate;
-
-                if (Input)
-                    Image = "outputOn.png";
-            }
-            else
-                ConnectedGate = null;
-            
+                Image = "ouputOn.png";
 
             if (position is null)
-                Position = new Position();
-            else
-                Position = position;
-        }
+                throw new BadElementInputException("Position cannot be null!");
 
-        public bool ConnectGate(LogicGateway gate)
-        {
-            if (gate is null)
-                return false;
-            else
-            {
-                ConnectedGate = gate;
-                return true;
-            }
+            Position = new Position(position.Column, position.Row);
         }
 
         public void Disconnect()
         {
-            ConnectedGate = null;
+            Node.Left.Next = null;
+            Node.Left = null;
         }
 
         public bool IsConnected()
         {
-            return ConnectedGate != null;
+            if (Node.Left is null)
+                return false;
+            else
+                return true;
         }
     }
 }

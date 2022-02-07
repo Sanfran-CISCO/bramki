@@ -2,40 +2,27 @@
 {
     public class InputElement : CircutElement
     {
-        public bool Output { get; private set; }
+        public override bool Output { get => base.InputA; set => base.InputA = value; }
 
-        public string Name { get; set; }
         public string Image { get; private set; }
 
         public InputElement() : base()
         {
-            Name = "DefaultInput";
             Output = false;
             Image = "inputOff.png";
             Position = new Position();
         }
 
-        public InputElement(string name, bool input = false, LogicGateway gate=null, int inputNumber=0, Position position=null) : base()
+        public InputElement(bool input, Position position) : base()
         {
-            if (name != null)
-                Name = name;
-            else
-                Name = "DefaultInput";
-
             Output = input;
-
-            if (gate != null && (inputNumber == 1 || inputNumber == 2))
-                _ = Connect(gate, inputNumber);
 
             if (Output)
                 Image = "inputOn.png";
             else
                 Image = "inputOff.png";
 
-            if (position is null)
-                Position = new Position();
-            else
-                Position = position;
+            Position = new Position(position.Column, position.Row);
         }
 
         public void Clicked()
