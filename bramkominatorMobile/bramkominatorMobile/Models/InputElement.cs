@@ -7,16 +7,14 @@
         public InputElement() : base()
         {
             Output = false;
-            //Image = "inputOff.png";
-            Image = "nand.png";
+            Image = "inputOff.png";
             Position = new Position();
         }
 
         public InputElement(Position position) : base()
         {
             Output = false;
-            //Image = "inputOff.png";
-            Image = "nand.png";
+            Image = "inputOff.png";
             Position = new Position(position.Column, position.Row);
         }
 
@@ -25,11 +23,9 @@
             Output = input;
 
             if (Output)
-                //Image = "inputOn.png";
-                Image = "nor.png";
+                Image = "inputOn.png";
             else
-                //Image = "inputOff.png";
-                Image = "nand.png";
+                Image = "inputOff.png";
 
             Position = new Position(position.Column, position.Row);
         }
@@ -39,40 +35,13 @@
             if (Output)
             {
                 Output = false;
-                //Image = "inputOff.png";
-                Image = "nand.png";
+                Image = "inputOff.png";
             }
             else
             {
                 Output = true;
-                //Image = "inputOn.png";
-                Image = "nor.png";
+                Image = "inputOn.png";
             }
-        }
-
-        public bool Connect(LogicGateway gate, int inputNumber)
-        {
-            bool isConnected = false;
-
-            if (gate is null)
-                isConnected = false;
-
-            switch (inputNumber)
-            {
-                case 1:
-                    gate.InputA = Output;
-                    isConnected = true;
-                    break;
-                case 2:
-                    gate.InputB = Output;
-                    isConnected = true;
-                    break;
-                default:
-                    isConnected = false;
-                    break;
-            }
-
-            return isConnected;
         }
     }
 }

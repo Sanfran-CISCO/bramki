@@ -13,9 +13,10 @@ namespace bramkominatorMobile.Services
     {
         private SQLiteAsyncConnection db;
 
-        public CircutsDbService(SQLiteAsyncConnection con)
+        public CircutsDbService()
         {
-            db = con;
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorMobile_CircutsDB.db");
+            db = new SQLiteAsyncConnection(databasePath);
         }
 
         public async Task Init()

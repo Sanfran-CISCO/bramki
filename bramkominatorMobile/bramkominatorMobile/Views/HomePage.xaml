@@ -11,29 +11,31 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
-                <Label Text="Bramkominator"
-                       Style="{StaticResource PageHeader}"/>
-            </StackLayout>
-
             <ScrollView Orientation="Both">
-                <StackLayout WidthRequest="1000"
-                             HeightRequest="1000">
-                    <Grid 
-                        BackgroundColor="{StaticResource SystemBlue}"
-                        RowDefinitions="100, 100, 100, 100, 100, 100, 100, 100, 100, 100"
-                        ColumnDefinitions="100, 100, 100, 100, 100, 100, 100, 100, 100, 100">
-                        <Frame BorderColor="{StaticResource SystemRed}"
-                               BackgroundColor="Transparent"
-                               CornerRadius="10"
-                               Grid.Column="1" Grid.Row="1">
-                            <BoxView BackgroundColor="{StaticResource SystemYellow}"
-                                     WidthRequest="50"
-                                     HeightRequest="50"
-                                     HorizontalOptions="Center"
-                                     VerticalOptions="Center"/>
-                        </Frame>
-                    </Grid>
+                <StackLayout Margin="20,50,20,0">
+                    <Label Text="{Binding Title}"
+                           HorizontalOptions="Center"
+                           FontSize="45"
+                           TextColor="Black"
+                           Margin="0,0,0,50"/>
+                    <Button Text="New Workspace" Command="{Binding CreateNewWorkspaceCommand}"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            HeightRequest="50"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            Margin="0,25,0,25"
+                            Padding="6"
+                            CornerRadius="15"/>
+                    <Button Text="Load Workspace" Command="{Binding LoadWorkspaceCommand}"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            HeightRequest="50"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            Margin="0,25,0,25"
+                            Padding="6"
+                            CornerRadius="15"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

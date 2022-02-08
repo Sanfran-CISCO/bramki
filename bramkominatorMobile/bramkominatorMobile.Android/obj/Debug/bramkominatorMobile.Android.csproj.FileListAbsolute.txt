@@ -721,3 +721,5 @@
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_GenerateJavaStubs.stamp
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_GeneratePackageManagerJava.stamp
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_ResolveLibraryProjectImports.stamp
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputoff.png
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputon.png

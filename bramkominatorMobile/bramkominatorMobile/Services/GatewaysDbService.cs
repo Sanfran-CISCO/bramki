@@ -13,9 +13,10 @@ namespace bramkominatorMobile.Services
     {
         private SQLiteAsyncConnection db;
 
-        public GatewaysDbService(SQLiteAsyncConnection con)
+        public GatewaysDbService()
         {
-            db = con;
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorMobile_GatewaysDB.db");
+            db = new SQLiteAsyncConnection(databasePath);
         }
 
         public async Task Init()

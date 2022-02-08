@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using FFImageLoading.Svg;
 using FFImageLoading.Svg.Forms;
 using System.Linq;
+using SQLite;
 
 namespace bramkominatorMobile.Views
 {
@@ -20,6 +21,8 @@ namespace bramkominatorMobile.Views
         private CircutElement[,] _matrix;
 
         private CableService _service;
+        private CircutsDbService _circutsDbService;
+        private GatewaysDbService _gatewaysDbService;
 
         private LogicCircut _circut;
 
@@ -32,13 +35,47 @@ namespace bramkominatorMobile.Views
 
             _matrix = new CircutElement[R, C];
             _service = new CableService(ref _matrix, R, C);
+
+            GetDefaultBoardTemplate();
+
+            var input1Pos = new Position();
+            var input2Pos = new Position(0, 1);
+            var input3Pos = new Position(0, 3);
+
+            var input1 = new InputElement(input1Pos);
+            var input2 = new InputElement(true, input2Pos);
+            var input3 = new InputElement(input3Pos);
+
+            //input1.GetFrame().BackgroundColor = Color.Yellow;
+            //input2.GetFrame().BackgroundColor = Color.Red;
+            //input3.GetFrame().BackgroundColor = Color.MediumBlue;
+
+            BoardGrid.Children.Add(input1.GetFrame(), input1Pos.Column, input1Pos.Row);
+            BoardGrid.Children.Add(input2.GetFrame(), input2Pos.Column, input2Pos.Row);
+            BoardGrid.Children.Add(input3.GetFrame(), input3Pos.Column, input3Pos.Row);
+
+            //_circut.Connect(input1, gate1, 1);
+            //_circut.Connect(input2, gate1, 2);
+
+            //_circut.Connect(input3, gate2, 2);
+
+            //ConnectElements(input1, gate1);
+            //ConnectElements(input2, gate1);
+
+            //ConnectElements(input3, gate2);
+
+            //var gridFrame = BoardGrid.Children.FirstOrDefault(x => Grid.GetColumn(x) == start.Column && Grid.GetRow(x) == start.Row);
+            //gridFrame.BackgroundColor = Color.Yellow;
+        }
+
+
+        private void GetDefaultBoardTemplate()
+        {
             _circut = new LogicCircut();
 
-            
-
-            for (int row=0; row<R; row++)
+            for (int row = 0; row < R; row++)
             {
-                for (int column=0; column<C; column++)
+                for (int column = 0; column < C; column++)
                 {
                     _matrix[row, column] = new EmptyElement(column, row);
 
@@ -65,51 +102,42 @@ namespace bramkominatorMobile.Views
                 }
             }
 
-            var input1Pos = new Position();
-            var input2Pos = new Position(0, 1);
-            var input3Pos = new Position(0, 3);
-
-            var start = new Position(2, 0);
-            var target = new Position(4, 3);
-
-            var input1 = new InputElement(input1Pos);
-            var input2 = new InputElement(true, input2Pos);
-            var input3 = new InputElement(input3Pos);
+            var start = new Position(2, 1);
+            var target = new Position(2, 3);
 
             var gate1 = _matrix[start.Row, start.Column];
             var gate2 = _matrix[target.Row, target.Column];
 
-            gate1 = new LogicGateway(GatewayType.Xnor, position: start);
-            gate2 = new LogicGateway(GatewayType.Xnor, position: target);
-
-            input1.GetFrame().BackgroundColor = Color.Yellow;
-            input2.GetFrame().BackgroundColor = Color.Red;
-            input3.GetFrame().BackgroundColor = Color.MediumBlue;
-
-            BoardGrid.Children.Add(input1.GetFrame(), input1Pos.Column, input1Pos.Row);
-            BoardGrid.Children.Add(input2.GetFrame(), input2Pos.Column, input2Pos.Row);
-            BoardGrid.Children.Add(input3.GetFrame(), input3Pos.Column, input3Pos.Row);
+            gate1 = new LogicGateway(GatewayType.Not, position: start);
+            gate2 = new LogicGateway(GatewayType.And, position: target);
 
             BoardGrid.Children.Add(gate1.GetFrame(), start.Column, start.Row);
             BoardGrid.Children.Add(gate2.GetFrame(), target.Column, target.Row);
-
-            _circut.Connect(input1, gate1, 1);
-            _circut.Connect(input2, gate1, 2);
-
-            _circut.Connect(gate1, gate2, 1);
-            _circut.Connect(input3, gate2, 2);
-
-            ConnectElements(input1, gate1);
-            ConnectElements(input2, gate1);
-
-            ConnectElements(gate1, gate2);
-            ConnectElements(input3, gate2);
-
-            //var gridFrame = BoardGrid.Children.FirstOrDefault(x => Grid.GetColumn(x) == start.Column && Grid.GetRow(x) == start.Row);
-            //gridFrame.BackgroundColor = Color.Yellow;
         }
 
-        
+        private async void GetCustomBoardTemplate(int id)
+        {
+            _circutsDbService = new CircutsDbService();
+
+            _circut = await _circutsDbService.GetCircut(id);
+
+            // TODO --> Iterate through circut and add elements to BoardGrid
+        }
+
+        private void Drop(Object sender, DropEventArgs e)
+        {
+            var image = e.Data.Properties["Gate"] as Image;
+            var frame = (sender as Element).Parent as Frame;
+            frame.Padding = 0;
+            frame.Content = image;
+
+            var newRow = Grid.GetRow(frame);
+            var newCol = Grid.GetColumn(frame);
+
+            _matrix[newRow, newCol] = _matrix[0, 0];
+            _matrix[0, 0] = new EmptyElement(0, 0);
+            _matrix[newRow, newCol].Position.Set(newCol, newRow);
+        }
 
         private void ConnectElements(CircutElement from, CircutElement to)
         {
@@ -136,31 +164,6 @@ namespace bramkominatorMobile.Views
                         path[i].Column, path[i].Row);
                 }
             }
-        }
-
-        private void Drop(Object sender, DropEventArgs e)
-        {
-            var image = e.Data.Properties["Gate"] as Image;
-            var frame = (sender as Element).Parent as Frame;
-            frame.Padding = 0;
-            frame.Content = image;
-
-            var newRow = Grid.GetRow(frame);
-            var newCol = Grid.GetColumn(frame);
-
-            _matrix[newRow, newCol] = _matrix[0, 0];
-            _matrix[0, 0] = new EmptyElement(0, 0);
-            _matrix[newRow, newCol].Position.Set(newCol, newRow);
-
-            //Debug.WriteLine("<--------------->");
-            //Debug.WriteLine($"\tDROP --> Image: {e.Data.Properties["Gate"]}");
-            //Debug.WriteLine($"\tDROP --> Sender Parent: {(sender as Element).Parent}");
-            //Debug.WriteLine($"\t{image.Width}, {image.Height}");
-            //Debug.WriteLine($"\tmatrix[0,0] --> {_matrix[0, 0]}");
-            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}] --> {_matrix[newRow, newCol]}");
-            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}].X --> {_matrix[newRow, newCol].Position.Column}");
-            //Debug.WriteLine($"\tmatrix[{newRow},{newCol}].Y --> {_matrix[newRow, newCol].Position.Row}");
-            //Debug.WriteLine("<--------------->");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace bramkominatorMobile.Models
                 {
                     Content = new Image
                     {
-                        Source = "xnor.png",
+                        //Source = "xnor.png",
                         WidthRequest = 100,
                         HeightRequest = 100,
                         GestureRecognizers = {

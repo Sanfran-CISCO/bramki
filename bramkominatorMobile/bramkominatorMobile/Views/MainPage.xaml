@@ -30,24 +30,6 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="#E2E2E2">
             <StackLayout HorizontalOptions="Center">
-                <!--<Grid ColumnDefinitions="*, auto, *"
-                      RowDefinitions="auto">
-                    <Frame x:Name="BasicFrame"
-                           Grid.Column="1"
-                           Grid.Row="0"
-                           WidthRequest="50"
-                           HeightRequest="50"
-                           BackgroundColor="Transparent">
-                        <BoxView Style="{StaticResource Box}">
-                            <BoxView.GestureRecognizers>
-                                <DragGestureRecognizer
-                                    CanDrag="True"
-                                    DragStarting="DragStarting"
-                                    DropCompleted="DropCompleted"/>
-                            </BoxView.GestureRecognizers>
-                        </BoxView>
-                    </Frame>
-                </Grid>-->
                 <ScrollView Orientation="Both">
                     <Grid x:Name="BoardGrid"
                           ColumnDefinitions="100,100,100,100,100,100,100,100,100,100"
