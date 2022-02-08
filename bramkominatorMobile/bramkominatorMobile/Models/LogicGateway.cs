@@ -12,7 +12,6 @@ namespace bramkominatorMobile.Models
         private LogicCircut circut;
 
         public GatewayType Type { get; set; }
-        public string Image { get; set; }
         public Color Color { get; set; }
 
         public override bool InputA {

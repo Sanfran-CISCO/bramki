@@ -6,7 +6,6 @@ namespace bramkominatorMobile.Models
     {
         public override bool InputA { get => Node.Left.Content.Output; }
         public override bool Output { get => Node.Left.Content.Output; }
-        public string Image { get; private set; }
 
         public OutputElement(Position position) : base()
         {

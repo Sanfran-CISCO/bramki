@@ -78,6 +78,7 @@ namespace bramkominatorMobile.Models
 
         public string Name { get; set; }
         public Position Position { get; set; }
+        public string Image { get; set; }
 
         public virtual bool Output { get; set; }
         public virtual bool InputA { get; set; }
@@ -93,6 +94,8 @@ namespace bramkominatorMobile.Models
 
         public Frame GetFrame()
         {
+            (_dragHandler.Frame.Content as Image).Source = Image;
+
             return _dragHandler.Frame;
         }
 

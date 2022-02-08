@@ -4,13 +4,20 @@
     {
         public override bool Output { get => base.InputA; set => base.InputA = value; }
 
-        public string Image { get; private set; }
-
         public InputElement() : base()
         {
             Output = false;
-            Image = "inputOff.png";
+            //Image = "inputOff.png";
+            Image = "nand.png";
             Position = new Position();
+        }
+
+        public InputElement(Position position) : base()
+        {
+            Output = false;
+            //Image = "inputOff.png";
+            Image = "nand.png";
+            Position = new Position(position.Column, position.Row);
         }
 
         public InputElement(bool input, Position position) : base()
@@ -18,9 +25,11 @@
             Output = input;
 
             if (Output)
-                Image = "inputOn.png";
+                //Image = "inputOn.png";
+                Image = "nor.png";
             else
-                Image = "inputOff.png";
+                //Image = "inputOff.png";
+                Image = "nand.png";
 
             Position = new Position(position.Column, position.Row);
         }
@@ -30,12 +39,14 @@
             if (Output)
             {
                 Output = false;
-                Image = "inputOff.png";
+                //Image = "inputOff.png";
+                Image = "nand.png";
             }
             else
             {
                 Output = true;
-                Image = "inputOn.png";
+                //Image = "inputOn.png";
+                Image = "nor.png";
             }
         }
 

@@ -2,7 +2,6 @@
 {
     public class EmptyElement : CircutElement
     {
-        public string Image { get; private set; }
 
         public EmptyElement()
         {

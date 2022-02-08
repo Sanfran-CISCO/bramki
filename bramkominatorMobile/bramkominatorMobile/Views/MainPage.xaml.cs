@@ -65,24 +65,45 @@ namespace bramkominatorMobile.Views
                 }
             }
 
-            var start = new Position(0, 0);
+            var input1Pos = new Position();
+            var input2Pos = new Position(0, 1);
+            var input3Pos = new Position(0, 3);
+
+            var start = new Position(2, 0);
             var target = new Position(4, 3);
 
-            _matrix[start.Row, start.Column] = new LogicGateway(GatewayType.Xnor, position: start);
-            _matrix[target.Row, target.Column] = new LogicGateway(GatewayType.Xnor, position: target);
+            var input1 = new InputElement(input1Pos);
+            var input2 = new InputElement(true, input2Pos);
+            var input3 = new InputElement(input3Pos);
 
-            BoardGrid.Children.Add(_matrix[start.Row, start.Column].GetFrame(), start.Column, start.Row);
-            BoardGrid.Children.Add(_matrix[target.Row, target.Column].GetFrame(), target.Column, target.Row);
+            var gate1 = _matrix[start.Row, start.Column];
+            var gate2 = _matrix[target.Row, target.Column];
 
-            //InputElement input = new InputElement("input1", input: true,
-            //    gate: _matrix[start.Row, start.Column] as LogicGateway, inputNumber: 1,
-            //    new Position(0, 1));
+            gate1 = new LogicGateway(GatewayType.Xnor, position: start);
+            gate2 = new LogicGateway(GatewayType.Xnor, position: target);
 
-            //(_matrix[start.Row, start.Column] as LogicGateway).InputB = true;
+            input1.GetFrame().BackgroundColor = Color.Yellow;
+            input2.GetFrame().BackgroundColor = Color.Red;
+            input3.GetFrame().BackgroundColor = Color.MediumBlue;
 
-            _circut.Connect(_matrix[start.Row, start.Column], _matrix[target.Row, target.Column], 1);
+            BoardGrid.Children.Add(input1.GetFrame(), input1Pos.Column, input1Pos.Row);
+            BoardGrid.Children.Add(input2.GetFrame(), input2Pos.Column, input2Pos.Row);
+            BoardGrid.Children.Add(input3.GetFrame(), input3Pos.Column, input3Pos.Row);
 
-            ConnectElements(start, target);
+            BoardGrid.Children.Add(gate1.GetFrame(), start.Column, start.Row);
+            BoardGrid.Children.Add(gate2.GetFrame(), target.Column, target.Row);
+
+            _circut.Connect(input1, gate1, 1);
+            _circut.Connect(input2, gate1, 2);
+
+            _circut.Connect(gate1, gate2, 1);
+            _circut.Connect(input3, gate2, 2);
+
+            ConnectElements(input1, gate1);
+            ConnectElements(input2, gate1);
+
+            ConnectElements(gate1, gate2);
+            ConnectElements(input3, gate2);
 
             //var gridFrame = BoardGrid.Children.FirstOrDefault(x => Grid.GetColumn(x) == start.Column && Grid.GetRow(x) == start.Row);
             //gridFrame.BackgroundColor = Color.Yellow;
@@ -90,8 +111,11 @@ namespace bramkominatorMobile.Views
 
         
 
-        private void ConnectElements(Position start, Position target)
+        private void ConnectElements(CircutElement from, CircutElement to)
         {
+            var start = from.Position;
+            var target = to.Position;
+
             var path = _service.FindPath(_matrix[start.Row, start.Column], _matrix[target.Row, target.Column]);
 
             if (path.Count == 0)
