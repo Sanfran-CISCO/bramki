@@ -6,20 +6,31 @@
 
         public InputElement() : base()
         {
+            Name = "Input";
             Output = false;
             Image = "inputOff.png";
             Position = new Position();
         }
 
-        public InputElement(Position position) : base()
+        public InputElement(Position position, string name=null) : base()
         {
+            if (name is null)
+                Name = "Input";
+            else
+                Name = name;
+
             Output = false;
             Image = "inputOff.png";
             Position = new Position(position.Column, position.Row);
         }
 
-        public InputElement(bool input, Position position) : base()
+        public InputElement(bool input, Position position, string name=null) : base()
         {
+            if (name is null)
+                Name = "Input";
+            else
+                Name = name;
+
             Output = input;
 
             if (Output)

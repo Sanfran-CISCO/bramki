@@ -29,12 +29,13 @@ namespace bramkominatorMobile.Views
         public MainPage()
         {
             InitializeComponent();
-            CircutElement.InitDragHandler(ref _matrix);
 
             R = C = 10;
 
             _matrix = new CircutElement[R, C];
             _service = new CableService(ref _matrix, R, C);
+
+            CircutElement.InitDragHandler(ref _matrix);
 
             GetDefaultBoardTemplate();
 
@@ -45,6 +46,10 @@ namespace bramkominatorMobile.Views
             var input1 = new InputElement(input1Pos);
             var input2 = new InputElement(true, input2Pos);
             var input3 = new InputElement(input3Pos);
+
+            _matrix[input1Pos.Row, input1Pos.Column] = input1;
+            _matrix[input2Pos.Row, input2Pos.Column] = input2;
+            _matrix[input3Pos.Row, input3Pos.Column] = input3;
 
             //input1.GetFrame().BackgroundColor = Color.Yellow;
             //input2.GetFrame().BackgroundColor = Color.Red;
@@ -105,11 +110,11 @@ namespace bramkominatorMobile.Views
             var start = new Position(2, 1);
             var target = new Position(2, 3);
 
-            var gate1 = _matrix[start.Row, start.Column];
-            var gate2 = _matrix[target.Row, target.Column];
+            var gate1 = new LogicGateway(GatewayType.Not, position: start);
+            var gate2 = new LogicGateway(GatewayType.And, position: target);
 
-            gate1 = new LogicGateway(GatewayType.Not, position: start);
-            gate2 = new LogicGateway(GatewayType.And, position: target);
+            _matrix[gate1.Position.Row, gate1.Position.Column] = gate1;
+            _matrix[gate2.Position.Row, gate2.Position.Column] = gate2;
 
             BoardGrid.Children.Add(gate1.GetFrame(), start.Column, start.Row);
             BoardGrid.Children.Add(gate2.GetFrame(), target.Column, target.Row);
@@ -126,17 +131,16 @@ namespace bramkominatorMobile.Views
 
         private void Drop(Object sender, DropEventArgs e)
         {
-            var image = e.Data.Properties["Gate"] as Image;
+            var element = e.Data.Properties["Layout"] as StackLayout;
             var frame = (sender as Element).Parent as Frame;
             frame.Padding = 0;
-            frame.Content = image;
+            frame.Content = element;
 
             var newRow = Grid.GetRow(frame);
             var newCol = Grid.GetColumn(frame);
 
-            _matrix[newRow, newCol] = _matrix[0, 0];
-            _matrix[0, 0] = new EmptyElement(0, 0);
-            _matrix[newRow, newCol].Position.Set(newCol, newRow);
+            var matrixElement = e.Data.Properties["MatrixElement"] as CircutElement;
+            _matrix[newRow, newCol] = matrixElement;
         }
 
         private void ConnectElements(CircutElement from, CircutElement to)

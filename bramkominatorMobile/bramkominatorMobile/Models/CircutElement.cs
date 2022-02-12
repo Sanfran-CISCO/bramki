@@ -21,17 +21,24 @@ namespace bramkominatorMobile.Models
             {
                 var frame = new Frame
                 {
-                    Content = new Image
+                    Content = new StackLayout
                     {
-                        //Source = "xnor.png",
-                        WidthRequest = 100,
-                        HeightRequest = 100,
-                        GestureRecognizers = {
-                            dragRecognizer
+                        Children =
+                        {
+                            new Label
+                            {
+                                Text = "Default"
+                            }
                         },
+                        Padding = 0,
+                        BackgroundColor = Color.DodgerBlue,
+                        GestureRecognizers =
+                        {
+                            dragRecognizer
+                        }
                     },
-                    BackgroundColor = Color.Transparent,
-                    Padding = 0
+                    Padding = 0,
+                    BackgroundColor = Color.Transparent
                 };
 
                 return frame;
@@ -55,19 +62,51 @@ namespace bramkominatorMobile.Models
 
             void DragStarting(Object sender, DragStartingEventArgs e)
             {
-                var image = (sender as Element).Parent as Image;
-                e.Data.Properties.Add("Gate", image);
-                Frame = image.Parent as Frame;
+                var frame = (sender as Element).Parent as StackLayout;
+
+                var row = Grid.GetRow(frame);
+                var col = Grid.GetColumn(frame);
+
+                var element = _matrix[row, col];
+                e.Data.Properties.Add("MatrixElement", element);
+
+                e.Data.Properties.Add("Layout", frame);
+                var dropRecognizer = new DropGestureRecognizer();
+                dropRecognizer.AllowDrop = true;
+                dropRecognizer.Drop += (s, p) => Drop(s, p);
+
+                (frame.Parent as Frame).GestureRecognizers.Add(dropRecognizer);
+
+                Frame = frame.Parent as Frame;
+            }
+
+            public void Drop(Object sender, DropEventArgs e)
+            {
+                var element = e.Data.Properties["Layout"] as StackLayout;
+                var frame = (sender as Element).Parent as Frame;
+                frame.Padding = 0;
+                frame.Content = element;
+
+                var newRow = Grid.GetRow(frame);
+                var newCol = Grid.GetColumn(frame);
+
+                var matrixElement = e.Data.Properties["MatrixElement"] as CircutElement;
+                _matrix[newRow, newCol] = matrixElement;
             }
 
             void DropCompleted(Object sender, DropCompletedEventArgs e)
             {
-                Frame.Content = new BoxView
+                Frame.Content = new Frame
                 {
                     WidthRequest = 200,
                     HeightRequest = 200,
                     BackgroundColor = Color.Transparent
                 };
+
+                var col = Grid.GetColumn(Frame);
+                var row = Grid.GetRow(Frame);
+
+                _matrix[row, col] = new EmptyElement(col, row);
 
                 //ConnectElements();
             }
@@ -94,7 +133,10 @@ namespace bramkominatorMobile.Models
 
         public Frame GetFrame()
         {
-            (_dragHandler.Frame.Content as Image).Source = Image;
+            ((_dragHandler.Frame.Content as StackLayout).Children[0] as Label).Text = Name;
+
+            // TODO If called by LogicGateway --> Set BackgroundColor to gate's color
+            //(_dragHandler.Frame.Content as Frame).BackgroundColor = Color;
 
             return _dragHandler.Frame;
         }
