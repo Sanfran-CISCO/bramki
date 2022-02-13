@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace bramkominatorMobile.Models
@@ -14,10 +15,10 @@ namespace bramkominatorMobile.Models
             public DragHandler(ref CircutElement[,] matrix)
             {
                 _matrix = matrix;
-                Frame = GenerateFrame(GetRecognizer());
+                Frame = GenerateFrame(DragRecognizer(), TapRecognizer());
             }
 
-            private Frame GenerateFrame(DragGestureRecognizer dragRecognizer)
+            private Frame GenerateFrame(DragGestureRecognizer dragRecognizer, TapGestureRecognizer tapRecognizer)
             {
                 var frame = new Frame
                 {
@@ -27,8 +28,16 @@ namespace bramkominatorMobile.Models
                         {
                             new Label
                             {
-                                Text = "Default"
-                            }
+                                Text = "Default",
+                                FontSize = 20,
+                                TextColor = Color.White,
+                                HorizontalOptions = LayoutOptions.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                GestureRecognizers =
+                                {
+                                    tapRecognizer
+                                }
+                            },
                         },
                         Padding = 0,
                         BackgroundColor = Color.DodgerBlue,
@@ -41,10 +50,12 @@ namespace bramkominatorMobile.Models
                     BackgroundColor = Color.Transparent
                 };
 
+                frame.Content.GestureRecognizers.Add(dragRecognizer);
+
                 return frame;
             }
 
-            private DragGestureRecognizer GetRecognizer()
+            private DragGestureRecognizer DragRecognizer()
             {
                 var dragRecognizer = new DragGestureRecognizer();
                 dragRecognizer.CanDrag = true;
@@ -58,6 +69,31 @@ namespace bramkominatorMobile.Models
                 };
 
                 return dragRecognizer;
+            }
+
+            private TapGestureRecognizer TapRecognizer()
+            {
+                var tapRecognizer = new TapGestureRecognizer();
+                tapRecognizer.Tapped += async (s, e) =>
+                {
+                    //await Shell.Current.DisplayAlert("Tapped", "You have tapped", "OK");
+
+                    var frame = ((s as Element).Parent.Parent as Frame);
+
+                    var row = Grid.GetRow(frame);
+                    var col = Grid.GetColumn(frame);
+
+                    var element = _matrix[row, col];
+
+                    if (element.GetType() == typeof(InputElement))
+                    {
+                        await Shell.Current.DisplayAlert("Tapped", $"Element Output: {element.Output}", "OK");
+
+                        (element as InputElement).Clicked();
+                    }
+                };
+
+                return tapRecognizer;
             }
 
             void DragStarting(Object sender, DragStartingEventArgs e)
@@ -109,6 +145,11 @@ namespace bramkominatorMobile.Models
                 _matrix[row, col] = new EmptyElement(col, row);
 
                 //ConnectElements();
+            }
+
+            async void Tap(Object sender, TappedEventArgs e)
+            {
+                
             }
         }
 

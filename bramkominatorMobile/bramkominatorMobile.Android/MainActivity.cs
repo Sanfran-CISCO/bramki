@@ -1,10 +1,10 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
+using AndroidX.AppCompat.App;
 
 namespace bramkominatorMobile.Droid
 {
@@ -13,6 +13,7 @@ namespace bramkominatorMobile.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

@@ -29,6 +29,7 @@ foreground;obj/Debug/res/mipmap-anydpi-v26/icon_round.xml
 FrameLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/60/jl/res/layout/camerafragment.xml
 FrameLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/62/jl/res/layout/bottomtablayout.xml
 item;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/62/jl/res/values/styles.xml
+item;obj/Debug/res/values/styles.xml
 LinearLayout;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/62/jl/res/layout/bottomtablayout.xml
 paths;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/61/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 resources;/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/lp/62/jl/res/values/attrs.xml
