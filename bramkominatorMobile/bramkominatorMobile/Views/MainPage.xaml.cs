@@ -13,8 +13,11 @@ using SQLite;
 namespace bramkominatorMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(CircutId), nameof(CircutId))]
     public partial class MainPage : ContentPage
     {
+        public string CircutId { get; set; }
+
         private int R;
         private int C;
 
@@ -30,34 +33,27 @@ namespace bramkominatorMobile.Views
         {
             InitializeComponent();
 
-            R = C = 10;
+            //GetDefaultBoardTemplate();
 
-            _matrix = new CircutElement[R, C];
-            _service = new CableService(ref _matrix, R, C);
+            //var input1Pos = new Position();
+            //var input2Pos = new Position(0, 1);
+            //var input3Pos = new Position(0, 3);
 
-            CircutElement.InitDragHandler(ref _matrix);
+            //var input1 = new InputElement(input1Pos);
+            //var input2 = new InputElement(true, input2Pos);
+            //var input3 = new InputElement(input3Pos);
 
-            GetDefaultBoardTemplate();
+            //_matrix[input1Pos.Row, input1Pos.Column] = input1;
+            //_matrix[input2Pos.Row, input2Pos.Column] = input2;
+            //_matrix[input3Pos.Row, input3Pos.Column] = input3;
 
-            var input1Pos = new Position();
-            var input2Pos = new Position(0, 1);
-            var input3Pos = new Position(0, 3);
+            ////input1.GetFrame().BackgroundColor = Color.Yellow;
+            ////input2.GetFrame().BackgroundColor = Color.Red;
+            ////input3.GetFrame().BackgroundColor = Color.MediumBlue;
 
-            var input1 = new InputElement(input1Pos);
-            var input2 = new InputElement(true, input2Pos);
-            var input3 = new InputElement(input3Pos);
-
-            _matrix[input1Pos.Row, input1Pos.Column] = input1;
-            _matrix[input2Pos.Row, input2Pos.Column] = input2;
-            _matrix[input3Pos.Row, input3Pos.Column] = input3;
-
-            //input1.GetFrame().BackgroundColor = Color.Yellow;
-            //input2.GetFrame().BackgroundColor = Color.Red;
-            //input3.GetFrame().BackgroundColor = Color.MediumBlue;
-
-            BoardGrid.Children.Add(input1.GetFrame(), input1Pos.Column, input1Pos.Row);
-            BoardGrid.Children.Add(input2.GetFrame(), input2Pos.Column, input2Pos.Row);
-            BoardGrid.Children.Add(input3.GetFrame(), input3Pos.Column, input3Pos.Row);
+            //BoardGrid.Children.Add(input1.GetFrame(), input1Pos.Column, input1Pos.Row);
+            //BoardGrid.Children.Add(input2.GetFrame(), input2Pos.Column, input2Pos.Row);
+            //BoardGrid.Children.Add(input3.GetFrame(), input3Pos.Column, input3Pos.Row);
 
             //_circut.Connect(input1, gate1, 1);
             //_circut.Connect(input2, gate1, 2);
@@ -73,6 +69,24 @@ namespace bramkominatorMobile.Views
             //gridFrame.BackgroundColor = Color.Yellow;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            R = C = 10;
+
+            _matrix = new CircutElement[R, C];
+            _service = new CableService(ref _matrix, R, C);
+
+            CircutElement.InitDragHandler(ref _matrix);
+
+            int.TryParse(CircutId, out var result);
+
+            if (result <= 0)
+                GetDefaultBoardTemplate();
+            else
+                GetCustomBoardTemplate(result);
+        }
 
         private void GetDefaultBoardTemplate()
         {

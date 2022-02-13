@@ -11,6 +11,7 @@ namespace bramkominatorMobile
             InitializeComponent();
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            //Routing.RegisterRoute(nameof(SelectCustomCircutPage), typeof(SelectCustomCircutPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

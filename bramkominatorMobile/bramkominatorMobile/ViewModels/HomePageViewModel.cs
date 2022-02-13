@@ -1,32 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using bramkominatorMobile.Models;
+using bramkominatorMobile.Services;
+using bramkominatorMobile.Views;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
+using Xamarin.Forms;
 
 namespace bramkominatorMobile.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
-        public Command CreateNewWorkspaceCommand { get; }
-        public Command LoadWorkspaceCommand { get; }
+        private CircutsDbService _circutsDbService;
+        public int CircutId { get; set; }
+
+        public IEnumerable<LogicCircut> Circuts { get; set; }
+
+        public AsyncCommand CreateNewWorkspaceCommand { get; }
+        public AsyncCommand LoadWorkspaceCommand { get; }
         public HomePageViewModel()
         {
             Title = "Bramkominator";
 
-            CreateNewWorkspaceCommand = new Command(CreateWorkspace);
-            LoadWorkspaceCommand = new Command(LoadWorkspace);
+            _circutsDbService = new CircutsDbService();
+
+            CreateNewWorkspaceCommand = new AsyncCommand(CreateWorkspace);
+            LoadWorkspaceCommand = new AsyncCommand(LoadWorkspace);
         }
 
-        private void CreateWorkspace()
+        private async Task CreateWorkspace()
         {
-
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId=-1");
         }
 
-        private void LoadWorkspace()
+        private async Task LoadWorkspace()
         {
+            Circuts = await _circutsDbService.GetAllCircuts();
 
+            //await AppShell.Current.GoToAsync($"{nameof(SelectCustomCircutPage)}");
+
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId={CircutId}");
         }
     }
 }
