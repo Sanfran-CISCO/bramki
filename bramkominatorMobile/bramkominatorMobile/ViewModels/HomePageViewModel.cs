@@ -37,11 +37,11 @@ namespace bramkominatorMobile.ViewModels
 
         private async Task LoadWorkspace()
         {
-            Circuts = await _circutsDbService.GetAllCircuts();
+            //Circuts = await _circutsDbService.GetAllCircuts();
 
-            //await AppShell.Current.GoToAsync($"{nameof(SelectCustomCircutPage)}");
+            await Shell.Current.GoToAsync($"{nameof(SelectCustomCircutPage)}");
 
-            await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId={CircutId}");
+            //await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId={CircutId}");
         }
     }
 }

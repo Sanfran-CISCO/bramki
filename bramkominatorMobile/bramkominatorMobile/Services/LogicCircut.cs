@@ -12,6 +12,8 @@ namespace bramkominatorMobile.Services
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         private Node parent;
         public Node Parent { get => parent; }
 

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bramkominatorMobile.Views.SelectCustomCircutPage"
+             xmlns:viewmodels="clr-namespace:bramkominatorMobile.ViewModels"
+             xmlns:model="clr-namespace:bramkominatorMobile.Services"
+             x:DataType="viewmodels:SelectCustomCircutPageViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:SelectCustomCircutPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Title}"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           Margin="0,20,0,20"/>
+
+            <CollectionView
+                ItemsSource="{Binding Circuts}"
+                IsGrouped="False"
+                ItemSizingStrategy="MeasureAllItems"
+                ItemsLayout="VerticalList"
+                RemainingItemsThreshold="1"
+                SelectionMode="Single"
+                BackgroundColor="GreenYellow">
+
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No circuts yet"
+                            FontSize="35"
+                            TextColor="Black"
+                            HorizontalOptions="Center"
+                            Margin="0,200,0,0"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LogicCircut">
+                        <StackLayout>
+                            <Label Text="{Binding Name}"
+                               FontSize="25"
+                               TextColor="Black"
+                               HorizontalOptions="Center"
+                               Margin="10"/>
+                            <Label Text="{Binding Size}"
+                               FontSize="25"
+                               TextColor="Black"
+                               HorizontalOptions="Center"
+                               Margin="10"/>
+                            <Label Text="{Binding Id}"
+                               FontSize="25"
+                               TextColor="Black"
+                               HorizontalOptions="Center"
+                               Margin="10"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -75,6 +75,8 @@
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/cablefromtopright.svg
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/cablehorizontal.svg
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/cablevertical.svg
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputoff.png
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputon.png
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/and.png
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/gateway_basic.png
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/nand.png
@@ -721,5 +723,3 @@
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_GenerateJavaStubs.stamp
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_GeneratePackageManagerJava.stamp
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/stamp/_ResolveLibraryProjectImports.stamp
-/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputoff.png
-/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile.Android/obj/Debug/res/drawable/inputon.png
