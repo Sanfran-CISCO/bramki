@@ -13,7 +13,6 @@ namespace bramkominatorMobile.ViewModels
 {
     public class HomePageViewModel : ViewModelBase
     {
-        private CircutsDbService _circutsDbService;
         public int CircutId { get; set; }
 
         public IEnumerable<LogicCircut> Circuts { get; set; }
@@ -23,8 +22,6 @@ namespace bramkominatorMobile.ViewModels
         public HomePageViewModel()
         {
             Title = "Bramkominator";
-
-            _circutsDbService = new CircutsDbService();
 
             CreateNewWorkspaceCommand = new AsyncCommand(CreateWorkspace);
             LoadWorkspaceCommand = new AsyncCommand(LoadWorkspace);
@@ -37,11 +34,7 @@ namespace bramkominatorMobile.ViewModels
 
         private async Task LoadWorkspace()
         {
-            //Circuts = await _circutsDbService.GetAllCircuts();
-
             await Shell.Current.GoToAsync($"{nameof(SelectCustomCircutPage)}");
-
-            //await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId={CircutId}");
         }
     }
 }

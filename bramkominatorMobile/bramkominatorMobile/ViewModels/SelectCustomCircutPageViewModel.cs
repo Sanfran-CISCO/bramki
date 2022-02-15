@@ -6,91 +6,61 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Linq;
 using MvvmHelpers.Commands;
+using Xamarin.Forms;
+using bramkominatorMobile.Views;
 
 namespace bramkominatorMobile.ViewModels
 {
     public class SelectCustomCircutPageViewModel : ViewModelBase
     {
-        private CircutsDbService _dbService;
+        private LogicCircut selectedCircut;
+        public LogicCircut SelectedCircut { get => selectedCircut; set => SetProperty(ref selectedCircut, value); }
 
         public IEnumerable<LogicCircut> Circuts { get; set; }
 
         public AsyncCommand RefreshCommand { get; set; }
+        public AsyncCommand<object> SelectedItemCommand { get; set; }
 
         public SelectCustomCircutPageViewModel()
         {
             Title = "Saved Circuts:";
 
-            _dbService = new CircutsDbService();
-
             _ = Init();
 
-            RefreshCommand = new AsyncCommand(Init);
-        }
-
-        private async Task Init()
-        {
-            Circuts = await GetAllCircutsSample();
-        }
-
-        private async Task<IEnumerable<LogicCircut>> GetAllCircutsSample()
-        {
-            List<LogicCircut> circuts = new List<LogicCircut>
+            Circuts = new List<LogicCircut>()
             {
-                CreateCircut(),
-                CreateCircut(),
-                CreateCircut(),
-                CreateCircut(),
-                CreateCircut()
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
             };
 
             for (int i=0; i<5; i++)
             {
-                circuts[i].Name = $"Circut{i}";
+                Circuts.ElementAt(i).Name = $"Circut-{i}";
             }
 
-            await Task.Delay(100);
-
-            return circuts;
+            RefreshCommand = new AsyncCommand(Init);
+            SelectedItemCommand = new AsyncCommand<object>(SelectedItem);
         }
 
-        private LogicCircut CreateCircut()
+        private async Task Init()
         {
-            LogicCircut circut = new LogicCircut();
+            Circuts = await CircutsDbService.GetAllCircutsSample();
+        }
 
-            var input1 = new InputElement(true, new Position());
-            var input2 = new InputElement(true, new Position(0, 1));
-            var input3 = new InputElement(true, new Position(0, 2));
-            var input4 = new InputElement(false, new Position(0, 3));
-            var input5 = new InputElement(false, new Position(0, 4));
-            var input6 = new InputElement(true, new Position(0, 5));
-            var input7 = new InputElement(false, new Position(0, 6));
+        private async Task SelectedItem(object args)
+        {
+            var circut = args as LogicCircut;
 
-            LogicGateway and = new LogicGateway(GatewayType.And, new Position(1, 1), "MyAnd");
-            LogicGateway or = new LogicGateway(GatewayType.Or, new Position(1, 2), "MyOr");
-            LogicGateway not = new LogicGateway(GatewayType.Not, new Position(1, 3), "MyNot");
-            LogicGateway xor = new LogicGateway(GatewayType.Xor, new Position(1, 4), "MyXor");
-            LogicGateway nand = new LogicGateway(GatewayType.Nand, new Position(1, 5), "MyNand");
+            if (circut == null)
+                return;
 
-            circut.Connect(input1, and, 1);
-            circut.Connect(input2, and, 2);
+            selectedCircut = null;
 
-            circut.Connect(input3, or, 1);
-            circut.Connect(input4, or, 2);
-
-            circut.Connect(input5, nand, 1);
-            circut.Connect(input6, nand, 2);
-
-            circut.Connect(input7, not, 1);
-
-
-            circut.Connect(nand, xor, 1);
-            circut.Connect(not, xor, 2);
-
-            circut.Connect(and, or, 1);
-            circut.Connect(xor, or, 2);
-
-            return circut;
+            await Shell.Current.DisplayAlert("Clicked", $"You have clicked {circut.Name}", "OK");
+            //await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId={circut.Id}");
         }
     }
 }

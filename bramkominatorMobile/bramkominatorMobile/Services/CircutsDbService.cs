@@ -9,29 +9,23 @@ using System.Collections;
 
 namespace bramkominatorMobile.Services
 {
-    public class CircutsDbService : ICircutsDbService
+    public static class CircutsDbService
     {
-        private SQLiteAsyncConnection db;
+        private static SQLiteAsyncConnection db;
 
-        public CircutsDbService()
-        {
-            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorMobile_CircutsDB.db");
-            db = new SQLiteAsyncConnection(databasePath);
-        }
-
-        public async Task Init()
+        public static async Task Init()
         {
             if (db != null)
                 return;
 
-            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorDB.db");
+            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "bramkominator_CircutsDB.db");
 
             db = new SQLiteAsyncConnection(dbPath);
 
             await db.CreateTableAsync<LogicCircut>();
         }
 
-        public async Task AddCircut(LogicCircut circut)
+        public static async Task AddCircut(LogicCircut circut)
         {
             await Init();
 
@@ -41,21 +35,21 @@ namespace bramkominatorMobile.Services
             var id = await db.InsertAsync(circut);
         }
 
-        public async Task RemoveCircut(LogicCircut circut)
+        public static async Task RemoveCircut(LogicCircut circut)
         {
             await Init();
 
             await db.DeleteAsync<LogicCircut>(circut.Id);
         }
 
-        public async Task UpdateCircut(LogicCircut circut)
+        public static async Task UpdateCircut(LogicCircut circut)
         {
             await Init();
 
             await db.UpdateAsync(circut);
         }
 
-        public async Task<IEnumerable<LogicCircut>> GetAllCircuts()
+        public static async Task<IEnumerable<LogicCircut>> GetAllCircuts()
         {
             await Init();
 
@@ -64,7 +58,7 @@ namespace bramkominatorMobile.Services
             return circuts;
         }
 
-        public async Task<LogicCircut> GetCircut(int id)
+        public static async Task<LogicCircut> GetCircut(int id)
         {
             await Init();
 
@@ -73,14 +67,25 @@ namespace bramkominatorMobile.Services
             return circut;
         }
 
-        public IEnumerator<LogicCircut> GetEnumerator()
+        public static async Task<IEnumerable<LogicCircut>> GetAllCircutsSample()
         {
-            return this.GetEnumerator();
-        }
+            List<LogicCircut> circuts = new List<LogicCircut>
+            {
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
+                new LogicCircut(),
+            };
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+            for (int i = 0; i < 5; i++)
+            {
+                circuts[i].Name = $"Circut {i}";
+            }
+
+            await Task.Delay(100);
+
+            return circuts;
         }
     }
 }

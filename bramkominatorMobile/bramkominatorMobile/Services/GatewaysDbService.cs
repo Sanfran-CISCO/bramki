@@ -9,22 +9,16 @@ using bramkominatorMobile.Exceptions;
 
 namespace bramkominatorMobile.Services
 {
-    public class GatewaysDbService : IGatewaysDbService
+    public static class GatewaysDbService
     {
-        private SQLiteAsyncConnection db;
+        private static SQLiteAsyncConnection db;
 
-        public GatewaysDbService()
-        {
-            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorMobile_GatewaysDB.db");
-            db = new SQLiteAsyncConnection(databasePath);
-        }
-
-        public async Task Init()
+        public static async Task Init()
         {
             if (db != null)
                 return;
 
-            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "bramkominatorDB.db");
+            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "bramkominator_GatewaysDB.db");
 
             db = new SQLiteAsyncConnection(dbPath);
 
@@ -47,7 +41,7 @@ namespace bramkominatorMobile.Services
             }
         }
 
-        public async Task AddGateway(LogicGateway gate)
+        public static async Task AddGateway(LogicGateway gate)
         {
             await Init();
 
@@ -57,7 +51,7 @@ namespace bramkominatorMobile.Services
             var id = await db.InsertAsync(gate);
         }
 
-        public async Task RemoveGateway(LogicGateway gate)
+        public static async Task RemoveGateway(LogicGateway gate)
         {
             await Init();
 
@@ -67,7 +61,7 @@ namespace bramkominatorMobile.Services
             await db.DeleteAsync<LogicGateway>(gate.Id);
         }
 
-        public async Task<IEnumerable<LogicGateway>> GetAllGates()
+        public static async Task<IEnumerable<LogicGateway>> GetAllGates()
         {
             await Init();
 
@@ -76,7 +70,7 @@ namespace bramkominatorMobile.Services
             return gates;
         }
 
-        public async Task<IEnumerable<LogicGateway>> GetBasicGates()
+        public static async Task<IEnumerable<LogicGateway>> GetBasicGates()
         {
             await Init();
 
@@ -85,7 +79,7 @@ namespace bramkominatorMobile.Services
             return basicGates;
         }
 
-        public async Task<IEnumerable<LogicGateway>> GetCustomGates()
+        public static async Task<IEnumerable<LogicGateway>> GetCustomGates()
         {
             await Init();
 

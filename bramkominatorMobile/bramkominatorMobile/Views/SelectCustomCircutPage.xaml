@@ -26,6 +26,9 @@
                 ItemsLayout="VerticalList"
                 RemainingItemsThreshold="1"
                 SelectionMode="Single"
+                SelectedItem="{Binding SelectedCircut, Mode=TwoWay}"
+                SelectionChangedCommand="{Binding SelectedItemCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedCircut}"
                 BackgroundColor="GreenYellow">
 
                 <CollectionView.EmptyView>
@@ -40,22 +43,21 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:LogicCircut">
-                        <StackLayout>
+                        <StackLayout WidthRequest="100">
                             <Label Text="{Binding Name}"
+                                FontSize="25"
+                                TextColor="Black"
+                                HorizontalOptions="Center"
+                                Margin="20"
+                                HeightRequest="40"/>
+                            <!--<Label Text="{Binding Size}"
                                FontSize="25"
                                TextColor="Black"
-                               HorizontalOptions="Center"
-                               Margin="10"/>
-                            <Label Text="{Binding Size}"
-                               FontSize="25"
-                               TextColor="Black"
-                               HorizontalOptions="Center"
-                               Margin="10"/>
+                               HorizontalOptions="Center"/>
                             <Label Text="{Binding Id}"
                                FontSize="25"
                                TextColor="Black"
-                               HorizontalOptions="Center"
-                               Margin="10"/>
+                               HorizontalOptions="Center"/>-->
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -24,8 +24,6 @@ namespace bramkominatorMobile.Views
         private CircutElement[,] _matrix;
 
         private CableService _service;
-        private CircutsDbService _circutsDbService;
-        private GatewaysDbService _gatewaysDbService;
 
         private LogicCircut _circut;
 
@@ -136,9 +134,8 @@ namespace bramkominatorMobile.Views
 
         private async void GetCustomBoardTemplate(int id)
         {
-            _circutsDbService = new CircutsDbService();
 
-            _circut = await _circutsDbService.GetCircut(id);
+            _circut = await CircutsDbService.GetCircut(id);
 
             // TODO --> Iterate through circut and add elements to BoardGrid
         }
