@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using SQLite;
 using bramkominatorMobile.Exceptions;
 using bramkominatorMobile.Models;
+using System.Linq;
+using MvvmHelpers;
 
 namespace bramkominatorMobile.Services
 {
@@ -14,32 +16,39 @@ namespace bramkominatorMobile.Services
 
         public string Name { get; set; }
 
-        private Node parent;
-        public Node Parent { get => parent; }
+        [Ignore]
+        public List<CircutElement> Elements { get; set; }
 
-        private Node inputNode;
-        public Node InputNode { get => inputNode; }
+        [Ignore]
+        public Node Parent { get; set; }
+        public int ParentNodeId { get; set; }
+
+        [Ignore]
+        public Node InputNode { get; set; }
+        public int InputNodeId { get; set; }
 
         public int Size { get; private set; }
 
         public LogicCircut()
-        { }
+        {
+            Elements = new List<CircutElement>();
+        }
 
         public void Connect(CircutElement from, CircutElement to, int inputNumber)
         {
-            if (parent == null)
+            if (Parent == null)
             {
                 SetParent(to);
             }
 
-            if (inputNode == null)
+            if (InputNode == null)
             {
-                inputNode = from.Node;
+                InputNode = from.Node;
             }
 
-            if (parent.Content.GetType() == to.GetType() && parent.Content.Position == to.Position)
+            if (Parent.Content.GetType() == to.GetType() && Parent.Content.Position == to.Position)
             {
-               to.Node = parent;
+               to.Node = Parent;
             }
 
             DisconnectFromCurrentNextGate(from.Node);
@@ -62,16 +71,25 @@ namespace bramkominatorMobile.Services
 
             Size++;
 
-            if (from.Node == parent)
+            if (from.Node == Parent)
                 SetParent(to);
+
+            if (!Elements.Contains(from))
+                Elements.Add(from);
+
+            if (!Elements.Contains(to))
+                Elements.Add(to);
+
+            from.CircutId = Id;
+            to.CircutId = Id;
         }
 
         private void SetParent(CircutElement element)
         {
-            if (parent == null)
+            if (Parent == null)
                 Size++;
 
-            parent = element.Node;
+            Parent = element.Node;
         }
 
         private void DisconnectFromCurrentNextGate(Node fromNode)
@@ -106,12 +124,12 @@ namespace bramkominatorMobile.Services
                     case "left":
                         if (element.Node.Left != null)
                         {
-                            if (element.Node.Left == inputNode)
+                            if (element.Node.Left == InputNode)
                             {
                                 if (element.Node.Right != null)
-                                    inputNode = element.Node.Right;
+                                    InputNode = element.Node.Right;
                                 else
-                                    inputNode = element.Node;
+                                    InputNode = element.Node;
                             }
                             element.Node.Left.Next = null;
                             element.Node.Left = null;
@@ -121,12 +139,12 @@ namespace bramkominatorMobile.Services
                     case "right":
                         if (element.Node.Right != null)
                         {
-                            if (element.Node.Right == inputNode)
+                            if (element.Node.Right == InputNode)
                             {
                                 if (element.Node.Left != null)
-                                    inputNode = element.Node.Left;
+                                    InputNode = element.Node.Left;
                                 else
-                                    inputNode = element.Node;
+                                    InputNode = element.Node;
                             }
                             element.Node.Right.Next = null;
                             element.Node.Right = null;
@@ -140,9 +158,9 @@ namespace bramkominatorMobile.Services
 
         public bool Remove(CircutElement element)
         {
-            if (element.Position == inputNode.Content.Position)
+            if (element.Position == InputNode.Content.Position)
             {
-                inputNode = element.Node.Next;
+                InputNode = element.Node.Next;
             }
 
             if (element.Node is null)
@@ -153,6 +171,14 @@ namespace bramkominatorMobile.Services
             {
                 element.Node = null;
                 Size--;
+
+                var el = Elements.FirstOrDefault(x => x.Position == element.Position && x.Name == element.Name);
+                Elements.Remove(el);
+
+                element.CircutId = -1;
+
+                Elements.Remove(element);
+
                 return true;
             }
 
@@ -170,14 +196,25 @@ namespace bramkominatorMobile.Services
             return false;
         }
 
-        public IEnumerator<Node> GetEnumerator()
+        public IEnumerator<CircutElement> GetEnumerator()
         {
             return this.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            int position = 0;
+            foreach (var item in Elements)
+            {
+                position++;
+                yield return position;
+            }
+        }
+
+        public void InitDragHandlers(ref CircutElement[,] matrix)
+        {
+            foreach (var element in Elements)
+                element.SetDragHandler(ref matrix);
         }
     }
 }

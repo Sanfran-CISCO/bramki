@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using bramkominatorMobile.Services;
+using SQLite;
 using Xamarin.Forms;
 
 namespace bramkominatorMobile.Models
@@ -12,7 +14,7 @@ namespace bramkominatorMobile.Models
             private CircutElement[,] _matrix;
             public Frame Frame { get; set; }
 
-            public DragHandler(ref CircutElement[,] matrix)
+            public DragHandler(CircutElement[,] matrix)
             {
                 _matrix = matrix;
                 Frame = GenerateFrame(DragRecognizer(), TapRecognizer());
@@ -146,28 +148,37 @@ namespace bramkominatorMobile.Models
 
                 //ConnectElements();
             }
-
-            async void Tap(Object sender, TappedEventArgs e)
-            {
-                
-            }
         }
 
-        private static CircutElement[,] _matrix;
-        private DragHandler _dragHandler;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public int CircutId { get; set; }
+        public int NodeId { get; set; }
+
+        [Ignore]
+        private static CircutElement[,] _matrix { get; set; }
+
+        [Ignore]
+        private DragHandler _dragHandler { get; set; }
 
         public string Name { get; set; }
+
+        [Ignore]
         public Position Position { get; set; }
+
         public string Image { get; set; }
 
         public virtual bool Output { get; set; }
         public virtual bool InputA { get; set; }
         public virtual bool InputB { get; set; }
+
+        [Ignore]
         public virtual Node Node { get; set; }
 
-        protected CircutElement()
+        public CircutElement()
         {
-            _dragHandler = new DragHandler(ref _matrix);
+            _dragHandler = new DragHandler(_matrix);
 
             Node = new Node(this);
         }
@@ -195,6 +206,12 @@ namespace bramkominatorMobile.Models
         public static void InitDragHandler(ref CircutElement[,] matrix)
         {
             _matrix = matrix;
+        }
+
+        public void SetDragHandler(ref CircutElement[,] matrix)
+        {
+            _matrix = matrix;
+            _dragHandler = new DragHandler(matrix);
         }
     }
 }

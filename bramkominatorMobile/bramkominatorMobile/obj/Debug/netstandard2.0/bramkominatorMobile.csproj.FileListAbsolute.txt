@@ -17,8 +17,8 @@ W:/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/Views
 W:/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.csproj.AssemblyReference.cache
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bin/Debug/netstandard2.0/bramkominatorMobile.deps.json
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bin/Debug/netstandard2.0/bramkominatorMobile.dll
-/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bin/Debug/netstandard2.0/ref/bramkominatorMobile.dll
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bin/Debug/netstandard2.0/bramkominatorMobile.pdb
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.csproj.AssemblyReference.cache
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.GeneratedMSBuildEditorConfig.editorconfig
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/App.xaml.g.cs
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/AppShell.xaml.g.cs
@@ -30,6 +30,6 @@ W:/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramk
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.csproj.CoreCompileInputs.cache
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/XamlC.stamp
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.dll
-/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/ref/bramkominatorMobile.dll
 /Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.pdb
-/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/bramkominatorMobile.csproj.AssemblyReference.cache
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/Debug/netstandard2.0/ref/bramkominatorMobile.dll
+/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bin/Debug/netstandard2.0/ref/bramkominatorMobile.dll

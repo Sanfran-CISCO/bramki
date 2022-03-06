@@ -1,18 +1,19 @@
 ﻿using Xamarin.Forms;
 using bramkominatorMobile.Services;
 using SQLite;
+using System;
 
 namespace bramkominatorMobile.Models
 {
     public class LogicGateway : CircutElement
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
         private LogicCircut circut;
 
         public GatewayType Type { get; set; }
+
+        [Ignore]
         public Color Color { get; set; }
+        public string ColorString { get; set; }
 
         public override bool InputA {
             get {
@@ -25,10 +26,15 @@ namespace bramkominatorMobile.Models
                 }
                 else
                 {
-                    if (Node.Left.Content is null)
+                    if (Node.Left is null)
                         return false;
                     else
-                        return Node.Left.Content.Output;
+                    {
+                        if (Node.Left.Content is null)
+                            return false;
+                        else
+                            return Node.Left.Content.Output;
+                    }
                 }
             }
         }
@@ -44,10 +50,15 @@ namespace bramkominatorMobile.Models
                 }
                 else
                 {
-                    if (Node.Right.Content is null)
+                    if (Node.Right is null)
                         return false;
                     else
-                        return Node.Right.Content.Output;
+                    {
+                        if (Node.Right.Content is null)
+                            return false;
+                        else
+                            return Node.Right.Content.Output;
+                    }
                 }
             }
         }
@@ -153,6 +164,11 @@ namespace bramkominatorMobile.Models
                     break;
             }
             return output;
+        }
+
+        public static implicit operator LogicGateway(InputElement v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

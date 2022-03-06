@@ -22,8 +22,11 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            Command="{Binding AddCustomGatewayCommand}"
-            Text="YES"/>
+            Clicked="AddCustomCircut"
+            Text="Save"/>
+        <ToolbarItem 
+            Clicked="AddCustomGateway"
+            Text="Add"/>
     </ContentPage.ToolbarItems>
 
 

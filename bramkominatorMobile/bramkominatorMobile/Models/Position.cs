@@ -1,5 +1,6 @@
 ﻿using System;
 using bramkominatorMobile.Exceptions;
+using SQLite;
 
 namespace bramkominatorMobile.Models
 {
@@ -7,6 +8,11 @@ namespace bramkominatorMobile.Models
     {
         public int Column { get; private set; }
         public int Row { get; private set; }
+
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public int ElementId { get; set; }
 
         public Position()
         {

@@ -7,6 +7,8 @@ namespace bramkominatorMobile.Models
         public override bool InputA { get => Node.Left.Content.Output; }
         public override bool Output { get => Node.Left.Content.Output; }
 
+        public OutputElement() : base() { }
+
         public OutputElement(Position position) : base()
         {
             if (Node.Left is null || !Output)

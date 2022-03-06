@@ -1,19 +1,34 @@
 ﻿using System;
+using SQLite;
+
 namespace bramkominatorMobile.Models
 {
     public class Node
     {
-        private CircutElement content;
-        public CircutElement Content { get => content; set => content = value; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
-        private Node next;
-        public Node Next { get => next; set => next = value; }
+        public int ElementId { get; set; }
+        public int CircutId { get; set; }
 
-        private Node left;
-        public Node Left { get => left; set => left = value; }
+        [Ignore]
+        public CircutElement Content { get; set; }
 
-        private Node right;
-        public Node Right { get => right; set => right = value; }
+        public int ContentId { get; set; }
+
+        [Ignore]
+        public Node Next { get; set; }
+        public int NextId { get; set; }
+
+        [Ignore]
+        public Node Left { get; set; }
+        public int LeftId { get; set; }
+
+        [Ignore]
+        public Node Right { get; set; }
+        public int RightId { get; set; }
+
+        public Node() { }
 
         public Node(CircutElement element)
         {

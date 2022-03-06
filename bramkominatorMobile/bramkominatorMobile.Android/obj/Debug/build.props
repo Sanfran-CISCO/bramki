@@ -19,13 +19,13 @@ androidsequencepointsmode=none
 xamarinandroidversion=12.0.0-3
 monosymbolarchive=false
 androiduselatestplatformsdk=false
-targetframeworkversion=v10.0
+targetframeworkversion=v12.0
 androidcreatepackageperabi=
 androidgeneratejnimarshalmethods=false
 os=unix
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=637783078549525467
+_nugetassetstimestamp=637808975430483404
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a

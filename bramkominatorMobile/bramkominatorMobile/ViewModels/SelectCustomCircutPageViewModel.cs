@@ -17,6 +17,7 @@ namespace bramkominatorMobile.ViewModels
         public LogicCircut SelectedCircut { get => selectedCircut; set => SetProperty(ref selectedCircut, value); }
 
         public IEnumerable<LogicCircut> Circuts { get; set; }
+        public int Count { get; set; }
 
         public AsyncCommand RefreshCommand { get; set; }
         public AsyncCommand<object> SelectedItemCommand { get; set; }
@@ -27,19 +28,19 @@ namespace bramkominatorMobile.ViewModels
 
             _ = Init();
 
-            Circuts = new List<LogicCircut>()
-            {
-                new LogicCircut(),
-                new LogicCircut(),
-                new LogicCircut(),
-                new LogicCircut(),
-                new LogicCircut(),
-            };
+            //Circuts = new List<LogicCircut>()
+            //{
+            //    new LogicCircut(),
+            //    new LogicCircut(),
+            //    new LogicCircut(),
+            //    new LogicCircut(),
+            //    new LogicCircut(),
+            //};
 
-            for (int i=0; i<5; i++)
-            {
-                Circuts.ElementAt(i).Name = $"Circut-{i}";
-            }
+            //for (int i=0; i<5; i++)
+            //{
+            //    Circuts.ElementAt(i).Name = $"Circut-{i}";
+            //}
 
             RefreshCommand = new AsyncCommand(Init);
             SelectedItemCommand = new AsyncCommand<object>(SelectedItem);
@@ -47,7 +48,9 @@ namespace bramkominatorMobile.ViewModels
 
         private async Task Init()
         {
-            Circuts = await CircutsDbService.GetAllCircutsSample();
+            Circuts = await CircutsDbService.GetAllCircuts();
+            Count = Circuts.Count();
+            //Circuts = await CircutsDbService.GetAllCircutsSample();
         }
 
         private async Task SelectedItem(object args)

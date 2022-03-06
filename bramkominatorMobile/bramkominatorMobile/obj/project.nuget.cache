@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "URZpEU/9SAO0tQlrFH+Ts7o/oQnhcRrYfonROrXPB5D74615vy5/hTvzGrqiv7SlamUPBb/MPpS1zwXxrClujQ==",
+  "dgSpecHash": "RFbLCOepA00FQ5O8PVWZwU6s8T1xNOxQYRYA5XxCVCsCryUM8W7uZiF9LdMLN/NmTR61tBUGozpdoQ+npy+OZg==",
   "success": true,
   "projectFilePath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/bramkominatorMobile.csproj",
   "expectedPackageFiles": [
@@ -22,13 +22,13 @@
     "/Users/gal0wsky/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.3/system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512",
-    "/Users/gal0wsky/.nuget/packages/xamarin.communitytoolkit/1.3.1/xamarin.communitytoolkit.1.3.1.nupkg.sha512",
-    "/Users/gal0wsky/.nuget/packages/xamarin.essentials/1.7.0/xamarin.essentials.1.7.0.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.communitytoolkit/2.0.0/xamarin.communitytoolkit.2.0.0.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.essentials/1.7.1/xamarin.essentials.1.7.1.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading/2.4.11.982/xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.forms/2.4.11.982/xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.svg/2.4.11.982/xamarin.ffimageloading.svg.2.4.11.982.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.ffimageloading.svg.forms/2.4.11.982/xamarin.ffimageloading.svg.forms.2.4.11.982.nupkg.sha512",
-    "/Users/gal0wsky/.nuget/packages/xamarin.forms/5.0.0.2291/xamarin.forms.5.0.0.2291.nupkg.sha512",
+    "/Users/gal0wsky/.nuget/packages/xamarin.forms/5.0.0.2337/xamarin.forms.5.0.0.2337.nupkg.sha512",
     "/Users/gal0wsky/.nuget/packages/xamarin.forms.svg/1.0.3/xamarin.forms.svg.1.0.3.nupkg.sha512"
   ],
   "logs": []

@@ -3,12 +3,22 @@ using bramkominatorMobile.Models;
 using bramkominatorMobile.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using FakeItEasy;
 
 namespace NUnitTests
 {
     [TestFixture]
     public class CableServiceTests
     {
+
+        public CableServiceTests()
+        {
+            var platformServicesFake = A.Fake<IPlatformServices>();
+            Device.PlatformServices = platformServicesFake;
+        }
+
         [Test]
         public void CreateCableServiceInstanceTest()
         {

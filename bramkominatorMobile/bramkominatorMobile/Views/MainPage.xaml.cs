@@ -128,8 +128,22 @@ namespace bramkominatorMobile.Views
             _matrix[gate1.Position.Row, gate1.Position.Column] = gate1;
             _matrix[gate2.Position.Row, gate2.Position.Column] = gate2;
 
-            BoardGrid.Children.Add(gate1.GetFrame(), start.Column, start.Row);
-            BoardGrid.Children.Add(gate2.GetFrame(), target.Column, target.Row);
+            _circut.Connect(gate1, gate2, 1);
+
+            foreach (CircutElement el in _circut.Elements)
+            {
+                BoardGrid.Children.Add(el.GetFrame(), el.Position.Column, el.Position.Row);
+            }
+
+            //var gate1Frame = ((gate1.GetFrame() as Frame).Content as StackLayout).Children[0] as Label;
+
+            //Debug.WriteLine($"Gate 1 content: {gate1Frame.Text}");
+
+            //BoardGrid.Children.Add(gate1.GetFrame(), start.Column, start.Row);
+            //BoardGrid.Children.Add(gate2.GetFrame(), target.Column, target.Row);
+
+            //var gridChild = BoardGrid.Children.FirstOrDefault(c => Grid.GetRow(c) == 1 && Grid.GetColumn(c) == 2);
+            //Debug.WriteLine($"Grid [2,1] content: {gridChild}");
         }
 
         private async void GetCustomBoardTemplate(int id)
@@ -137,7 +151,10 @@ namespace bramkominatorMobile.Views
 
             _circut = await CircutsDbService.GetCircut(id);
 
-            // TODO --> Iterate through circut and add elements to BoardGrid
+            _circut.InitDragHandlers(ref _matrix);
+
+            foreach (var element in _circut.Elements)
+                BoardGrid.Children.Add(element.GetFrame(), element.Position.Column, element.Position.Row);
         }
 
         private void Drop(Object sender, DropEventArgs e)
@@ -178,6 +195,45 @@ namespace bramkominatorMobile.Views
                         },
                         path[i].Column, path[i].Row);
                 }
+            }
+        }
+
+        async void AddCustomCircut(System.Object sender, System.EventArgs e)
+        {
+            var name = await Shell.Current.DisplayPromptAsync("Set name", "Name your circut:", accept: "Save", placeholder: "CustomCircut");
+
+            if (name == null)
+                await Shell.Current.DisplayAlert("Empty name", "Name cannot be empty!", "OK");
+
+            else
+            {
+                _circut.Name = name;
+
+                await CircutsDbService.AddCircut(_circut);
+            }
+        }
+
+        async void AddCustomGateway(System.Object sender, System.EventArgs e)
+        {
+            var name = await Shell.Current.DisplayPromptAsync("Set name", "Name your gateway:", accept: "Save",
+                 placeholder: "CustomGate", maxLength: 10);
+
+            if (name == null)
+                await Shell.Current.DisplayAlert("Empty name", "Name cannot be empty!", "OK");
+
+            else
+            {
+                foreach (var element in _circut.Elements)
+                {
+                    var type = element.GetType();
+                    if (type == typeof(InputElement) || type == typeof(OutputElement))
+                        _circut.Remove(element);
+                }
+
+                _circut.Name = name;
+
+                await CircutsDbService.AddCircut(_circut);
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}?CircutId=-1");
             }
         }
     }

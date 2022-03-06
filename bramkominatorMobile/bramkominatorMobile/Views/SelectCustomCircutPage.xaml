@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="bramkominatorMobile.Views.SelectCustomCircutPage"
              xmlns:viewmodels="clr-namespace:bramkominatorMobile.ViewModels"
-             xmlns:model="clr-namespace:bramkominatorMobile.Services"
+             xmlns:local="clr-namespace:bramkominatorMobile.Services"
              x:DataType="viewmodels:SelectCustomCircutPageViewModel">
 
     <ContentPage.BindingContext>
@@ -19,7 +19,17 @@
                            HorizontalOptions="Center"
                            Margin="0,20,0,20"/>
 
-            <CollectionView
+            <Label Text="{Binding Count}"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           Margin="0,20,0,20"/>
+
+            <RefreshView
+                RefreshColor="Blue"
+                Command="{Binding RefreshCommand}">
+                <CollectionView
                 ItemsSource="{Binding Circuts}"
                 IsGrouped="False"
                 ItemSizingStrategy="MeasureAllItems"
@@ -42,7 +52,7 @@
                 </CollectionView.EmptyView>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:LogicCircut">
+                    <DataTemplate x:DataType="local:LogicCircut">
                         <StackLayout WidthRequest="100">
                             <Label Text="{Binding Name}"
                                 FontSize="25"
@@ -58,10 +68,11 @@
                                FontSize="25"
                                TextColor="Black"
                                HorizontalOptions="Center"/>-->
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
