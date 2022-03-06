@@ -1,6 +1,4 @@
 # bramki
 Nasz symulator bramek logicznych
 
-
-Link do dokumentacji:
-https://docs.google.com/document/d/1KL41ZMlC9hwRsAl0lER09rcTZNjLCKbJFjvGVLsIIEI/edit?usp=sharing
+Symulator wykonany w ramach 2. edycji Motorola Science Cup 2022.
