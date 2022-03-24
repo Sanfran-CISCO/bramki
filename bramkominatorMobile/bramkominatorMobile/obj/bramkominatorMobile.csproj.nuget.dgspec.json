@@ -14,7 +14,7 @@
         "outputPath": "/Users/gal0wsky/Documents/Projekty/Sanfran-CISCO/bramki/bramkominatorMobile/bramkominatorMobile/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/gal0wsky/.config/NuGet/NuGet.Config"
+          "/Users/gal0wsky/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"

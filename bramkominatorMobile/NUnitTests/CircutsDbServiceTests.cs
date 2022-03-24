@@ -12,162 +12,162 @@ namespace NUnitTests
     [TestFixture]
     public class CircutsDbServiceTests
     {
-        [Test]
-        public async Task AddCircutTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                var circut = new LogicCircut();
+        //[Test]
+        //public async Task AddCircutTest()
+        //{
+        //    using (var mock = AutoMock.GetLoose())
+        //    {
+        //        var circut = new LogicCircut();
 
-                var not = new LogicGateway(GatewayType.Not, new Position(1,1));
-                var and = new LogicGateway(GatewayType.And, new Position(1,2));
+        //        var not = new LogicGateway(GatewayType.Not, new Position(1,1));
+        //        var and = new LogicGateway(GatewayType.And, new Position(1,2));
 
-                var input1 = new InputElement(false, new Position());
-                var input2 = new InputElement(true, new Position(0, 1));
+        //        var input1 = new InputElement(false, new Position());
+        //        var input2 = new InputElement(true, new Position(0, 1));
 
-                circut.Connect(input1, and, 1);
-                circut.Connect(input2, and, 2);
+        //        circut.Connect(input1, and, 1);
+        //        circut.Connect(input2, and, 2);
 
-                circut.Connect(and, not, 1);
+        //        circut.Connect(and, not, 1);
 
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.AddCircut(circut));
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.AddCircut(circut));
 
-                var cls = mock.Create<ICircutsDbService>();
+        //        var cls = mock.Create<ICircutsDbService>();
 
-                await cls.AddCircut(circut);
+        //        await cls.AddCircut(circut);
 
-                mock.Mock<ICircutsDbService>()
-                    .Verify(x => x.AddCircut(circut), Times.Once());
-            }
-        }
+        //        mock.Mock<ICircutsDbService>()
+        //            .Verify(x => x.AddCircut(circut), Times.Once());
+        //    }
+        //}
 
-        [Test]
-        public async Task RemoveCircutTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                var circut = new LogicCircut();
+        //[Test]
+        //public async Task RemoveCircutTest()
+        //{
+        //    using (var mock = AutoMock.GetLoose())
+        //    {
+        //        var circut = new LogicCircut();
 
-                var input1 = new InputElement(false, new Position());
-                var input2 = new InputElement(true, new Position(0, 1));
+        //        var input1 = new InputElement(false, new Position());
+        //        var input2 = new InputElement(true, new Position(0, 1));
 
-                var not = new LogicGateway(GatewayType.Not, new Position(1,0));
+        //        var not = new LogicGateway(GatewayType.Not, new Position(1,0));
 
-                var and = new LogicGateway(GatewayType.And, new Position(2,0));
+        //        var and = new LogicGateway(GatewayType.And, new Position(2,0));
 
-                circut.Connect(input1, not, 1);
-                circut.Connect(input2, and, 2);
-                circut.Connect(and, not, 1);
+        //        circut.Connect(input1, not, 1);
+        //        circut.Connect(input2, and, 2);
+        //        circut.Connect(and, not, 1);
 
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.AddCircut(circut));
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.AddCircut(circut));
 
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.RemoveCircut(circut));
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.RemoveCircut(circut));
 
-                var cls = mock.Create<ICircutsDbService>();
+        //        var cls = mock.Create<ICircutsDbService>();
 
-                await cls.AddCircut(circut);
+        //        await cls.AddCircut(circut);
 
-                mock.Mock<ICircutsDbService>()
-                    .Verify(x => x.AddCircut(circut), Times.Once());
+        //        mock.Mock<ICircutsDbService>()
+        //            .Verify(x => x.AddCircut(circut), Times.Once());
 
-                await cls.RemoveCircut(circut);
+        //        await cls.RemoveCircut(circut);
 
-                mock.Mock<ICircutsDbService>()
-                    .Verify(x => x.RemoveCircut(circut), Times.Once());
-            }
-        }
+        //        mock.Mock<ICircutsDbService>()
+        //            .Verify(x => x.RemoveCircut(circut), Times.Once());
+        //    }
+        //}
 
-        [Test]
-        public async Task UpdateCircutTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                var circut = new LogicCircut();
+        //[Test]
+        //public async Task UpdateCircutTest()
+        //{
+        //    using (var mock = AutoMock.GetLoose())
+        //    {
+        //        var circut = new LogicCircut();
 
-                var input1 = new InputElement(false, new Position());
-                var input2 = new InputElement(true, new Position(0,1));
+        //        var input1 = new InputElement(false, new Position());
+        //        var input2 = new InputElement(true, new Position(0,1));
 
-                var not = new LogicGateway(GatewayType.Not, new Position(1,0));
-                var and = new LogicGateway(GatewayType.And, new Position(2,0));
+        //        var not = new LogicGateway(GatewayType.Not, new Position(1,0));
+        //        var and = new LogicGateway(GatewayType.And, new Position(2,0));
 
-                circut.Connect(input1, not, 1);
-                circut.Connect(input2, and, 2);
-                circut.Connect(not, and, 1);
+        //        circut.Connect(input1, not, 1);
+        //        circut.Connect(input2, and, 2);
+        //        circut.Connect(not, and, 1);
 
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.AddCircut(circut));
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.AddCircut(circut));
 
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.UpdateCircut(circut));
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.UpdateCircut(circut));
 
-                var cls = mock.Create<ICircutsDbService>();
+        //        var cls = mock.Create<ICircutsDbService>();
 
-                await cls.AddCircut(circut);
+        //        await cls.AddCircut(circut);
 
-                mock.Mock<ICircutsDbService>()
-                    .Verify(x => x.AddCircut(circut), Times.Once());
+        //        mock.Mock<ICircutsDbService>()
+        //            .Verify(x => x.AddCircut(circut), Times.Once());
 
-                and.InputB = false;
+        //        and.InputB = false;
 
-                await cls.UpdateCircut(circut);
+        //        await cls.UpdateCircut(circut);
 
-                mock.Mock<ICircutsDbService>()
-                    .Verify(x => x.UpdateCircut(circut), Times.Once());
+        //        mock.Mock<ICircutsDbService>()
+        //            .Verify(x => x.UpdateCircut(circut), Times.Once());
 
-                var expected = GetUpdatedCircutSample();
+        //        var expected = GetUpdatedCircutSample();
 
-                Assert.AreEqual(expected.Parent.Content.Output, circut.Parent.Content.Output);
-            }
-        }
+        //        Assert.AreEqual(expected.Parent.Content.Output, circut.Parent.Content.Output);
+        //    }
+        //}
 
-        [Test]
-        public void GetAllCircutsTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.GetAllCircuts())
-                    .Returns(GetAllCircutsSample());
+        //[Test]
+        //public void GetAllCircutsTest()
+        //{
+        //    using (var mock = AutoMock.GetLoose())
+        //    {
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.GetAllCircuts())
+        //            .Returns(GetAllCircutsSample());
 
-                var cls = mock.Create<ICircutsDbService>();
+        //        var cls = mock.Create<ICircutsDbService>();
 
-                var actual = cls.GetAllCircuts().Result;
+        //        var actual = cls.GetAllCircuts().Result;
 
-                var expected = GetAllCircutsSample().Result;
+        //        var expected = GetAllCircutsSample().Result;
 
-                Assert.AreEqual(expected.LongCount(), actual.LongCount());
+        //        Assert.AreEqual(expected.LongCount(), actual.LongCount());
 
-                for (int i=0; i<expected.LongCount(); i++)
-                {
-                    Assert.AreEqual(expected.ElementAt(i).Parent.Content.Output, actual.ElementAt(i).Parent.Content.Output);
-                    Assert.AreEqual(expected.ElementAt(i).Size, actual.ElementAt(i).Size);
-                }
-            }
-        }
+        //        for (int i=0; i<expected.LongCount(); i++)
+        //        {
+        //            Assert.AreEqual(expected.ElementAt(i).Parent.Content.Output, actual.ElementAt(i).Parent.Content.Output);
+        //            Assert.AreEqual(expected.ElementAt(i).Size, actual.ElementAt(i).Size);
+        //        }
+        //    }
+        //}
 
-        [Test]
-        public async Task GetCircutTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                mock.Mock<ICircutsDbService>()
-                    .Setup(x => x.GetCircut(1))
-                    .Returns(GetSingleCircutSample());
+        //[Test]
+        //public async Task GetCircutTest()
+        //{
+        //    using (var mock = AutoMock.GetLoose())
+        //    {
+        //        mock.Mock<ICircutsDbService>()
+        //            .Setup(x => x.GetCircut(1))
+        //            .Returns(GetSingleCircutSample());
 
-                var cls = mock.Create<ICircutsDbService>();
+        //        var cls = mock.Create<ICircutsDbService>();
 
-                var actual = await cls.GetCircut(1);
+        //        var actual = await cls.GetCircut(1);
 
-                var expected = GetSingleCircutSample().Result;
+        //        var expected = GetSingleCircutSample().Result;
 
-                Assert.AreEqual(1, actual.Id);
-                Assert.AreEqual(expected.Parent.Content.Output, actual.Parent.Content.Output);
-                //Assert.AreEqual(expected.Parent.Content.Type, actual.Parent.Content.Type);
-            }
-        }
+        //        Assert.AreEqual(1, actual.Id);
+        //        Assert.AreEqual(expected.Parent.Content.Output, actual.Parent.Content.Output);
+        //        //Assert.AreEqual(expected.Parent.Content.Type, actual.Parent.Content.Type);
+        //    }
+        //}
 
         private LogicCircut GetUpdatedCircutSample()
         {
